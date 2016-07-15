@@ -2,5 +2,11 @@
 name = "rustils"
 version = "0.0.1"
 authors = ["norabx <norabxnetwork@gmail.com>"]
+license = "MIT"
+license-file = "LICENSE.md"
+readme = "README.md"
+repository = "https://github.com/NorabX/rustils"
+keywords = [""]
+description = ""
 
 [dependencies]
