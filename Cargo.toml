@@ -6,7 +6,5 @@ license = "MIT"
 license-file = "LICENSE.md"
 readme = "README.md"
 repository = "https://github.com/NorabX/rustils"
-keywords = [""]
-description = ""
 
 [dependencies]
