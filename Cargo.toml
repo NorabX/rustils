@@ -1,0 +1,6 @@
+[package]
+name = "rustils"
+version = "0.0.1"
+authors = ["norabx <norabxnetwork@gmail.com>"]
+
+[dependencies]
