@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["tobool","Convert 0_i8 to false and all other numbers to true."],["tou16",""],["tou16p",""],["tou32",""],["tou32p",""],["tou64",""],["tou64p",""],["tou8",""],["tou8p",""]]});

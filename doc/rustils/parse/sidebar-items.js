@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["boolean",""],["byte",""],["double",""],["error",""],["float",""],["int",""],["long",""],["short",""],["string",""],["types",""],["ubyte",""],["uint",""],["ulong",""],["ushort",""]]});

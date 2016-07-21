@@ -10,3 +10,5 @@ pub mod long;
 pub mod int;
 pub mod short;
 pub mod byte;
+pub mod error;
+pub mod types;
