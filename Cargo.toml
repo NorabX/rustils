@@ -1,6 +1,6 @@
 [package]
 name = "rustils"
-version = "0.0.2"
+version = "0.0.3"
 authors = ["norabx <norabxnetwork@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -8,3 +8,4 @@ repository = "https://github.com/NorabX/rustils"
 description = "Utilities for rust"
 
 [dependencies]
+rand = "0.3" 
