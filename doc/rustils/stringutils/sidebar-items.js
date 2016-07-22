@@ -1,1 +1,0 @@
-initSidebarItems({"fn":[["adv_ends_with",""],["adv_starts_with",""],["cmp_ingnore_case",""],["ends_with",""],["peek",""],["peekp",""],["reverse",""],["reversep",""],["starts_with",""],["string_to_str",""]]});
