@@ -1,6 +1,26 @@
 use rand;
 use rand::distributions::{IndependentSample, Range};
 
+pub fn rand_bool_vec(count: usize) -> Vec<bool>{
+    let mut x = Vec::<bool>::with_capacity(count);
+
+    for _ in 0..count {
+        x.push(rand::random::<bool>());
+    }
+
+    x
+}
+
+pub fn rand_char_vec(count: usize) -> Vec<char>{
+    let mut x = Vec::<char>::with_capacity(count);
+
+    for _ in 0..count {
+        x.push(rand::random::<char>());
+    }
+
+    x
+}
+
 pub fn rand_i8_vec(count: usize) -> Vec<i8>{
     let mut x = Vec::<i8>::with_capacity(count);
 
