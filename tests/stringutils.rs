@@ -73,3 +73,91 @@ fn string_to_str(){
     assert_eq!("",String::new());
     assert_eq!("Hello",String::from("Hello"));
 }
+
+#[test]
+fn adv_contains_any_str(){
+    assert_eq!((true,6,String::from("World")),
+        stringutils::adv_contains_any_str("Hello World",&["Goodbye","World"]));
+
+    assert_eq!((true,0,String::from("Hello")),
+        stringutils::adv_contains_any_str("Hello World",&["Goodbye",&String::from("Hello")]));
+
+    assert_eq!((false,0,String::new()),
+        stringutils::adv_contains_any_str("Hello World",&["Goodbye","Rust"]));
+
+}
+
+#[test]
+fn contains_any_str(){
+    assert_eq!(true,
+        stringutils::contains_any_str("Hello World",&["Goodbye","World"]));
+
+    assert_eq!(true,
+        stringutils::contains_any_str("Hello World",&["Goodbye",&String::from("Hello")]));
+
+    assert_eq!(false,
+        stringutils::contains_any_str("Hello World",&["Goodbye","Rust"]));
+
+}
+
+#[test]
+fn adv_contains_all_strs(){
+    assert_eq!((true,vec!(6,0),vec!(String::from("World"),String::from("Hello"))),
+        stringutils::adv_contains_all_strs("Hello World",&["World","Hello"]));
+
+    assert_eq!((true,vec!(0,6),vec!(String::from("Hello"),String::from("World"))),
+        stringutils::adv_contains_all_strs("Hello World",&[&String::from("Hello"),"World"]));
+
+    assert_eq!((false,Vec::<usize>::new(),Vec::<String>::new()),
+        stringutils::adv_contains_all_strs("Hello World",&["Goodbye","Hello"]));
+
+}
+
+#[test]
+fn contains_all_strs(){
+    assert_eq!(true,
+        stringutils::contains_all_strs("Hello World",&["World","Hello"]));
+
+    assert_eq!(true,
+        stringutils::contains_all_strs("Hello World",&[&String::from("Hello"),"World"]));
+
+    assert_eq!(false,
+        stringutils::contains_all_strs("Hello World",&["Goodbye","Hello"]));
+
+}
+
+#[test]
+fn adv_contains_any_char(){
+    assert_eq!((true,8,'r'),
+        stringutils::adv_contains_any_char("Hello World",&['b','a','r']));
+
+    assert_eq!((false,0,' '),
+        stringutils::adv_contains_any_char("Hello World",&['x','y','z']));
+}
+
+#[test]
+fn contains_any_char(){
+    assert_eq!(true,
+        stringutils::contains_any_char("Hello World",&['b','a','r']));
+
+    assert_eq!(false,
+        stringutils::contains_any_char("Hello World",&['x','y','z']));
+}
+
+#[test]
+fn adv_contains_all_chars(){
+    assert_eq!((true,vec!(1,4,10),vec!('e','o','d')),
+        stringutils::adv_contains_all_chars("Hello World",&['e','o','d']));
+
+    assert_eq!((false,Vec::<usize>::new(),Vec::<char>::new()),
+        stringutils::adv_contains_all_chars("Hello World",&['f','o','l']));
+}
+
+#[test]
+fn contains_all_chars(){
+    assert_eq!(true,
+        stringutils::contains_all_chars("Hello World",&['e','o','d']));
+
+    assert_eq!(false,
+        stringutils::contains_all_chars("Hello World",&['f','o','l']));
+}
