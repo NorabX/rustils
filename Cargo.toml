@@ -8,4 +8,8 @@ repository = "https://github.com/NorabX/rustils"
 description = "Utilities for rust"
 
 [dependencies]
-rand = "0.3" 
+rand = "0.3"
+
+[[bin]]
+doc = false
+name = "rustils"
