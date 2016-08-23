@@ -157,7 +157,7 @@ pub fn contains_all_chars(target: &str, search: &[char]) -> bool{
     adv_contains_all_chars(target,search).0
 }
 
-pub fn adv_contains_none_strs(target: &str, search: &[&str]) -> (bool,usize,String){
+pub fn adv_contains_none_str(target: &str, search: &[&str]) -> (bool,usize,String){
     for i in 0..search.len() {
         match target.find(search[i]) {
             Some(_) => {
@@ -170,8 +170,25 @@ pub fn adv_contains_none_strs(target: &str, search: &[&str]) -> (bool,usize,Stri
     (true,0,String::new())
 }
 
-pub fn contains_none_strs(target: &str, search: &[&str]) -> bool{
-    adv_contains_none_strs(target,search).0
+pub fn contains_none_str(target: &str, search: &[&str]) -> bool{
+    adv_contains_none_str(target,search).0
+}
+
+pub fn adv_contains_none_char(target: &str, search: &[char]) -> (bool,usize,char){
+    for i in 0..search.len() {
+        match target.find(search[i]) {
+            Some(_) => {
+                return (false,i,search[i]);
+            },
+            None => {}
+        }
+    }
+
+    (true,0,' ')
+}
+
+pub fn contains_none_char(target: &str, search: &[char]) -> bool{
+    adv_contains_none_char(target,search).0
 }
 
 /*TODO

@@ -163,21 +163,41 @@ fn contains_all_chars(){
 }
 
 #[test]
-fn adv_contains_none_strs(){
+fn adv_contains_none_str(){
     assert_eq!((true,0,String::new()),
-        stringutils::adv_contains_none_strs("Hello World",&["Test","Function"]));
+        stringutils::adv_contains_none_str("Hello World",&["Test","Function"]));
 
     assert_eq!((false,1,String::from("Hello")),
-        stringutils::adv_contains_none_strs("Hello World",&["Goodbye","Hello"]));
+        stringutils::adv_contains_none_str("Hello World",&["Goodbye","Hello"]));
 
 }
 
 #[test]
-fn contains_none_strs(){
+fn contains_none_str(){
     assert_eq!(true,
-        stringutils::contains_none_strs("Hello World",&["Test","Function"]));
+        stringutils::contains_none_str("Hello World",&["Test","Function"]));
 
     assert_eq!(false,
-        stringutils::contains_none_strs("Hello World",&["Goodbye","Hello"]));
+        stringutils::contains_none_str("Hello World",&["Goodbye","Hello"]));
+
+}
+
+#[test]
+fn adv_contains_none_char(){
+    assert_eq!((true,0,' '),
+        stringutils::adv_contains_none_char("Hello World",&['a','b','c','D']));
+
+    assert_eq!((false,2,'d'),
+        stringutils::adv_contains_none_char("Hello World",&['b','c','d','E']));
+
+}
+
+#[test]
+fn contains_none_char(){
+    assert_eq!(true,
+        stringutils::contains_none_char("Hello World",&['a','b','c','D']));
+
+    assert_eq!(false,
+        stringutils::contains_none_char("Hello World",&['b','c','d','E']));
 
 }
