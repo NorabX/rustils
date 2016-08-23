@@ -217,3 +217,17 @@ fn differencep(){
         stringutils::differencep("12345","678"));
 
 }
+
+#[test]
+fn join() {
+    assert_eq!("Hello World",stringutils::join(&["He","llo"," ","World"],""));
+    assert_eq!("0;1;2;3;4",stringutils::join(&[0,1,2,3,4],";"));
+    assert_eq!("0<>1<>2<>3<>4",stringutils::join(&[0,1,2,3,4],"<>"));
+}
+
+#[test]
+fn join_vec() {
+    assert_eq!("Hello World",stringutils::join_vec(vec!("He","llo"," ","World"),""));
+    assert_eq!("0;1;2;3;4",stringutils::join_vec(vec!(0,1,2,3,4),";"));
+    assert_eq!("0<>1<>2<>3<>4",stringutils::join_vec(vec!(0,1,2,3,4),"<>"));
+}

@@ -221,6 +221,30 @@ pub fn differencep(str1: &str, str2: &str) -> (Vec<usize>,String){
     (idxs,s)
 }
 
+pub fn join<T: ToString>(ary: &[T], sep: &str) -> String{
+    let mut temp = String::new();
+    for i in 0..ary.len() {
+        temp.push_str(&ary[i].to_string());
+
+        if i != ary.len()-1 {
+            temp.push_str(sep);
+        }
+    }
+    temp
+}
+
+pub fn join_vec<T: ToString>(ary: Vec<T>, sep: &str) -> String{
+    let mut temp = String::new();
+    for i in 0..ary.len() {
+        temp.push_str(&ary[i].to_string());
+
+        if i != ary.len()-1 {
+            temp.push_str(sep);
+        }
+    }
+    temp
+}
+
 /*TODO
 contains_only
 remove_all
