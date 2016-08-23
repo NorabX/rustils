@@ -157,6 +157,23 @@ pub fn contains_all_chars(target: &str, search: &[char]) -> bool{
     adv_contains_all_chars(target,search).0
 }
 
+pub fn adv_contains_none_strs(target: &str, search: &[&str]) -> (bool,usize,String){
+    for i in 0..search.len() {
+        match target.find(search[i]) {
+            Some(_) => {
+                return (false,i,String::from(search[i]));
+            },
+            None => {}
+        }
+    }
+
+    (true,0,String::new())
+}
+
+pub fn contains_none_strs(target: &str, search: &[&str]) -> bool{
+    adv_contains_none_strs(target,search).0
+}
+
 /*TODO
 contains_none
 contains_only

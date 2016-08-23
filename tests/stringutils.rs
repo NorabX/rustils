@@ -161,3 +161,23 @@ fn contains_all_chars(){
     assert_eq!(false,
         stringutils::contains_all_chars("Hello World",&['f','o','l']));
 }
+
+#[test]
+fn adv_contains_none_strs(){
+    assert_eq!((true,0,String::new()),
+        stringutils::adv_contains_none_strs("Hello World",&["Test","Function"]));
+
+    assert_eq!((false,1,String::from("Hello")),
+        stringutils::adv_contains_none_strs("Hello World",&["Goodbye","Hello"]));
+
+}
+
+#[test]
+fn contains_none_strs(){
+    assert_eq!(true,
+        stringutils::contains_none_strs("Hello World",&["Test","Function"]));
+
+    assert_eq!(false,
+        stringutils::contains_none_strs("Hello World",&["Goodbye","Hello"]));
+
+}
