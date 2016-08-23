@@ -201,3 +201,19 @@ fn contains_none_char(){
         stringutils::contains_none_char("Hello World",&['b','c','d','E']));
 
 }
+
+#[test]
+fn differencep(){
+    assert_eq!((vec!(),String::from("")),
+        stringutils::differencep("",&String::new()));
+
+    assert_eq!((vec!(6,7,9,10),String::from("Eath")),
+        stringutils::differencep("Hello World","Hello Earth"));
+
+    assert_eq!((vec!(),String::from("")),
+        stringutils::differencep("Hello World","Hello"));
+
+    assert_eq!((vec!(0,1,2),String::from("678")),
+        stringutils::differencep("12345","678"));
+
+}

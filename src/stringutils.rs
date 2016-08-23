@@ -66,7 +66,7 @@ pub fn cmp_ingnore_case(str1: &str, str2: &str) -> bool {
     String::from(str1).to_lowercase() == String::from(str2).to_lowercase()
 }
 
-pub fn peek(str1: &str) -> Option<char>{
+pub fn peek(str1: &str) -> Option<char> {
     String::from(str1).chars().last()
 }
 
@@ -85,7 +85,7 @@ pub fn string_to_str(s: String) -> &'static str {
     }
 }
 
-pub fn adv_contains_any_str(target: &str, search: &[&str]) -> (bool,usize,String){
+pub fn adv_contains_any_str(target: &str, search: &[&str]) -> (bool,usize,String) {
     for i in 0..search.len() {
         match target.find(search[i]) {
             Some(n) => return (true,n,String::from(search[i])),
@@ -96,11 +96,11 @@ pub fn adv_contains_any_str(target: &str, search: &[&str]) -> (bool,usize,String
     (false,0,String::new())
 }
 
-pub fn contains_any_str(target: &str, search: &[&str]) -> bool{
+pub fn contains_any_str(target: &str, search: &[&str]) -> bool {
     adv_contains_any_str(target,search).0
 }
 
-pub fn adv_contains_all_strs(target: &str, search: &[&str]) -> (bool,Vec<usize>,Vec<String>){
+pub fn adv_contains_all_strs(target: &str, search: &[&str]) -> (bool,Vec<usize>,Vec<String>) {
     let mut idxs = Vec::<usize>::new();
     let mut strs = Vec::<String>::new();
 
@@ -117,11 +117,11 @@ pub fn adv_contains_all_strs(target: &str, search: &[&str]) -> (bool,Vec<usize>,
     (true,idxs,strs)
 }
 
-pub fn contains_all_strs(target: &str, search: &[&str]) -> bool{
+pub fn contains_all_strs(target: &str, search: &[&str]) -> bool {
     adv_contains_all_strs(target,search).0
 }
 
-pub fn adv_contains_any_char(target: &str, search: &[char]) -> (bool,usize,char){
+pub fn adv_contains_any_char(target: &str, search: &[char]) -> (bool,usize,char) {
     for i in 0..search.len() {
         match target.find(search[i]) {
             Some(n) => return (true,n,search[i]),
@@ -132,11 +132,11 @@ pub fn adv_contains_any_char(target: &str, search: &[char]) -> (bool,usize,char)
     (false,0,' ')
 }
 
-pub fn contains_any_char(target: &str, search: &[char]) -> bool{
+pub fn contains_any_char(target: &str, search: &[char]) -> bool {
     adv_contains_any_char(target,search).0
 }
 
-pub fn adv_contains_all_chars(target: &str, search: &[char]) -> (bool,Vec<usize>,Vec<char>){
+pub fn adv_contains_all_chars(target: &str, search: &[char]) -> (bool,Vec<usize>,Vec<char>) {
     let mut idxs = Vec::<usize>::new();
     let mut chars = Vec::<char>::new();
 
@@ -157,7 +157,7 @@ pub fn contains_all_chars(target: &str, search: &[char]) -> bool{
     adv_contains_all_chars(target,search).0
 }
 
-pub fn adv_contains_none_str(target: &str, search: &[&str]) -> (bool,usize,String){
+pub fn adv_contains_none_str(target: &str, search: &[&str]) -> (bool,usize,String) {
     for i in 0..search.len() {
         match target.find(search[i]) {
             Some(_) => {
@@ -174,7 +174,7 @@ pub fn contains_none_str(target: &str, search: &[&str]) -> bool{
     adv_contains_none_str(target,search).0
 }
 
-pub fn adv_contains_none_char(target: &str, search: &[char]) -> (bool,usize,char){
+pub fn adv_contains_none_char(target: &str, search: &[char]) -> (bool,usize,char) {
     for i in 0..search.len() {
         match target.find(search[i]) {
             Some(_) => {
@@ -187,15 +187,43 @@ pub fn adv_contains_none_char(target: &str, search: &[char]) -> (bool,usize,char
     (true,0,' ')
 }
 
-pub fn contains_none_char(target: &str, search: &[char]) -> bool{
+pub fn contains_none_char(target: &str, search: &[char]) -> bool {
     adv_contains_none_char(target,search).0
 }
 
+pub fn difference(str1: &str, str2: &str) -> (Vec<usize>,Result<String,FromUtf8Error>) {
+    let bytes1 = String::from(str1).into_bytes();
+    let bytes2 = String::from(str2).into_bytes();
+    let mut idxs = Vec::<usize>::new();
+    let mut res = Vec::<u8>::new();
+    let mut i: usize = 0;
+
+    while i < bytes1.len() && i < bytes2.len() {
+        if bytes1[i] != bytes2[i] {
+            idxs.push(i);
+            res.push(bytes2[i]);
+        }
+
+        i = i + 1;
+    }
+
+    (idxs,String::from_utf8(res))
+}
+
+pub fn differencep(str1: &str, str2: &str) -> (Vec<usize>,String){
+    let temp = difference(str1,str2);
+    let idxs = temp.0;
+    let s = match difference(str1, str2).1{
+        Ok(n) => n,
+        Err(err) => panic!("{}",err)
+    };
+
+    (idxs,s)
+}
+
 /*TODO
-contains_none
 contains_only
 remove_all
-difference
 ends_with_any
 stars_with_any
 ends_with_none
