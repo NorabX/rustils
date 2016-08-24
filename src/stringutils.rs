@@ -1,6 +1,7 @@
 use std::mem;
 use std::string::FromUtf8Error;
 use std::iter::Iterator;
+use regex::Regex;
 
 /// Return a reverse string from the given string `s`.
 /// Returning Err if `s` contains any invalid data.
@@ -210,7 +211,7 @@ pub fn difference(str1: &str, str2: &str) -> (Vec<usize>,Result<String,FromUtf8E
     (idxs,String::from_utf8(res))
 }
 
-pub fn differencep(str1: &str, str2: &str) -> (Vec<usize>,String){
+pub fn differencep(str1: &str, str2: &str) -> (Vec<usize>,String) {
     let temp = difference(str1,str2);
     let idxs = temp.0;
     let s = match difference(str1, str2).1{
@@ -221,7 +222,7 @@ pub fn differencep(str1: &str, str2: &str) -> (Vec<usize>,String){
     (idxs,s)
 }
 
-pub fn join<T: ToString>(ary: &[T], sep: &str) -> String{
+pub fn join<T: ToString>(ary: &[T], sep: &str) -> String {
     let mut temp = String::new();
     for i in 0..ary.len() {
         temp.push_str(&ary[i].to_string());
@@ -233,7 +234,7 @@ pub fn join<T: ToString>(ary: &[T], sep: &str) -> String{
     temp
 }
 
-pub fn join_vec<T: ToString>(ary: Vec<T>, sep: &str) -> String{
+pub fn join_vec<T: ToString>(ary: Vec<T>, sep: &str) -> String {
     let mut temp = String::new();
     for i in 0..ary.len() {
         temp.push_str(&ary[i].to_string());
@@ -244,6 +245,43 @@ pub fn join_vec<T: ToString>(ary: Vec<T>, sep: &str) -> String{
     }
     temp
 }
+
+/*TODO: is_match() BUG --- "123" matched r"[0]*"
+pub fn remove(target: &str, regex: &str) -> String {
+    let re = Regex::new(regex).unwrap();
+    println!("{}",re.is_match(target));
+    if re.is_match(target){
+        match re.find(target) {
+            Some(n) => {
+                let mut temp = String::from(target);
+                let mut i = 0;
+                println!("{:?}",n);
+                while i < n.1 - n.0 {
+                    println!("{:?}",temp);
+                    temp.remove(n.0);
+                    i = i + 1;
+                }
+                return temp;
+            },
+            None => {}
+        }
+    }
+
+    String::from(target)
+}
+
+pub fn remove_all(target: &str, regex: &str) -> String {
+    let mut prev = String::new();
+    let mut temp = remove(target,regex);
+
+    while temp != String::new(){
+        prev = temp.clone();
+        temp = remove(&temp,regex);
+    }
+
+    return prev;
+}
+*/
 
 /*TODO
 contains_only
@@ -262,5 +300,4 @@ is_alpha_space
 is_numeric_space
 is_alpha_numeric_space
 is_whitespace
-join
 */

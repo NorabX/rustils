@@ -1,4 +1,5 @@
 extern crate rand;
+extern crate regex;
 
 pub mod parse;
 pub mod arrayutils;

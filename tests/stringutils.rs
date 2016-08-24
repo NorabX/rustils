@@ -231,3 +231,17 @@ fn join_vec() {
     assert_eq!("0;1;2;3;4",stringutils::join_vec(vec!(0,1,2,3,4),";"));
     assert_eq!("0<>1<>2<>3<>4",stringutils::join_vec(vec!(0,1,2,3,4),"<>"));
 }
+
+//TODO: is_match() BUG --- "123" matched r"[0]*
+//#[test]
+//fn remove(){
+//    assert_eq!("Hellorld",stringutils::remove("Hello World",r"o W"));
+//    assert_eq!("890",stringutils::remove("1234567890",r"[0-7]*"));
+//}
+
+//#[test]
+//fn remove_all(){
+//    assert_eq!("a b c",stringutils::remove_all("a123 b234 c345",r"\d{3}"));
+//    assert_eq!("Hello",stringutils::remove_all("<div>Hello</div>",r"<[/]?div>"));
+//    assert_eq!("012",stringutils::remove_all("0123456789",r"[13579]*"));
+//}
