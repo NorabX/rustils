@@ -13,3 +13,4 @@ regex = "*"
 
 [[bin]]
 doc = false
+name = "rustils"
