@@ -1,7 +1,7 @@
 use std::mem;
 use std::string::FromUtf8Error;
 use std::iter::Iterator;
-use regex::Regex;
+//use regex::Regex;
 
 /// Return a reverse string from the given string `s`.
 /// Returning Err if `s` contains any invalid data.
@@ -285,19 +285,10 @@ pub fn remove_all(target: &str, regex: &str) -> String {
 
 /*TODO
 contains_only
-remove_all
 ends_with_any
 stars_with_any
 ends_with_none
 starts_with_none
 is_all_lowercase
 is_all_uppercase
-is_alpha
-is_numeric
-is_space
-is_alpha numeric
-is_alpha_space
-is_numeric_space
-is_alpha_numeric_space
-is_whitespace
 */

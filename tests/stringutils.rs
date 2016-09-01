@@ -232,7 +232,7 @@ fn join_vec() {
     assert_eq!("0<>1<>2<>3<>4",stringutils::join_vec(vec!(0,1,2,3,4),"<>"));
 }
 
-//TODO: is_match() BUG --- "123" matched r"[0]*
+//TODO: is_match() BUG --- "123" matched r"[0]*"
 //#[test]
 //fn remove(){
 //    assert_eq!("Hellorld",stringutils::remove("Hello World",r"o W"));
