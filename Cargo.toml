@@ -9,7 +9,7 @@ description = "Utilities for rust"
 
 [dependencies]
 rand = "0.3"
-regex = "*"
+regex = "0.1"
 
 [[bin]]
 doc = false
