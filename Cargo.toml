@@ -10,3 +10,7 @@ description = "Utilities for rust"
 [dependencies]
 rand = "0.3"
 regex = "*"
+
+[[bin]]
+doc = false
+name = "rustils"
