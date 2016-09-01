@@ -4,9 +4,9 @@ use rustils::parse::ushort;
 
 #[test]
 fn parse_u16_to_bool(){
-    assert_eq!(true,ushort::tobool(42_u16));
-    assert_eq!(true,ushort::tobool(1_u16));
-    assert_eq!(false,ushort::tobool(0_u16));
+    assert_eq!(true,ushort::to_bool(42_u16));
+    assert_eq!(true,ushort::to_bool(1_u16));
+    assert_eq!(false,ushort::to_bool(0_u16));
 }
 
 #[test]

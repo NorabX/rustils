@@ -4,9 +4,9 @@ use rustils::parse::ulong;
 
 #[test]
 fn parse_u64_to_bool(){
-    assert_eq!(true,ulong::tobool(42_u64));
-    assert_eq!(true,ulong::tobool(1_u64));
-    assert_eq!(false,ulong::tobool(0_u64));
+    assert_eq!(true,ulong::to_bool(42_u64));
+    assert_eq!(true,ulong::to_bool(1_u64));
+    assert_eq!(false,ulong::to_bool(0_u64));
 }
 
 #[test]

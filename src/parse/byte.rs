@@ -3,8 +3,21 @@ use parse::types::{
     ParseResultU8, ParseResultU16, ParseResultU32, ParseResultU64
 };
 
-///Convert 0_i8 to false and all other numbers to true.
-pub fn tobool(b:i8) -> bool {
+///Converts `0_i8` to `false` and all other numbers to `true`.
+/// # Example
+///
+/// ```
+/// use rustils::parse::byte;
+///
+/// let x = 1_i8;
+/// let y = 42_i8;
+/// let z = 0_i8;
+///
+/// assert_eq!(byte::to_bool(x), true);
+/// assert_eq!(byte::to_bool(y), true);
+/// assert_eq!(byte::to_bool(z), false);
+/// ```
+pub fn to_bool(b:i8) -> bool {
     if b == 0 { false }
     else { true }
 }

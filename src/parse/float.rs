@@ -7,7 +7,21 @@ use parse::types::{
     ParseResultU8,ParseResultU16,ParseResultU32,ParseResultU64,
 };
 
-pub fn tobool(f:f32) -> bool {
+///Converts `0_f32` to `false` and all other numbers to `true`.
+/// # Example
+///
+/// ```
+/// use rustils::parse::float;
+///
+/// let x = 1_f32;
+/// let y = 42_f32;
+/// let z = 0_f32;
+///
+/// assert_eq!(float::to_bool(x), true);
+/// assert_eq!(float::to_bool(y), true);
+/// assert_eq!(float::to_bool(z), false);
+/// ```
+pub fn to_bool(f:f32) -> bool {
     if f.is_nan() || f == 0.0 { false }
     else { true }
 }

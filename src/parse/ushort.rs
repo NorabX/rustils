@@ -4,7 +4,21 @@ use parse::types::{
     ParseResultU8
 };
 
-pub fn tobool(s:u16) -> bool {
+///Converts `0_u16` to `false` and all other numbers to `true`.
+/// # Example
+///
+/// ```
+/// use rustils::parse::ushort;
+///
+/// let x = 1_u16;
+/// let y = 42_u16;
+/// let z = 0_u16;
+///
+/// assert_eq!(ushort::to_bool(x), true);
+/// assert_eq!(ushort::to_bool(y), true);
+/// assert_eq!(ushort::to_bool(z), false);
+/// ```
+pub fn to_bool(s:u16) -> bool {
     if s == 0 { false }
     else { true }
 }

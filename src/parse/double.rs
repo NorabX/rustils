@@ -8,7 +8,21 @@ use parse::types::{
     ParseResultF32
 };
 
-pub fn tobool(d:f64) -> bool {
+///Converts `0_f64` to `false` and all other numbers to `true`.
+/// # Example
+///
+/// ```
+/// use rustils::parse::double;
+///
+/// let x = 1_f64;
+/// let y = 42_f64;
+/// let z = 0_f64;
+///
+/// assert_eq!(double::to_bool(x), true);
+/// assert_eq!(double::to_bool(y), true);
+/// assert_eq!(double::to_bool(z), false);
+/// ```
+pub fn to_bool(d:f64) -> bool {
     if d.is_nan() || d == 0.0 { false }
     else { true }
 }

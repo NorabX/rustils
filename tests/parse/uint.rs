@@ -4,9 +4,9 @@ use rustils::parse::uint;
 
 #[test]
 fn parse_u32_to_bool(){
-    assert_eq!(true,uint::tobool(42_u32));
-    assert_eq!(true,uint::tobool(1_u32));
-    assert_eq!(false,uint::tobool(0_u32));
+    assert_eq!(true,uint::to_bool(42_u32));
+    assert_eq!(true,uint::to_bool(1_u32));
+    assert_eq!(false,uint::to_bool(0_u32));
 }
 
 #[test]

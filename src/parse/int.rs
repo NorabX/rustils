@@ -4,7 +4,21 @@ use parse::types::{
     ParseResultU8,ParseResultU16,ParseResultU32,ParseResultU64,
 };
 
-pub fn tobool(i:i32) -> bool {
+///Converts `0_i32` to `false` and all other numbers to `true`.
+/// # Example
+///
+/// ```
+/// use rustils::parse::int;
+///
+/// let x = 1_i32;
+/// let y = 42_i32;
+/// let z = 0_i32;
+///
+/// assert_eq!(int::to_bool(x), true);
+/// assert_eq!(int::to_bool(y), true);
+/// assert_eq!(int::to_bool(z), false);
+/// ```
+pub fn to_bool(i:i32) -> bool {
     if i == 0 { false }
     else { true }
 }

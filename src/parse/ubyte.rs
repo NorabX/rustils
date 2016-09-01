@@ -1,7 +1,21 @@
 use parse::error::ParseError;
 use parse::types::ParseResultI8;
 
-pub fn tobool(b:u8) -> bool {
+///Converts `0_u8` to `false` and all other numbers to `true`.
+/// # Example
+///
+/// ```
+/// use rustils::parse::ubyte;
+///
+/// let x = 1_u8;
+/// let y = 42_u8;
+/// let z = 0_u8;
+///
+/// assert_eq!(ubyte::to_bool(x), true);
+/// assert_eq!(ubyte::to_bool(y), true);
+/// assert_eq!(ubyte::to_bool(z), false);
+/// ```
+pub fn to_bool(b:u8) -> bool {
     if b == 0 { false }
     else { true }
 }

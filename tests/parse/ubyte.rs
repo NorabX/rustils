@@ -4,9 +4,9 @@ use rustils::parse::ubyte;
 
 #[test]
 fn parse_i8_to_bool(){
-    assert_eq!(true,ubyte::tobool(42_u8));
-    assert_eq!(true,ubyte::tobool(1_u8));
-    assert_eq!(false,ubyte::tobool(0_u8));
+    assert_eq!(true,ubyte::to_bool(42_u8));
+    assert_eq!(true,ubyte::to_bool(1_u8));
+    assert_eq!(false,ubyte::to_bool(0_u8));
 }
 
 #[test]

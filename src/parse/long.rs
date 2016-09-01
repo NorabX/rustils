@@ -4,7 +4,21 @@ use parse::types::{
     ParseResultU8,ParseResultU16,ParseResultU32,ParseResultU64,
 };
 
-pub fn tobool(l:i64) -> bool {
+///Converts `0_i64` to `false` and all other numbers to `true`.
+/// # Example
+///
+/// ```
+/// use rustils::parse::long;
+///
+/// let x = 1_i64;
+/// let y = 42_i64;
+/// let z = 0_i64;
+///
+/// assert_eq!(long::to_bool(x), true);
+/// assert_eq!(long::to_bool(y), true);
+/// assert_eq!(long::to_bool(z), false);
+/// ```
+pub fn to_bool(l:i64) -> bool {
     if l == 0 { false }
     else { true }
 }

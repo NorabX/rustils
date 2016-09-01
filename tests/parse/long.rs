@@ -4,9 +4,9 @@ use rustils::parse::long;
 
 #[test]
 fn parse_i64_to_bool(){
-    assert_eq!(true,long::tobool(-1_i64));
-    assert_eq!(true,long::tobool(1_i64));
-    assert_eq!(false,long::tobool(0_i64));
+    assert_eq!(true,long::to_bool(-1_i64));
+    assert_eq!(true,long::to_bool(1_i64));
+    assert_eq!(false,long::to_bool(0_i64));
 }
 
 #[test]
