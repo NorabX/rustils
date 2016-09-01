@@ -47,3 +47,13 @@ pub fn tof32(b:bool) -> f32 {
 pub fn tof64(b:bool) -> f64 {
     if b { 1.0 } else { 0.0 }
 }
+
+///Convert true to 1_usize and false to 0_usize.
+pub fn tousize(b:bool) -> usize {
+    if b { 1 } else { 0 }
+}
+
+///Convert true to 1_isize and false to 0_isize.
+pub fn toisize(b:bool) -> isize {
+    if b { 1 } else { 0 }
+}
