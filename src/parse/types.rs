@@ -12,3 +12,6 @@ pub type ParseResultU64 = Result<u64,ParseError>;
 
 pub type ParseResultF32 = Result<f32,ParseError>;
 pub type ParseResultF64 = Result<f64,ParseError>;
+
+pub type ParseResultIsize = Result<isize,ParseError>;
+pub type ParseResultUsize = Result<usize,ParseError>;

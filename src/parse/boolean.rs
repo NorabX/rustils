@@ -7,10 +7,10 @@
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::toi8(x), 1_i8);
-/// assert_eq!(boolean::toi8(y), 0_i8);
+/// assert_eq!(boolean::to_i8(x), 1_i8);
+/// assert_eq!(boolean::to_i8(y), 0_i8);
 /// ```
-pub fn toi8(b:bool) -> i8 {
+pub fn to_i8(b:bool) -> i8 {
     if b { 1 } else { 0 }
 }
 
@@ -23,10 +23,10 @@ pub fn toi8(b:bool) -> i8 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::toi16(x), 1_i16);
-/// assert_eq!(boolean::toi16(y), 0_i16);
+/// assert_eq!(boolean::to_i16(x), 1_i16);
+/// assert_eq!(boolean::to_i16(y), 0_i16);
 /// ```
-pub fn toi16(b:bool) -> i16 {
+pub fn to_i16(b:bool) -> i16 {
     if b { 1 } else { 0 }
 }
 
@@ -39,10 +39,10 @@ pub fn toi16(b:bool) -> i16 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::toi32(x), 1_i32);
-/// assert_eq!(boolean::toi32(y), 0_i32);
+/// assert_eq!(boolean::to_i32(x), 1_i32);
+/// assert_eq!(boolean::to_i32(y), 0_i32);
 /// ```
-pub fn toi32(b:bool) -> i32 {
+pub fn to_i32(b:bool) -> i32 {
     if b { 1 } else { 0 }
 }
 
@@ -55,10 +55,10 @@ pub fn toi32(b:bool) -> i32 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::toi64(x), 1_i64);
-/// assert_eq!(boolean::toi64(y), 0_i64);
+/// assert_eq!(boolean::to_i64(x), 1_i64);
+/// assert_eq!(boolean::to_i64(y), 0_i64);
 /// ```
-pub fn toi64(b:bool) -> i64 {
+pub fn to_i64(b:bool) -> i64 {
     if b { 1 } else { 0 }
 }
 
@@ -71,10 +71,10 @@ pub fn toi64(b:bool) -> i64 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::tou8(x), 1_u8);
-/// assert_eq!(boolean::tou8(y), 0_u8);
+/// assert_eq!(boolean::to_u8(x), 1_u8);
+/// assert_eq!(boolean::to_u8(y), 0_u8);
 /// ```
-pub fn tou8(b:bool) -> u8 {
+pub fn to_u8(b:bool) -> u8 {
     if b { 1 } else { 0 }
 }
 
@@ -87,10 +87,10 @@ pub fn tou8(b:bool) -> u8 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::tou16(x), 1_u16);
-/// assert_eq!(boolean::tou16(y), 0_u16);
+/// assert_eq!(boolean::to_u16(x), 1_u16);
+/// assert_eq!(boolean::to_u16(y), 0_u16);
 /// ```
-pub fn tou16(b:bool) -> u16 {
+pub fn to_u16(b:bool) -> u16 {
     if b { 1 } else { 0 }
 }
 
@@ -103,10 +103,10 @@ pub fn tou16(b:bool) -> u16 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::tou32(x), 1_u32);
-/// assert_eq!(boolean::tou32(y), 0_u32);
+/// assert_eq!(boolean::to_u32(x), 1_u32);
+/// assert_eq!(boolean::to_u32(y), 0_u32);
 /// ```
-pub fn tou32(b:bool) -> u32 {
+pub fn to_u32(b:bool) -> u32 {
     if b { 1 } else { 0 }
 }
 
@@ -119,10 +119,10 @@ pub fn tou32(b:bool) -> u32 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::tou64(x), 1_u64);
-/// assert_eq!(boolean::tou64(y), 0_u64);
+/// assert_eq!(boolean::to_u64(x), 1_u64);
+/// assert_eq!(boolean::to_u64(y), 0_u64);
 /// ```
-pub fn tou64(b:bool) -> u64 {
+pub fn to_u64(b:bool) -> u64 {
     if b { 1 } else { 0 }
 }
 
@@ -135,10 +135,10 @@ pub fn tou64(b:bool) -> u64 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::tof32(x), 1_f32);
-/// assert_eq!(boolean::tof32(y), 0_f32);
+/// assert_eq!(boolean::to_f32(x), 1_f32);
+/// assert_eq!(boolean::to_f32(y), 0_f32);
 /// ```
-pub fn tof32(b:bool) -> f32 {
+pub fn to_f32(b:bool) -> f32 {
     if b { 1.0 } else { 0.0 }
 }
 
@@ -151,10 +151,10 @@ pub fn tof32(b:bool) -> f32 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::tof64(x), 1_f64);
-/// assert_eq!(boolean::tof64(y), 0_f64);
+/// assert_eq!(boolean::to_f64(x), 1_f64);
+/// assert_eq!(boolean::to_f64(y), 0_f64);
 /// ```
-pub fn tof64(b:bool) -> f64 {
+pub fn to_f64(b:bool) -> f64 {
     if b { 1.0 } else { 0.0 }
 }
 
@@ -167,10 +167,10 @@ pub fn tof64(b:bool) -> f64 {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::tousize(x), 1_usize);
-/// assert_eq!(boolean::tousize(y), 0_usize);
+/// assert_eq!(boolean::to_usize(x), 1_usize);
+/// assert_eq!(boolean::to_usize(y), 0_usize);
 /// ```
-pub fn tousize(b:bool) -> usize {
+pub fn to_usize(b:bool) -> usize {
     if b { 1 } else { 0 }
 }
 
@@ -183,9 +183,9 @@ pub fn tousize(b:bool) -> usize {
 /// let x = true;
 /// let y = false;
 ///
-/// assert_eq!(boolean::toisize(x), 1_isize);
-/// assert_eq!(boolean::toisize(y), 0_isize);
+/// assert_eq!(boolean::to_isize(x), 1_isize);
+/// assert_eq!(boolean::to_isize(y), 0_isize);
 /// ```
-pub fn toisize(b:bool) -> isize {
+pub fn to_isize(b:bool) -> isize {
     if b { 1 } else { 0 }
 }

@@ -101,7 +101,9 @@ pub fn contains_any_str(target: &str, search: &[&str]) -> bool {
     adv_contains_any_str(target,search).0
 }
 
-pub fn adv_contains_all_strs(target: &str, search: &[&str]) -> (bool,Vec<usize>,Vec<String>) {
+pub fn adv_contains_all_strs(target: &str, search: &[&str])
+        -> (bool,Vec<usize>,Vec<String>) {
+
     let mut idxs = Vec::<usize>::new();
     let mut strs = Vec::<String>::new();
 
@@ -137,7 +139,9 @@ pub fn contains_any_char(target: &str, search: &[char]) -> bool {
     adv_contains_any_char(target,search).0
 }
 
-pub fn adv_contains_all_chars(target: &str, search: &[char]) -> (bool,Vec<usize>,Vec<char>) {
+pub fn adv_contains_all_chars(target: &str, search: &[char])
+        -> (bool,Vec<usize>,Vec<char>) {
+
     let mut idxs = Vec::<usize>::new();
     let mut chars = Vec::<char>::new();
 
@@ -154,7 +158,7 @@ pub fn adv_contains_all_chars(target: &str, search: &[char]) -> (bool,Vec<usize>
     (true,idxs,chars)
 }
 
-pub fn contains_all_chars(target: &str, search: &[char]) -> bool{
+pub fn contains_all_chars(target: &str, search: &[char]) -> bool {
     adv_contains_all_chars(target,search).0
 }
 
@@ -171,7 +175,7 @@ pub fn adv_contains_none_str(target: &str, search: &[&str]) -> (bool,usize,Strin
     (true,0,String::new())
 }
 
-pub fn contains_none_str(target: &str, search: &[&str]) -> bool{
+pub fn contains_none_str(target: &str, search: &[&str]) -> bool {
     adv_contains_none_str(target,search).0
 }
 
@@ -192,7 +196,9 @@ pub fn contains_none_char(target: &str, search: &[char]) -> bool {
     adv_contains_none_char(target,search).0
 }
 
-pub fn difference(str1: &str, str2: &str) -> (Vec<usize>,Result<String,FromUtf8Error>) {
+pub fn difference(str1: &str, str2: &str)
+        -> (Vec<usize>,Result<String,FromUtf8Error>) {
+
     let bytes1 = String::from(str1).into_bytes();
     let bytes2 = String::from(str2).into_bytes();
     let mut idxs = Vec::<usize>::new();
