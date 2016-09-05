@@ -6,3 +6,4 @@ pub mod arrayutils;
 pub mod stringutils;
 pub mod randomutils;
 pub mod booleanutils;
+pub mod utils;

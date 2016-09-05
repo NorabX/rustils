@@ -7,15 +7,11 @@ use parse::types::{
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_bool;
 ///
-/// let x = 1_i8;
-/// let y = 42_i8;
-/// let z = 0_i8;
-///
-/// assert_eq!(byte::to_bool(x), true);
-/// assert_eq!(byte::to_bool(y), true);
-/// assert_eq!(byte::to_bool(z), false);
+/// assert_eq!(to_bool(1_i8), true);
+/// assert_eq!(to_bool(42_i8), true);
+/// assert_eq!(to_bool(0_i8), false);
 /// ```
 pub fn to_bool(b:i8) -> bool {
     if b == 0 { false }
@@ -28,11 +24,11 @@ pub fn to_bool(b:i8) -> bool {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_u8;
 ///
-/// assert_eq!(byte::to_u8(0_i8).unwrap(), 0_u8);
-/// assert_eq!(byte::to_u8(127_i8).unwrap(), 127_u8);
-/// assert!(byte::to_u8(-1_i8).is_err());
+/// assert_eq!(to_u8(0_i8).unwrap(), 0_u8);
+/// assert_eq!(to_u8(127_i8).unwrap(), 127_u8);
+/// assert!(to_u8(-1_i8).is_err());
 /// ```
 pub fn to_u8(b: i8) -> ParseResultU8 {
     if b < 0 {
@@ -46,11 +42,11 @@ pub fn to_u8(b: i8) -> ParseResultU8 {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_u16;
 ///
-/// assert_eq!(byte::to_u16(0_i8).unwrap(), 0_u16);
-/// assert_eq!(byte::to_u16(127_i8).unwrap(), 127_u16);
-/// assert!(byte::to_u16(-1_i8).is_err());
+/// assert_eq!(to_u16(0_i8).unwrap(), 0_u16);
+/// assert_eq!(to_u16(127_i8).unwrap(), 127_u16);
+/// assert!(to_u16(-1_i8).is_err());
 /// ```
 pub fn to_u16(b:i8) -> ParseResultU16 {
     if b < 0 {
@@ -64,11 +60,11 @@ pub fn to_u16(b:i8) -> ParseResultU16 {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_u32;
 ///
-/// assert_eq!(byte::to_u32(0_i8).unwrap(), 0_u32);
-/// assert_eq!(byte::to_u32(127_i8).unwrap(), 127_u32);
-/// assert!(byte::to_u32(-1_i8).is_err());
+/// assert_eq!(to_u32(0_i8).unwrap(), 0_u32);
+/// assert_eq!(to_u32(127_i8).unwrap(), 127_u32);
+/// assert!(to_u32(-1_i8).is_err());
 /// ```
 pub fn to_u32(b:i8) -> ParseResultU32 {
     if b < 0 {
@@ -82,11 +78,11 @@ pub fn to_u32(b:i8) -> ParseResultU32 {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_u64;
 ///
-/// assert_eq!(byte::to_u64(0_i8).unwrap(), 0_u64);
-/// assert_eq!(byte::to_u64(127_i8).unwrap(), 127_u64);
-/// assert!(byte::to_u64(-1_i8).is_err());
+/// assert_eq!(to_u64(0_i8).unwrap(), 0_u64);
+/// assert_eq!(to_u64(127_i8).unwrap(), 127_u64);
+/// assert!(to_u64(-1_i8).is_err());
 /// ```
 pub fn to_u64(b:i8) -> ParseResultU64 {
     if b < 0 {
@@ -100,11 +96,11 @@ pub fn to_u64(b:i8) -> ParseResultU64 {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_usize;
 ///
-/// assert_eq!(byte::to_usize(0_i8).unwrap(), 0_usize);
-/// assert_eq!(byte::to_usize(127_i8).unwrap(), 127_usize);
-/// assert!(byte::to_usize(-1_i8).is_err());
+/// assert_eq!(to_usize(0_i8).unwrap(), 0_usize);
+/// assert_eq!(to_usize(127_i8).unwrap(), 127_usize);
+/// assert!(to_usize(-1_i8).is_err());
 /// ```
 pub fn to_usize(b:i8) -> ParseResultUsize {
     if b < 0 {
@@ -118,10 +114,10 @@ pub fn to_usize(b:i8) -> ParseResultUsize {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_u8p;
 ///
-/// assert_eq!(byte::to_u8p(0_i8), 0_u8);
-/// assert_eq!(byte::to_u8p(127_i8), 127_u8);
+/// assert_eq!(to_u8p(0_i8), 0_u8);
+/// assert_eq!(to_u8p(127_i8), 127_u8);
 /// ```
 /// # Panics
 ///
@@ -141,10 +137,10 @@ pub fn to_u8p(b:i8) -> u8 {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_u16p;
 ///
-/// assert_eq!(byte::to_u16p(0_i8), 0_u16);
-/// assert_eq!(byte::to_u16p(127_i8), 127_u16);
+/// assert_eq!(to_u16p(0_i8), 0_u16);
+/// assert_eq!(to_u16p(127_i8), 127_u16);
 /// ```
 /// # Panics
 ///
@@ -164,10 +160,10 @@ pub fn to_u16p(b:i8) -> u16 {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_u32p;
 ///
-/// assert_eq!(byte::to_u32p(0_i8), 0_u32);
-/// assert_eq!(byte::to_u32p(127_i8), 127_u32);
+/// assert_eq!(to_u32p(0_i8), 0_u32);
+/// assert_eq!(to_u32p(127_i8), 127_u32);
 /// ```
 /// # Panics
 ///
@@ -187,10 +183,10 @@ pub fn to_u32p(b:i8) -> u32 {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_u64p;
 ///
-/// assert_eq!(byte::to_u64p(0_i8), 0_u64);
-/// assert_eq!(byte::to_u64p(127_i8), 127_u64);
+/// assert_eq!(to_u64p(0_i8), 0_u64);
+/// assert_eq!(to_u64p(127_i8), 127_u64);
 /// ```
 /// # Panics
 ///
@@ -210,10 +206,10 @@ pub fn to_u64p(b:i8) -> u64 {
 /// # Example
 ///
 /// ```
-/// use rustils::parse::byte;
+/// use rustils::parse::byte::to_usizep;
 ///
-/// assert_eq!(byte::to_usizep(0_i8), 0_usize);
-/// assert_eq!(byte::to_usizep(127_i8), 127_usize);
+/// assert_eq!(to_usizep(0_i8), 0_usize);
+/// assert_eq!(to_usizep(127_i8), 127_usize);
 /// ```
 /// # Panics
 ///

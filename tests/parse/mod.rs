@@ -1,5 +1,6 @@
 pub mod boolean;
 pub mod byte;
+pub mod double;
 pub mod short;
 pub mod int;
 pub mod long;

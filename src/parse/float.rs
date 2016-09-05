@@ -89,7 +89,7 @@ pub fn tou32(f:f32) -> ParseResultU32{
         Err(ParseError::InvalidNumber(f.to_string()))
     } else {
         match fstr.cmp(&max){
-            Ordering::Less | Ordering::Equal => Ok(string::tou32p(&fstr)),
+            Ordering::Less | Ordering::Equal => Ok(string::to_u32p(&fstr)),
             Ordering::Greater => Err(ParseError::InvalidNumber(f.to_string()))
         }
     }
@@ -103,7 +103,7 @@ pub fn tou64(f:f32) -> ParseResultU64{
         Err(ParseError::InvalidNumber(f.to_string()))
     } else {
         match fstr.cmp(&max){
-            Ordering::Less | Ordering::Equal => Ok(string::tou64p(&fstr)),
+            Ordering::Less | Ordering::Equal => Ok(string::to_u64p(&fstr)),
             Ordering::Greater => Err(ParseError::InvalidNumber(f.to_string()))
         }
     }
