@@ -25,7 +25,7 @@ pub fn to_bool(d:f64) -> bool {
 /// Converts `f64` to `i8`.
 /// Returns `Err` if `d` is less then `i8` min value,
 /// `d` is greater then `i8` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `i8`.
+/// Otherwise returns the `Ok` value of `d` as `i8`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -46,7 +46,7 @@ pub fn to_i8(d:f64) -> ParseResultI8 {
 /// Converts `f64` to `i8`.
 /// Returns `Err` if `d` is less then `i8` min value,
 /// `d` is greater then `i8` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `i8`.
+/// Otherwise returns the `Ok` value of `d` as `i8`.
 /// # Example
 ///
 /// ```
@@ -79,7 +79,7 @@ pub fn to_i8r(d:f64, rmode:RoundingMode) -> ParseResultI8 {
 /// Converts `f64` to `i8`.
 /// Returns `panic!` if `d` is less then `i8` min value,
 /// `d` is greater then `i8` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `i8`.
+/// otherwise returns the value of `d` as `i8`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -109,7 +109,7 @@ pub fn to_i8p(d:f64) -> i8 {
 /// Converts `f64` to `i8`.
 /// Returns `panic!` if `d` is less then `i8` min value,
 /// `d` is greater then `i8` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `i8`.
+/// otherwise returns the value of `d` as `i8`.
 /// # Example
 ///
 /// ```
@@ -141,7 +141,7 @@ pub fn to_i8pr(d:f64, rmode:RoundingMode) -> i8 {
 /// Converts `f64` to `i16`.
 /// Returns `Err` if `d` is less then `i16` min value,
 /// `d` is greater then `i16` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `i16`.
+/// Otherwise returns the `Ok` value of `d` as `i16`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -162,7 +162,7 @@ pub fn to_i16(d:f64) -> ParseResultI16 {
 /// Converts `f64` to `i16`.
 /// Returns `Err` if `d` is less then `i16` min value,
 /// `d` is greater then `i16` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `i16`.
+/// Otherwise returns the `Ok` value of `d` as `i16`.
 /// # Example
 ///
 /// ```
@@ -195,7 +195,7 @@ pub fn to_i16r(d:f64, rmode:RoundingMode) -> ParseResultI16 {
 /// Converts `f64` to `i16`.
 /// Returns `panic!` if `d` is less then `i16` min value,
 /// `d` is greater then `i16` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `i16`.
+/// otherwise returns the value of `d` as `i16`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -225,7 +225,7 @@ pub fn to_i16p(d:f64) -> i16 {
 /// Converts `f64` to `i16`.
 /// Returns `panic!` if `d` is less then `i16` min value,
 /// `d` is greater then `i16` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `i16`.
+/// otherwise returns the value of `d` as `i16`.
 /// # Example
 ///
 /// ```
@@ -257,7 +257,7 @@ pub fn to_i16pr(d:f64, rmode:RoundingMode) -> i16 {
 /// Converts `f64` to `i32`.
 /// Returns `Err` if `d` is less then `i32` min value,
 /// `d` is greater then `i32` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `i32`.
+/// Otherwise returns the `Ok` value of `d` as `i32`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -278,7 +278,7 @@ pub fn to_i32(d:f64) -> ParseResultI32 {
 /// Converts `f64` to `i32`.
 /// Returns `Err` if `d` is less then `i32` min value,
 /// `d` is greater then `i32` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `i32`.
+/// Otherwise returns the `Ok` value of `d` as `i32`.
 /// # Example
 ///
 /// ```
@@ -311,7 +311,7 @@ pub fn to_i32r(d:f64, rmode:RoundingMode) -> ParseResultI32 {
 /// Converts `f64` to `i32`.
 /// Returns `panic!` if `d` is less then `i16` min value,
 /// `d` is greater then `i32` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `i32`.
+/// otherwise returns the value of `d` as `i32`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -341,7 +341,7 @@ pub fn to_i32p(d:f64) -> i32 {
 /// Converts `f64` to `i32`.
 /// Returns `panic!` if `d` is less then `i32` min value,
 /// `d` is greater then `i32` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `i32`.
+/// otherwise returns the value of `d` as `i32`.
 /// # Example
 ///
 /// ```
@@ -374,7 +374,7 @@ pub fn to_i32pr(d:f64, rmode:RoundingMode) -> i32 {
 /// Returns `Err` if `d` is less then -9007199254740991,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `i64`.
+/// Otherwise returns the `Ok` value of `d` as `i64`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -396,7 +396,7 @@ pub fn to_i64(d:f64) -> ParseResultI64 {
 /// Returns `Err` if `d` is less then -9007199254740991,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `i64`.
+/// Otherwise returns the `Ok` value of `d` as `i64`.
 /// # Example
 ///
 /// ```
@@ -430,7 +430,7 @@ pub fn to_i64r(d:f64, rmode:RoundingMode) -> ParseResultI64 {
 /// Returns `Err` if `d` is less then -9007199254740991,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// otherwise retruns the value of `d` as `i64`.
+/// otherwise returns the value of `d` as `i64`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -461,7 +461,7 @@ pub fn to_i64p(d:f64) -> i64 {
 /// Returns `Err` if `d` is less then -9007199254740991,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// otherwise retruns the value of `d` as `i64`.
+/// otherwise returns the value of `d` as `i64`.
 /// # Example
 ///
 /// ```
@@ -494,7 +494,7 @@ pub fn to_i64pr(d:f64, rmode:RoundingMode) -> i64 {
 /// Returns `Err` if `d` is less then -9007199254740991,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `isize`.
+/// Otherwise returns the `Ok` value of `d` as `isize`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -516,7 +516,7 @@ pub fn to_isize(d:f64) -> ParseResultIsize {
 /// Returns `Err` if `d` is less then -9007199254740991,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `isize`.
+/// Otherwise returns the `Ok` value of `d` as `isize`.
 /// # Example
 ///
 /// ```
@@ -550,7 +550,7 @@ pub fn to_isizer(d:f64, rmode:RoundingMode) -> ParseResultIsize {
 /// Returns `Err` if `d` is less then -9007199254740991,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// otherwise retruns the value of `d` as `isize`.
+/// otherwise returns the value of `d` as `isize`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -581,7 +581,7 @@ pub fn to_isizep(d:f64) -> isize {
 /// Returns `Err` if `d` is less then -9007199254740991,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// otherwise retruns the value of `d` as `isize`.
+/// otherwise returns the value of `d` as `isize`.
 /// # Example
 ///
 /// ```
@@ -613,7 +613,7 @@ pub fn to_isizepr(d:f64, rmode:RoundingMode) -> isize {
 /// Converts `f64` to `u8`.
 /// Returns `Err` if `d` is less then 0,
 /// `d` is greater then `u8` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `u8`.
+/// Otherwise returns the `Ok` value of `d` as `u8`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -634,7 +634,7 @@ pub fn to_u8(d:f64) -> ParseResultU8 {
 /// Converts `f64` to `u8`.
 /// Returns `Err` if `d` is less then 0,
 /// `d` is greater then `u8` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `u8`.
+/// Otherwise returns the `Ok` value of `d` as `u8`.
 /// # Example
 ///
 /// ```
@@ -666,7 +666,7 @@ pub fn to_u8r(d:f64, rmode:RoundingMode) -> ParseResultU8 {
 /// Converts `f64` to `u8`.
 /// Returns `panic!` if `d` is less then 0,
 /// `d` is greater then `u8` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `u8`.
+/// otherwise returns the value of `d` as `u8`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -696,7 +696,7 @@ pub fn to_u8p(d:f64) -> u8 {
 /// Converts `f64` to `u8`.
 /// Returns `panic!` if `d` is less then 0,
 /// `d` is greater then `u8` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `u8`.
+/// otherwise returns the value of `d` as `u8`.
 /// # Example
 ///
 /// ```
@@ -728,7 +728,7 @@ pub fn to_u8pr(d:f64, rmode:RoundingMode) -> u8 {
 /// Converts `f64` to `u16`.
 /// Returns `Err` if `d` is less then 0,
 /// `d` is greater then `u16` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `u16`.
+/// Otherwise returns the `Ok` value of `d` as `u16`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -749,7 +749,7 @@ pub fn to_u16(d:f64) -> ParseResultU16 {
 /// Converts `f64` to `u16`.
 /// Returns `Err` if `d` is less then 0,
 /// `d` is greater then `u16` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `u16`.
+/// Otherwise returns the `Ok` value of `d` as `u16`.
 /// # Example
 ///
 /// ```
@@ -781,7 +781,7 @@ pub fn to_u16r(d:f64, rmode:RoundingMode) -> ParseResultU16 {
 /// Converts `f64` to `u16`.
 /// Returns `panic!` if `d` is less then 0,
 /// `d` is greater then `u16` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `u16`.
+/// otherwise returns the value of `d` as `u16`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -811,7 +811,7 @@ pub fn to_u16p(d:f64) -> u16 {
 /// Converts `f64` to `u16`.
 /// Returns `panic!` if `d` is less then 0,
 /// `d` is greater then `u16` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `u16`.
+/// otherwise returns the value of `d` as `u16`.
 /// # Example
 ///
 /// ```
@@ -843,7 +843,7 @@ pub fn to_u16pr(d:f64, rmode:RoundingMode) -> u16 {
 /// Converts `f64` to `u32`.
 /// Returns `Err` if `d` is less then 0,
 /// `d` is greater then `u32` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `u32`.
+/// Otherwise returns the `Ok` value of `d` as `u32`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -864,7 +864,7 @@ pub fn to_u32(d:f64) -> ParseResultU32 {
 /// Converts `f64` to `u32`.
 /// Returns `Err` if `d` is less then 0,
 /// `d` is greater then `u32` max value or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `u32`.
+/// Otherwise returns the `Ok` value of `d` as `u32`.
 /// # Example
 ///
 /// ```
@@ -896,7 +896,7 @@ pub fn to_u32r(d:f64, rmode:RoundingMode) -> ParseResultU32 {
 /// Converts `f64` to `u32`.
 /// Returns `panic!` if `d` is less then 0,
 /// `d` is greater then `u32` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `u32`.
+/// otherwise returns the value of `d` as `u32`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -926,7 +926,7 @@ pub fn to_u32p(d:f64) -> u32 {
 /// Converts `f64` to `u32`.
 /// Returns `panic!` if `d` is less then 0,
 /// `d` is greater then `u32` max value or `d` is nan.
-/// otherwise retruns the value of `d` as `u32`.
+/// otherwise returns the value of `d` as `u32`.
 /// # Example
 ///
 /// ```
@@ -959,7 +959,7 @@ pub fn to_u32pr(d:f64, rmode:RoundingMode) -> u32 {
 /// Returns `Err` if `d` is less 0,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `u64`.
+/// Otherwise returns the `Ok` value of `d` as `u64`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -981,7 +981,7 @@ pub fn to_u64(d:f64) -> ParseResultU64 {
 /// Returns `Err` if `d` is less 0,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `u64`.
+/// Otherwise returns the `Ok` value of `d` as `u64`.
 /// # Example
 ///
 /// ```
@@ -1014,7 +1014,7 @@ pub fn to_u64r(d:f64, rmode:RoundingMode) -> ParseResultU64 {
 /// Returns `Err` if `d` is less 0,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// otherwise retruns the value of `d` as `u64`.
+/// otherwise returns the value of `d` as `u64`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -1045,7 +1045,7 @@ pub fn to_u64p(d:f64) -> u64 {
 /// Returns `Err` if `d` is less 0,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// otherwise retruns the value of `d` as `u64`.
+/// otherwise returns the value of `d` as `u64`.
 /// # Example
 ///
 /// ```
@@ -1078,7 +1078,7 @@ pub fn to_u64pr(d:f64, rmode:RoundingMode) -> u64 {
 /// Returns `Err` if `d` is less 0,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `usize`.
+/// Otherwise returns the `Ok` value of `d` as `usize`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -1100,7 +1100,7 @@ pub fn to_usize(d:f64) -> ParseResultUsize {
 /// Returns `Err` if `d` is less 0,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// Otherwise retruns the `Ok` value of `d` as `usize`.
+/// Otherwise returns the `Ok` value of `d` as `usize`.
 /// # Example
 ///
 /// ```
@@ -1133,7 +1133,7 @@ pub fn to_usizer(d:f64, rmode:RoundingMode) -> ParseResultUsize {
 /// Returns `Err` if `d` is less 0,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// otherwise retruns the value of `d` as `usize`.
+/// otherwise returns the value of `d` as `usize`.
 /// The `RoundingMode` is `TRUNC`.
 /// # Example
 ///
@@ -1164,7 +1164,7 @@ pub fn to_usizep(d:f64) -> usize {
 /// Returns `Err` if `d` is less 0,
 /// `d` is greater then 9007199254740991 (53bit precision of f64 minus 1)
 /// or `d` is nan.
-/// otherwise retruns the value of `d` as `usize`.
+/// otherwise returns the value of `d` as `usize`.
 /// # Example
 ///
 /// ```

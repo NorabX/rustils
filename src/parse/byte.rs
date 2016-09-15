@@ -20,7 +20,7 @@ pub fn to_bool(b:i8) -> bool {
 
 /// Converts `i8` to `u8`.
 /// Returns `Err` if `b` is negative,
-/// otherwise retruns the `Ok` value of `b` as `u8`.
+/// otherwise returns the `Ok` value of `b` as `u8`.
 /// # Example
 ///
 /// ```
@@ -38,7 +38,7 @@ pub fn to_u8(b: i8) -> ParseResultU8 {
 
 /// Converts `i8` to `u16`.
 /// Returns `Err` if `b` is negative,
-/// otherwise retruns the `Ok` value of `b` as `u16`.
+/// otherwise returns the `Ok` value of `b` as `u16`.
 /// # Example
 ///
 /// ```
@@ -56,7 +56,7 @@ pub fn to_u16(b:i8) -> ParseResultU16 {
 
 /// Converts `i8` to `u32`.
 /// Returns `Err` if `b` is negative,
-/// otherwise retruns the `Ok` value of `b` as `u32`.
+/// otherwise returns the `Ok` value of `b` as `u32`.
 /// # Example
 ///
 /// ```
@@ -74,7 +74,7 @@ pub fn to_u32(b:i8) -> ParseResultU32 {
 
 /// Converts `i8` to `u64`.
 /// Returns `Err` if `b` is negative,
-/// otherwise retruns the `Ok` value of `b` as `u64`.
+/// otherwise returns the `Ok` value of `b` as `u64`.
 /// # Example
 ///
 /// ```
@@ -92,7 +92,7 @@ pub fn to_u64(b:i8) -> ParseResultU64 {
 
 /// Converts `i8` to `usize`.
 /// Returns `Err` if `b` is negative,
-/// otherwise retruns the `Ok` value of `b` as `usize`.
+/// otherwise returns the `Ok` value of `b` as `usize`.
 /// # Example
 ///
 /// ```
@@ -110,7 +110,7 @@ pub fn to_usize(b:i8) -> ParseResultUsize {
 
 /// Converts `i8` to `u8`.
 /// Returns `panic!` if `b` is negative,
-/// otherwise retruns the value of `b` as `u8`.
+/// otherwise returns the value of `b` as `u8`.
 /// # Example
 ///
 /// ```
@@ -133,7 +133,7 @@ pub fn to_u8p(b:i8) -> u8 {
 
 /// Converts `i8` to `u16`.
 /// Returns `panic!` if `b` is negative,
-/// otherwise retruns the value of `b` as `u16`.
+/// otherwise returns the value of `b` as `u16`.
 /// # Example
 ///
 /// ```
@@ -156,7 +156,7 @@ pub fn to_u16p(b:i8) -> u16 {
 
 /// Converts `i8` to `u32`.
 /// Returns `panic!` if `b` is negative,
-/// otherwise retruns the value of `b` as `u32`.
+/// otherwise returns the value of `b` as `u32`.
 /// # Example
 ///
 /// ```
@@ -179,7 +179,7 @@ pub fn to_u32p(b:i8) -> u32 {
 
 /// Converts `i8` to `u64`.
 /// Returns `panic!` if `b` is negative,
-/// otherwise retruns the value of `b` as `u64`.
+/// otherwise returns the value of `b` as `u64`.
 /// # Example
 ///
 /// ```
@@ -202,7 +202,7 @@ pub fn to_u64p(b:i8) -> u64 {
 
 /// Converts `i8` to `usize`.
 /// Returns `panic!` if `b` is negative,
-/// otherwise retruns the value of `b` as `usize`.
+/// otherwise returns the value of `b` as `usize`.
 /// # Example
 ///
 /// ```
