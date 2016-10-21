@@ -1,6 +1,13 @@
 use rand;
 use rand::distributions::{IndependentSample, Range};
 
+/*
+pub fn rand_range_vec<T: SampleRange + PartialOrd>(count: usize, min: T, max: T) -> Vec<T>{
+    let mut x = Vec::<T>::with_capacity(count);
+    for _ in 0..count { x.push(rand_range(min,max)); }
+    x
+}
+*/
 //#################################################################################################
 pub fn rand_bool() -> bool { rand::random::<bool>() }
 pub fn rand_char() -> char { rand::random::<char>() }

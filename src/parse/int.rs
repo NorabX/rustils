@@ -202,8 +202,8 @@ pub fn to_i8p(i:i32) -> i8 {
 /// ```
 /// use rustils::parse::int::to_i16p;
 ///
-/// assert_eq!(to_i16p(-32768_i32), -32768_i8);
-/// assert_eq!(to_i16p(32767_i32), 32767_i8);
+/// assert_eq!(to_i16p(-32768_i32), -32768_i16);
+/// assert_eq!(to_i16p(32767_i32), 32767_i16);
 /// ```
 /// # Panics
 ///
@@ -331,8 +331,8 @@ pub fn to_u64p(i:i32) -> u64 {
 /// ```
 /// use rustils::parse::int::to_usizep;
 ///
-/// assert_eq!(to_u64p(0_i32), 0_usize);
-/// assert_eq!(to_u64p(2147483647_i32), 2147483647_usize);
+/// assert_eq!(to_usizep(0_i32), 0_usize);
+/// assert_eq!(to_usizep(2147483647_i32), 2147483647_usize);
 /// ```
 /// # Panics
 ///
