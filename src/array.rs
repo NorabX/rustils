@@ -1,7 +1,5 @@
 use random;
 
-
-
 pub fn swap_i8(ary: &mut [i8], a: usize, b: usize) -> bool{
     if a == b { return true }
     else{

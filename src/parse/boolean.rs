@@ -1,158 +1,77 @@
-///Converts `true` to `1_i8` and `false` to `0_i8`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_i8;
-///
-/// assert_eq!(to_i8(true), 1_i8);
-/// assert_eq!(to_i8(false), 0_i8);
-/// ```
-pub fn to_i8(b:bool) -> i8 {
-    if b { 1 } else { 0 }
+use parse::{
+    ToI8, ToI16, ToI32, ToI64, ToISize,
+    ToU8, ToU16, ToU32, ToU64, ToUSize,
+    ToF32, ToF64
+};
+
+impl ToI8 for bool{
+    fn to_i8(self) -> i8{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_i16` and `false` to `0_i16`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_i16;
-///
-/// assert_eq!(to_i16(true), 1_i16);
-/// assert_eq!(to_i16(false), 0_i16);
-/// ```
-pub fn to_i16(b:bool) -> i16 {
-    if b { 1 } else { 0 }
+impl ToI16 for bool{
+    fn to_i16(self) -> i16{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_i32` and `false` to `0_i32`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_i32;
-///
-/// assert_eq!(to_i32(true), 1_i32);
-/// assert_eq!(to_i32(false), 0_i32);
-/// ```
-pub fn to_i32(b:bool) -> i32 {
-    if b { 1 } else { 0 }
+impl ToI32 for bool{
+    fn to_i32(self) -> i32{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_i64` and `false` to `0_i64`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_i64;
-///
-/// assert_eq!(to_i64(true), 1_i64);
-/// assert_eq!(to_i64(false), 0_i64);
-/// ```
-pub fn to_i64(b:bool) -> i64 {
-    if b { 1 } else { 0 }
+impl ToI64 for bool{
+    fn to_i64(self) -> i64{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_u8` and `false` to `0_u8`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_u8;
-///
-/// assert_eq!(to_u8(true), 1_u8);
-/// assert_eq!(to_u8(false), 0_u8);
-/// ```
-pub fn to_u8(b:bool) -> u8 {
-    if b { 1 } else { 0 }
+impl ToISize for bool{
+    fn to_isize(self) -> isize{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_u16` and `false` to `0_u16`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_u16;
-///
-/// assert_eq!(to_u16(true), 1_u16);
-/// assert_eq!(to_u16(false), 0_u16);
-/// ```
-pub fn to_u16(b:bool) -> u16 {
-    if b { 1 } else { 0 }
+impl ToU8 for bool{
+    fn to_u8(self) -> u8{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_u32` and `false` to `0_u32`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_u32;
-///
-/// assert_eq!(to_u32(true), 1_u32);
-/// assert_eq!(to_u32(false), 0_u32);
-/// ```
-pub fn to_u32(b:bool) -> u32 {
-    if b { 1 } else { 0 }
+impl ToU16 for bool{
+    fn to_u16(self) -> u16{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_u64` and `false` to `0_u64`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_u64;
-///
-/// assert_eq!(to_u64(true), 1_u64);
-/// assert_eq!(to_u64(false), 0_u64);
-/// ```
-pub fn to_u64(b:bool) -> u64 {
-    if b { 1 } else { 0 }
+impl ToU32 for bool{
+    fn to_u32(self) -> u32{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_f32` and `false` to `0_f32`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_f32;
-///
-/// assert_eq!(to_f32(true), 1_f32);
-/// assert_eq!(to_f32(false), 0_f32);
-/// ```
-pub fn to_f32(b:bool) -> f32 {
-    if b { 1.0 } else { 0.0 }
+impl ToU64 for bool{
+    fn to_u64(self) -> u64{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_f64` and `false` to `0_f64`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_f64;
-///
-/// let x = true;
-/// let y = false;
-///
-/// assert_eq!(to_f64(true), 1_f64);
-/// assert_eq!(to_f64(false), 0_f64);
-/// ```
-pub fn to_f64(b:bool) -> f64 {
-    if b { 1.0 } else { 0.0 }
+impl ToUSize for bool{
+    fn to_usize(self) -> usize{
+        if self { 1 } else { 0 }
+    }
 }
 
-///Converts `true` to `1_usize` and `false` to `0_usize`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_usize;
-///
-/// assert_eq!(to_usize(true), 1_usize);
-/// assert_eq!(to_usize(false), 0_usize);
-/// ```
-pub fn to_usize(b:bool) -> usize {
-    if b { 1 } else { 0 }
+impl ToF32 for bool{
+    fn to_f32(self) -> f32{
+        if self { 1.0 } else { 0.0 }
+    }
 }
 
-///Converts `true` to `1_isize` and `false` to `0_isize`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::boolean::to_isize;
-///
-/// assert_eq!(to_isize(true), 1_isize);
-/// assert_eq!(to_isize(false), 0_isize);
-/// ```
-pub fn to_isize(b:bool) -> isize {
-    if b { 1 } else { 0 }
+impl ToF64 for bool{
+    fn to_f64(self) -> f64{
+        if self { 1.0 } else { 0.0 }
+    }
 }
