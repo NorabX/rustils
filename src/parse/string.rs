@@ -1,3 +1,16 @@
+use parse::ToStr;
+use std::mem::{forget,transmute};
+
+impl ToStr for String {
+    fn to_str(self) -> &'static str {
+        unsafe {
+            let ret = transmute(&self as &str);
+            forget(self);
+            ret
+        }
+    }
+}
+/*
 pub fn to_i8p(s:&str) -> i8 {
     match s.parse::<i8>() {
         Ok(n) => n,
@@ -67,3 +80,4 @@ pub fn to_f64p(s:&str) -> f64 {
       Err(err) => panic!("{}",err)
     }
 }
+*/

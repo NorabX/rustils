@@ -1,8 +1,8 @@
-use std::f32;
+/*use std::f32;
 use std::cmp::Ordering;
 use parse::string;
-use parse::error::ParseError;
-use parse::types::{
+use parse::{
+    ParseError,
     ParseResultI8,ParseResultI16,ParseResultI32,ParseResultI64,
     ParseResultU8,ParseResultU16,ParseResultU32,ParseResultU64,
 };
@@ -164,3 +164,4 @@ pub fn tou64p(f:f32) -> u64 {
         Err(err) => panic!("{}",err)
     }
 }
+*/

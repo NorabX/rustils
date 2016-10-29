@@ -1,11 +1,11 @@
 use std::ops::{Add, Div};
 use math::{Half, Zero, One};
 
-pub trait Median<T: Add + Half<T> + Copy>{
+pub trait Median<T: Add + Half + Copy>{
     fn median(&self) -> T;
 }
 
-impl<T: Add<Output=T> + Half<T> + Copy> Median<T> for [T]{
+impl<T: Add<Output=T> + Half + Copy> Median<T> for [T]{
     fn median(&self) -> T{
         let l = self.len();
         if l % 2 == 0 {

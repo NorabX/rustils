@@ -1,4 +1,4 @@
-use parse::error::ParseError;
+/*use parse::error::ParseError;
 use parse::types::{
     ParseResultI8,ParseResultI16,
     ParseResultU8,ParseResultU16,ParseResultU32,ParseResultU64,
@@ -345,3 +345,4 @@ pub fn to_usizep(i:i32) -> usize {
         Err(err) => panic!("{}",err)
     }
 }
+*/

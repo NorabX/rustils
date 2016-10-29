@@ -1,4 +1,4 @@
-use parse::error::ParseError;
+/*use parse::error::ParseError;
 use parse::types::{
     ParseResultI8,ParseResultI16,ParseResultI32,
     ParseResultU8,ParseResultU16,ParseResultU32,ParseResultU64,
@@ -319,4 +319,4 @@ pub fn to_u64p(l:i64) -> u64 {
         Ok(i) => i,
         Err(err) => panic!("{}",err)
     }
-}
+}*/

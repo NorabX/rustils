@@ -1,253 +1,326 @@
-use std::mem;
 use std::string::FromUtf8Error;
 use std::iter::Iterator;
-//use regex::Regex;
+use parse::ToStr;
 
-/// Return a reverse string from the given string `s`.
-/// Returning Err if `s` contains any invalid data.
-///
-/// # Example
-///
-/// ```
-/// let x = rustils::stringutils::reverse("Hello");
-/// assert_eq!(String::from("olleH"), x.unwrap());
-/// ```
-pub fn reverse(s: &str) -> Result<String,FromUtf8Error>{
-    let mut bytes = String::from(s).into_bytes();
-    let len = bytes.len();
 
-    for i in 0..len/2{
-        let l = len-1-i;
-        let temp = bytes[l];
-        bytes[l] = bytes[i];
-        bytes[i] = temp;
+pub trait StringUtils {
+    fn reverse_res(self) -> Result<String,FromUtf8Error>;
+    fn reverse(self) -> String;
+    fn adv_starts_with(self, search: &str) -> (bool, String);
+    fn starts_with(self, search: &str) -> bool;
+    fn adv_ends_with(self, search: &str) -> (bool, String);
+    fn ends_with(self, search: &str) -> bool;
+    fn cmp_ingnore_case(self, cmp: &str) -> bool;
+    fn peek_opt(self) -> Option<char>;
+    fn peek(self) -> char;
+    fn adv_contains_any_str(self, search: &[&str]) -> (bool, usize, String);
+    fn contains_any_str(self, search: &[&str]) -> bool;
+    fn adv_contains_all_strs(self, search: &[&str])
+        -> (bool, Vec<usize>, Vec<String>);
+    fn contains_all_strs(self, search: &[&str]) -> bool;
+    fn adv_contains_any_char(self, search: &[char]) -> (bool, usize, char);
+    fn contains_any_char(self, search: &[char]) -> bool;
+    fn adv_contains_all_chars(self, search: &[char])
+        -> (bool, Vec<usize>, Vec<char>);
+    fn contains_all_chars(self, search: &[char]) -> bool;
+    fn adv_contains_none_str(self, search: &[&str]) -> (bool, usize, String);
+    fn contains_none_str(self, search: &[&str]) -> bool;
+    fn adv_contains_none_char(self, search: &[char]) -> (bool, usize, char);
+    fn contains_none_char(self, search: &[char]) -> bool;
+    fn difference_res(self, diff: &str)
+        -> (Vec<usize>, Result<String,FromUtf8Error>);
+    fn difference(self, diff: &str) -> (Vec<usize>, String);
+}
+
+impl StringUtils for &'static str {
+    fn reverse_res(self) -> Result<String,FromUtf8Error> {
+        let mut bytes = String::from(self).into_bytes();
+        let len = bytes.len();
+
+        for i in 0..len/2 { bytes.swap(i,len-1-i); }
+
+        String::from_utf8(bytes)
     }
 
-    String::from_utf8(bytes)
-}
-
-/// Return a reverse string from the given string `s`.
-/// `panic!` by any error.
-///
-/// # Example
-///
-/// ```
-/// let x = rustils::stringutils::reversep("Hello");
-/// assert_eq!(String::from("olleH"),x);
-/// ```
-pub fn reversep(s: &str) -> String{
-    match reverse(s){
-        Ok(n) => n,
-        Err(err) => panic!("{}",err)
-    }
-}
-
-pub fn adv_starts_with(target: &str, search: &str) -> (bool,String) {
-    let mut temp = String::from(target);
-    let x: String = temp.drain(..search.len()).collect();
-    (x == search, temp)
-}
-
-pub fn starts_with(target: &str, search: &str) -> bool {
-    adv_starts_with(target,search).0
-}
-
-pub fn adv_ends_with(target: &str, search: &str) -> (bool,String) {
-    let mut temp = String::from(target);
-    let len = temp.len();
-    let x: String = temp.drain(len-search.len()..len).collect();
-    (x == search, temp)
-}
-
-pub fn ends_with(target: &str, search: &str) -> bool {
-    adv_ends_with(target,search).0
-}
-
-pub fn cmp_ingnore_case(str1: &str, str2: &str) -> bool {
-    String::from(str1).to_lowercase() == String::from(str2).to_lowercase()
-}
-
-pub fn peek(str1: &str) -> Option<char> {
-    String::from(str1).chars().last()
-}
-
-pub fn peekp(str1: &str) -> char{
-    match peek(str1) {
-        Some(n) => n,
-        None => panic!("No more char")
-    }
-}
-
-pub fn string_to_str(s: String) -> &'static str {
-    unsafe {
-        let ret = mem::transmute(&s as &str);
-        mem::forget(s);
-        ret
-    }
-}
-
-pub fn adv_contains_any_str(target: &str, search: &[&str]) -> (bool,usize,String) {
-    for i in 0..search.len() {
-        match target.find(search[i]) {
-            Some(n) => return (true,n,String::from(search[i])),
-            None => {}
+    fn reverse(self) -> String {
+        match self.reverse_res(){
+            Ok(n) => n,
+            Err(err) => panic!("{}",err)
         }
     }
 
-    (false,0,String::new())
-}
+    fn adv_starts_with(self, search: &str) -> (bool, String) {
+        let mut temp = String::from(self);
+        let x: String = temp.drain(..search.len()).collect();
+        (x == search, temp)
+    }
 
-pub fn contains_any_str(target: &str, search: &[&str]) -> bool {
-    adv_contains_any_str(target,search).0
-}
+    fn starts_with(self, search: &str) -> bool {
+        self.adv_starts_with(search).0
+    }
 
-pub fn adv_contains_all_strs(target: &str, search: &[&str])
+    fn adv_ends_with(self, search: &str) -> (bool, String) {
+        let mut temp = String::from(self);
+        let len = temp.len();
+        let x: String = temp.drain(len-search.len()..len).collect();
+        (x == search, temp)
+    }
+
+    fn ends_with(self, search: &str) -> bool {
+        self.adv_ends_with(search).0
+    }
+
+    fn cmp_ingnore_case(self, cmp: &str) -> bool {
+        String::from(self).to_lowercase() == String::from(cmp).to_lowercase()
+    }
+
+    fn peek_opt(self) -> Option<char> {
+        String::from(self).chars().last()
+    }
+
+    fn peek(self) -> char{
+        match self.peek_opt() {
+            Some(n) => n,
+            None => panic!("No more char")
+        }
+    }
+
+    fn adv_contains_any_str(self, search: &[&str]) -> (bool, usize, String) {
+        for i in 0..search.len() {
+            match self.find(search[i]) {
+                Some(n) => return (true, n, String::from(search[i])),
+                None => {}
+            }
+        }
+
+        (false, 0, String::new())
+    }
+
+    fn contains_any_str(self, search: &[&str]) -> bool {
+        self.adv_contains_any_str(search).0
+    }
+
+    fn adv_contains_all_strs(self, search: &[&str])
         -> (bool,Vec<usize>,Vec<String>) {
 
-    let mut idxs = Vec::<usize>::new();
-    let mut strs = Vec::<String>::new();
+        let mut idxs = Vec::<usize>::new();
+        let mut strs = Vec::<String>::new();
 
-    for i in 0..search.len() {
-        match target.find(search[i]) {
-            Some(n) => {
-                idxs.push(n);
-                strs.push(String::from(search[i]));
-            },
-            None => return (false,idxs,strs)
-        }
-    }
-
-    (true,idxs,strs)
-}
-
-pub fn contains_all_strs(target: &str, search: &[&str]) -> bool {
-    adv_contains_all_strs(target,search).0
-}
-
-pub fn adv_contains_any_char(target: &str, search: &[char]) -> (bool,usize,char) {
-    for i in 0..search.len() {
-        match target.find(search[i]) {
-            Some(n) => return (true,n,search[i]),
-            None => {}
-        }
-    }
-
-    (false,0,' ')
-}
-
-pub fn contains_any_char(target: &str, search: &[char]) -> bool {
-    adv_contains_any_char(target,search).0
-}
-
-pub fn adv_contains_all_chars(target: &str, search: &[char])
-        -> (bool,Vec<usize>,Vec<char>) {
-
-    let mut idxs = Vec::<usize>::new();
-    let mut chars = Vec::<char>::new();
-
-    for i in 0..search.len() {
-        match target.find(search[i]) {
-            Some(n) => {
-                idxs.push(n);
-                chars.push(search[i]);
-            },
-            None => return (false,idxs,chars)
-        }
-    }
-
-    (true,idxs,chars)
-}
-
-pub fn contains_all_chars(target: &str, search: &[char]) -> bool {
-    adv_contains_all_chars(target,search).0
-}
-
-pub fn adv_contains_none_str(target: &str, search: &[&str]) -> (bool,usize,String) {
-    for i in 0..search.len() {
-        match target.find(search[i]) {
-            Some(_) => {
-                return (false,i,String::from(search[i]));
-            },
-            None => {}
-        }
-    }
-
-    (true,0,String::new())
-}
-
-pub fn contains_none_str(target: &str, search: &[&str]) -> bool {
-    adv_contains_none_str(target,search).0
-}
-
-pub fn adv_contains_none_char(target: &str, search: &[char]) -> (bool,usize,char) {
-    for i in 0..search.len() {
-        match target.find(search[i]) {
-            Some(_) => {
-                return (false,i,search[i]);
-            },
-            None => {}
-        }
-    }
-
-    (true,0,' ')
-}
-
-pub fn contains_none_char(target: &str, search: &[char]) -> bool {
-    adv_contains_none_char(target,search).0
-}
-
-pub fn difference(str1: &str, str2: &str)
-        -> (Vec<usize>,Result<String,FromUtf8Error>) {
-
-    let bytes1 = String::from(str1).into_bytes();
-    let bytes2 = String::from(str2).into_bytes();
-    let mut idxs = Vec::<usize>::new();
-    let mut res = Vec::<u8>::new();
-    let mut i: usize = 0;
-
-    while i < bytes1.len() && i < bytes2.len() {
-        if bytes1[i] != bytes2[i] {
-            idxs.push(i);
-            res.push(bytes2[i]);
+        for i in 0..search.len() {
+            match self.find(search[i]) {
+                Some(n) => {
+                    idxs.push(n);
+                    strs.push(String::from(search[i]));
+                },
+                None => return (false, idxs, strs)
+            }
         }
 
-        i = i + 1;
+        (true, idxs, strs)
     }
 
-    (idxs,String::from_utf8(res))
-}
+    fn contains_all_strs(self, search: &[&str]) -> bool {
+        self.adv_contains_all_strs(search).0
+    }
 
-pub fn differencep(str1: &str, str2: &str) -> (Vec<usize>,String) {
-    let temp = difference(str1,str2);
-    let idxs = temp.0;
-    let s = match difference(str1, str2).1{
-        Ok(n) => n,
-        Err(err) => panic!("{}",err)
-    };
-
-    (idxs,s)
-}
-
-pub fn join<T: ToString>(ary: &[T], sep: &str) -> String {
-    let mut temp = String::new();
-    for i in 0..ary.len() {
-        temp.push_str(&ary[i].to_string());
-
-        if i != ary.len()-1 {
-            temp.push_str(sep);
+    fn adv_contains_any_char(self, search: &[char]) -> (bool, usize, char) {
+        for i in 0..search.len() {
+            match self.find(search[i]) {
+                Some(n) => return (true, n, search[i]),
+                None => {}
+            }
         }
+
+        (false, 0, ' ')
     }
-    temp
+
+    fn contains_any_char(self, search: &[char]) -> bool {
+        self.adv_contains_any_char(search).0
+    }
+
+    fn adv_contains_all_chars(self, search: &[char])
+        -> (bool, Vec<usize>, Vec<char>) {
+
+        let mut idxs = Vec::<usize>::new();
+        let mut chars = Vec::<char>::new();
+
+        for i in 0..search.len() {
+            match self.find(search[i]) {
+                Some(n) => {
+                    idxs.push(n);
+                    chars.push(search[i]);
+                },
+                None => return (false, idxs, chars)
+            }
+        }
+
+        (true, idxs, chars)
+    }
+
+    fn contains_all_chars(self, search: &[char]) -> bool {
+        self.adv_contains_all_chars(search).0
+    }
+
+    fn adv_contains_none_str(self, search: &[&str]) -> (bool, usize, String) {
+        for i in 0..search.len() {
+            match self.find(search[i]) {
+                Some(_) => return (false, i, String::from(search[i])),
+                None => {}
+            }
+        }
+
+        (true, 0, String::new())
+    }
+
+    fn contains_none_str(self, search: &[&str]) -> bool {
+        self.adv_contains_none_str(search).0
+    }
+
+    fn adv_contains_none_char(self, search: &[char]) -> (bool, usize, char) {
+        for i in 0..search.len() {
+            match self.find(search[i]) {
+                Some(_) => return (false, i, search[i]),
+                None => {}
+            }
+        }
+
+        (true, 0, ' ')
+    }
+
+    fn contains_none_char(self, search: &[char]) -> bool {
+        self.adv_contains_none_char(search).0
+    }
+
+    fn difference_res(self, diff: &str)
+        -> (Vec<usize>, Result<String,FromUtf8Error>) {
+
+        let bytes1 = String::from(self).into_bytes();
+        let bytes2 = String::from(diff).into_bytes();
+        let mut idxs = Vec::<usize>::new();
+        let mut res = Vec::<u8>::new();
+        let mut i: usize = 0;
+
+        while i < bytes1.len() && i < bytes2.len() {
+            if bytes1[i] != bytes2[i] {
+                idxs.push(i);
+                res.push(bytes2[i]);
+            }
+
+            i = i + 1;
+        }
+
+        (idxs, String::from_utf8(res))
+    }
+
+    fn difference(self, diff: &str) -> (Vec<usize>, String) {
+        let temp = self.difference_res(diff);
+        let idxs = temp.0;
+        let s = match self.difference_res(diff).1{
+            Ok(n) => n,
+            Err(err) => panic!("{}",err)
+        };
+
+        (idxs, s)
+    }
 }
 
-pub fn join_vec<T: ToString>(ary: Vec<T>, sep: &str) -> String {
-    let mut temp = String::new();
-    for i in 0..ary.len() {
-        temp.push_str(&ary[i].to_string());
+impl StringUtils for String {
 
-        if i != ary.len()-1 {
-            temp.push_str(sep);
-        }
+    fn reverse_res(self) -> Result<String,FromUtf8Error> {
+        self.to_str().reverse_res()
     }
-    temp
+
+    fn reverse(self) -> String {
+        self.to_str().reverse()
+    }
+
+    fn adv_starts_with(self, search: &str) -> (bool, String) {
+        self.to_str().adv_starts_with(search)
+    }
+
+    fn starts_with(self, search: &str) -> bool {
+        self.to_str().starts_with(search)
+    }
+
+    fn adv_ends_with(self, search: &str) -> (bool, String) {
+        self.to_str().adv_ends_with(search)
+    }
+
+    fn ends_with(self, search: &str) -> bool {
+        self.to_str().ends_with(search)
+    }
+
+    fn cmp_ingnore_case(self, cmp: &str) -> bool {
+        self.to_str().cmp_ingnore_case(cmp)
+    }
+
+    fn peek_opt(self) -> Option<char> {
+        self.to_str().peek_opt()
+    }
+
+    fn peek(self) -> char{
+        self.to_str().peek()
+    }
+
+    fn adv_contains_any_str(self, search: &[&str]) -> (bool, usize, String) {
+        self.to_str().adv_contains_any_str(search)
+    }
+
+    fn contains_any_str(self, search: &[&str]) -> bool {
+        self.to_str().contains_any_str(search)
+    }
+
+    fn adv_contains_all_strs(self, search: &[&str])
+        -> (bool,Vec<usize>,Vec<String>) {
+
+        self.to_str().adv_contains_all_strs(search)
+    }
+
+    fn contains_all_strs(self, search: &[&str]) -> bool {
+        self.to_str().contains_all_strs(search)
+    }
+
+    fn adv_contains_any_char(self, search: &[char]) -> (bool, usize, char) {
+        self.to_str().adv_contains_any_char(search)
+    }
+
+    fn contains_any_char(self, search: &[char]) -> bool {
+        self.to_str().contains_any_char(search)
+    }
+
+    fn adv_contains_all_chars(self, search: &[char])
+        -> (bool, Vec<usize>, Vec<char>) {
+
+        self.to_str().adv_contains_all_chars(search)
+    }
+
+    fn contains_all_chars(self, search: &[char]) -> bool {
+        self.to_str().contains_all_chars(search)
+    }
+
+    fn adv_contains_none_str(self, search: &[&str]) -> (bool, usize, String) {
+        self.to_str().adv_contains_none_str(search)
+    }
+
+    fn contains_none_str(self, search: &[&str]) -> bool {
+        self.to_str().contains_none_str(search)
+    }
+
+    fn adv_contains_none_char(self, search: &[char]) -> (bool, usize, char) {
+        self.to_str().adv_contains_none_char(search)
+    }
+
+    fn contains_none_char(self, search: &[char]) -> bool {
+        self.to_str().contains_none_char(search)
+    }
+
+    fn difference_res(self, diff: &str)
+        -> (Vec<usize>, Result<String,FromUtf8Error>) {
+
+        self.to_str().difference_res(diff)
+    }
+
+    fn difference(self, diff: &str) -> (Vec<usize>, String) {
+        self.to_str().difference(diff)
+    }
 }

@@ -1,5 +1,5 @@
-use parse::error::ParseError;
-use parse::types::{
+/*use parse::{
+    ParseError,
     ParseResultI8,ParseResultI16,ParseResultI32,ParseResultI64,
     ParseResultU8,ParseResultU16,ParseResultU32
 };
@@ -126,4 +126,4 @@ pub fn tou32p(l:u64) -> u32 {
         Ok(i) => i,
         Err(err) => panic!("{}",err)
     }
-}
+}*/

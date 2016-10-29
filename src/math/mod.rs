@@ -1,53 +1,33 @@
-use std::ops::{Add,Sub,Mul,Div};
-use std::fmt;
+use std::ops::{Add,Mul};
 
 pub mod average;
+pub mod integer;
 
-pub trait Half<T> {
-    fn half(self) -> T;
-}
+pub trait Zero { fn zero() -> Self; }
+pub trait One { fn one() -> Self; }
+pub trait Half { fn half(self) -> Self; }
 
-impl Half<u8> for u8{
-    fn half(self) -> u8{
-        self / 2
-    }
+macro_rules! std_impl_i {
+    ($($t:ty)*) => ($(
+        impl Zero for $t { fn zero() -> Self { 0 } }
+        impl One for $t { fn one() -> Self { 1 } }
+        impl Half for $t { fn half(self) -> Self { self / 2 } }
+    )*)
 }
+std_impl_i! { u8 u16 u32 u64 usize i8 i16 i32 i64 isize }
 
-impl Half<f64> for f64 {
-    fn half(self) -> f64 {
-        self / 2.0
-    }
+macro_rules! std_impl_f {
+    ($($t:ty)*) => ($(
+        impl Zero for $t { fn zero() -> Self { 0.0 } }
+        impl One for $t { fn one() -> Self { 1.0 } }
+        impl Half for $t { fn half(self) -> Self { self / 2.0 } }
+    )*)
 }
+std_impl_f! { f32 f64 }
 
-impl Half<Frac> for Frac {
-    fn half(self) -> Frac {
-        self * Frac(1,2)
-    }
-}
 
-pub trait One: Sized {
-    fn one() -> Self;
-}
-
-impl One for i32 {
-    fn one() -> Self { 1 }
-}
-
-pub trait Zero: Sized {
-    fn zero() -> Self;
-}
-
-impl Zero for i32 {
-    fn zero() -> Self { 0 }
-}
-
-impl Zero for Frac {
-    fn zero() -> Self { Frac(0,1) }
-}
-
-pub trait Sum<T>{
-    fn sum(&self) -> T;
-}
+pub trait Sum<T>{ fn sum(&self) -> T; }
+pub trait Product<T> { fn product(&self) -> T; }
 
 impl<T: Add<Output=T> + Zero + Copy> Sum<T> for [T] {
     fn sum(&self) -> T{
@@ -57,10 +37,6 @@ impl<T: Add<Output=T> + Zero + Copy> Sum<T> for [T] {
         }
         sum
     }
-}
-
-pub trait Product<T> {
-    fn product(&self) -> T;
 }
 
 impl<T: Mul<Output=T> + One + Copy> Product<T> for [T]{
@@ -73,17 +49,19 @@ impl<T: Mul<Output=T> + One + Copy> Product<T> for [T]{
     }
 }
 
+
+/*
 #[derive(Debug, Copy, Clone)]
-pub struct Frac(pub i64, pub i64);
+pub struct Frac<T>(pub T, pub T);
 
-impl Add<Frac> for Frac{
-    type Output = Frac;
+impl<T: Mul<Output=T> + Add<Output=T> + Copy> Add<Frac<T>> for Frac<T>{
+    type Output = Frac<T>;
 
-    fn add(self, other: Frac) -> Frac {
+    fn add(self, other: Frac<T>) -> Frac<T> {
         Frac(self.0 * other.1 + self.1 * other.0, self.1 * other.1)
     }
 }
-
+/*
 impl Sub<Frac> for Frac{
     type Output = Frac;
 
@@ -106,8 +84,8 @@ impl Mul<Frac> for Frac{
     fn mul(self, other: Frac) -> Frac {
         Frac(self.0 * other.0, self.1 * other.1)
     }
-}
-
+}*/
+/*
 impl<'a> Mul<Frac> for &'a Frac{
     type Output = Frac;
 
@@ -130,10 +108,11 @@ impl<'a, 'b> Mul<&'a Frac> for &'b Frac{
     fn mul(self, other: &'a Frac) -> Frac {
         Frac(self.0 * other.0, self.1 * other.1)
     }
-}
+}*/
 
-impl fmt::Display for Frac {
+impl<T: fmt::Display> fmt::Display for Frac<T> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{}/{}", self.0, self.1)
     }
 }
+*/
