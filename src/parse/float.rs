@@ -1,167 +1,371 @@
-/*use std::f32;
-use std::cmp::Ordering;
-use parse::string;
 use parse::{
-    ParseError,
-    ParseResultI8,ParseResultI16,ParseResultI32,ParseResultI64,
-    ParseResultU8,ParseResultU16,ParseResultU32,ParseResultU64,
+    ToI8, ToI16, ToI32, ToI64,
+    ToU8, ToU16, ToU32, ToU64,
+    ToIsize, ToUsize,
+    ToBool,
+    ToI8RM, ToI16RM, ToI32RM, ToI64RM,
+    ToU8RM, ToU16RM, ToU32RM, ToU64RM,
+    ToIsizeRM, ToUsizeRM
 };
 
-///Converts `0_f32` to `false` and all other numbers to `true`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::float;
-///
-/// let x = 1_f32;
-/// let y = 42_f32;
-/// let z = 0_f32;
-///
-/// assert_eq!(float::to_bool(x), true);
-/// assert_eq!(float::to_bool(y), true);
-/// assert_eq!(float::to_bool(z), false);
-/// ```
-pub fn to_bool(f:f32) -> bool {
-    if f.is_nan() || f == 0.0 { false }
-    else { true }
+
+use parse::{
+    ParseResultI8, ParseResultI16, ParseResultI32, ParseResultI64,
+    ParseResultU8, ParseResultU16, ParseResultU32, ParseResultU64,
+    ParseResultIsize, ParseResultUsize
+};
+
+use ParseError;
+use RoundingMode;
+use RoundingMode::{Trunc,Ceil,Floor,Round};
+
+impl ToBool for f32 {
+    fn to_bool(self) -> bool {
+        if self.is_nan() || self == 0.0 { false } else { true }
+    }
 }
 
-pub fn toi8(f:f32) -> ParseResultI8 {
-    let min = i8::min_value() as f32;
-    let max = i8::max_value() as f32;
+impl ToI8 for f32 {
+    fn to_i8_res(self) -> ParseResultI8{
+        self.to_i8_rm_res(Trunc)
+    }
 
-    if f.is_nan() || f < min || f > max {
-        Err(ParseError::InvalidNumber(f.to_string()))
-    } else { Ok(f as i8) }
+    fn to_i8(self) -> i8 {
+        self.to_i8_rm(Trunc)
+    }
 }
 
-pub fn toi16(f:f32) -> ParseResultI16 {
-    let min = i16::min_value() as f32;
-    let max = i16::max_value() as f32;
+impl ToI8RM for f32 {
+    fn to_i8_rm_res(self, rm: RoundingMode) -> ParseResultI8 {
+        let min = i8::min_value() as f32;
+        let max = i8::max_value() as f32;
 
-    if f.is_nan() || f < min || f > max {
-        Err(ParseError::InvalidNumber(f.to_string()))
-    } else { Ok(f as i16) }
-}
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
 
-//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-pub fn toi32(f:f32) -> ParseResultI32 {
-    let min = i32::min_value() as f32;
-    let max = i32::max_value() as f32;
+        if x.is_nan() || x < min || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as i8) }
+    }
 
-    if f.is_nan() || f < min || f > max {
-        Err(ParseError::InvalidNumber(f.to_string()))
-    } else { Ok(f as i32) }
-}
-
-//TODO!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-pub fn toi64(f:f32) -> ParseResultI64 {
-    let min = i64::min_value() as f32;
-    let max = i64::max_value() as f32;
-
-    if f.is_nan() || f < min || f > max {
-        Err(ParseError::InvalidNumber(f.to_string()))
-    } else { Ok(f as i64) }
-}
-
-pub fn tou8(f:f32) -> ParseResultU8 {
-    let max = u8::max_value() as f32;
-
-    if f.is_nan() || f < 0.0 || f > max {
-        Err(ParseError::InvalidNumber(f.to_string()))
-    } else { Ok(f as u8) }
-}
-
-pub fn tou16(f:f32) -> ParseResultU16 {
-    let max = u16::max_value() as f32;
-
-    if f.is_nan() || f < 0.0 || f > max {
-        Err(ParseError::InvalidNumber(f.to_string()))
-    } else { Ok(f as u16) }
-}
-
-
-pub fn tou32(f:f32) -> ParseResultU32{
-    let max = u32::max_value().to_string();
-    let fstr = f.to_string();
-
-    if f.is_nan() || f < 0.0 {
-        Err(ParseError::InvalidNumber(f.to_string()))
-    } else {
-        match fstr.cmp(&max){
-            Ordering::Less | Ordering::Equal => Ok(string::to_u32p(&fstr)),
-            Ordering::Greater => Err(ParseError::InvalidNumber(f.to_string()))
+    fn to_i8_rm(self, rm: RoundingMode) -> i8 {
+        match self.to_i8_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
         }
     }
 }
 
-pub fn tou64(f:f32) -> ParseResultU64{
-    let max = u64::max_value().to_string();
-    let fstr = f.to_string();
+impl ToI16 for f32 {
+    fn to_i16_res(self) -> ParseResultI16 {
+        self.to_i16_rm_res(Trunc)
+    }
 
-    if f.is_nan() || f < 0.0 {
-        Err(ParseError::InvalidNumber(f.to_string()))
-    } else {
-        match fstr.cmp(&max){
-            Ordering::Less | Ordering::Equal => Ok(string::to_u64p(&fstr)),
-            Ordering::Greater => Err(ParseError::InvalidNumber(f.to_string()))
+    fn to_i16(self) -> i16 {
+        self.to_i16_rm(Trunc)
+    }
+}
+
+impl ToI16RM for f32 {
+    fn to_i16_rm_res(self, rm: RoundingMode) -> ParseResultI16 {
+        let min = i16::min_value() as f32;
+        let max = i16::max_value() as f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < min || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as i16) }
+    }
+
+    fn to_i16_rm(self, rm: RoundingMode) -> i16 {
+        match self.to_i16_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
         }
     }
 }
 
-pub fn toi8p(f:f32) -> i8 {
-    match toi8(f) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToI32 for f32 {
+    fn to_i32_res(self) -> ParseResultI32 {
+        self.to_i32_rm_res(Trunc)
+    }
+
+    fn to_i32(self) -> i32 {
+        self.to_i32_rm(Trunc)
     }
 }
 
-pub fn toi16p(f:f32) -> i16 {
-    match toi16(f) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToI32RM for f32 {
+    fn to_i32_rm_res(self, rm: RoundingMode) -> ParseResultI32 {
+        let min = -16777215_f32;
+        let max = 16777215_f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < min || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as i32) }
+    }
+
+    fn to_i32_rm(self, rm: RoundingMode) -> i32 {
+        match self.to_i32_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
 
-pub fn toi32p(f:f32) -> i32 {
-    match toi32(f) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToI64 for f32 {
+    fn to_i64_res(self) -> ParseResultI64 {
+        self.to_i64_rm_res(Trunc)
+    }
+
+    fn to_i64(self) -> i64 {
+        self.to_i64_rm(Trunc)
     }
 }
 
-pub fn toi64p(f:f32) -> i64 {
-    match toi64(f) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToI64RM for f32 {
+    fn to_i64_rm_res(self, rm: RoundingMode) -> ParseResultI64 {
+        let min = -16777215_f32;
+        let max = 16777215_f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < min || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as i64) }
+    }
+
+    fn to_i64_rm(self, rm: RoundingMode) -> i64 {
+        match self.to_i64_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
 
-pub fn tou8p(f:f32) -> u8 {
-    match tou8(f) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToIsize for f32 {
+    fn to_isize_res(self) -> ParseResultIsize {
+        self.to_isize_rm_res(Trunc)
+    }
+
+    fn to_isize(self) -> isize {
+        self.to_isize_rm(Trunc)
     }
 }
 
-pub fn tou16p(f:f32) -> u16 {
-    match tou16(f) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToIsizeRM for f32 {
+    fn to_isize_rm_res(self, rm: RoundingMode) -> ParseResultIsize {
+        let min = -16777215_f32;
+        let max = 16777215_f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < min || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as isize) }
+    }
+
+    fn to_isize_rm(self, rm: RoundingMode) -> isize {
+        match self.to_isize_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
 
-pub fn tou32p(f:f32) -> u32 {
-    match tou32(f) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToU8 for f32 {
+    fn to_u8_res(self) -> ParseResultU8{
+        self.to_u8_rm_res(Trunc)
+    }
+
+    fn to_u8(self) -> u8 {
+        self.to_u8_rm(Trunc)
     }
 }
 
-pub fn tou64p(f:f32) -> u64 {
-    match tou64(f) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToU8RM for f32 {
+    fn to_u8_rm_res(self, rm: RoundingMode) -> ParseResultU8 {
+        let max = u8::max_value() as f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < 0.0 || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as u8) }
+    }
+
+    fn to_u8_rm(self, rm: RoundingMode) -> u8 {
+        match self.to_u8_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
-*/
+
+impl ToU16 for f32 {
+    fn to_u16_res(self) -> ParseResultU16 {
+        self.to_u16_rm_res(Trunc)
+    }
+
+    fn to_u16(self) -> u16 {
+        self.to_u16_rm(Trunc)
+    }
+}
+
+impl ToU16RM for f32 {
+    fn to_u16_rm_res(self, rm: RoundingMode) -> ParseResultU16 {
+        let max = u16::max_value() as f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < 0.0 || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as u16) }
+    }
+
+    fn to_u16_rm(self, rm: RoundingMode) -> u16 {
+        match self.to_u16_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}
+
+impl ToU32 for f32 {
+    fn to_u32_res(self) -> ParseResultU32 {
+        self.to_u32_rm_res(Trunc)
+    }
+
+    fn to_u32(self) -> u32 {
+        self.to_u32_rm(Trunc)
+    }
+}
+
+impl ToU32RM for f32 {
+    fn to_u32_rm_res(self, rm: RoundingMode) -> ParseResultU32 {
+        let max = 16777215_f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < 0.0 || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as u32) }
+    }
+
+    fn to_u32_rm(self, rm: RoundingMode) -> u32 {
+        match self.to_u32_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}
+
+impl ToU64 for f32 {
+    fn to_u64_res(self) -> ParseResultU64 {
+        self.to_u64_rm_res(Trunc)
+    }
+
+    fn to_u64(self) -> u64 {
+        self.to_u64_rm(Trunc)
+    }
+}
+
+impl ToU64RM for f32 {
+    fn to_u64_rm_res(self, rm: RoundingMode) -> ParseResultU64 {
+        let max = 16777215_f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < 0.0 || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as u64) }
+    }
+
+    fn to_u64_rm(self, rm: RoundingMode) -> u64 {
+        match self.to_u64_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}
+
+impl ToUsize for f32 {
+    fn to_usize_res(self) -> ParseResultUsize {
+        self.to_usize_rm_res(Trunc)
+    }
+
+    fn to_usize(self) -> usize {
+        self.to_usize_rm(Trunc)
+    }
+}
+
+impl ToUsizeRM for f32 {
+    fn to_usize_rm_res(self, rm: RoundingMode) -> ParseResultUsize {
+        let max = 16777215_f32;
+
+        let x = match rm {
+            Round => self.round(),
+            Ceil => self.ceil(),
+            Floor => self.floor(),
+            Trunc => self.trunc()
+        };
+
+        if x.is_nan() || x < 0.0 || x > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(x as usize) }
+    }
+
+    fn to_usize_rm(self, rm: RoundingMode) -> usize {
+        match self.to_usize_rm_res(rm) {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}
