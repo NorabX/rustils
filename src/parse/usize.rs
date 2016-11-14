@@ -12,15 +12,15 @@ use parse::{
 
 use ParseError;
 
-impl ToBool for u64 {
+impl ToBool for usize {
     fn to_bool(self) -> bool {
         if self == 0 { false } else { true }
     }
 }
 
-impl ToI8 for u64 {
+impl ToI8 for usize {
     fn to_i8_res(self) -> ParseResultI8 {
-        let max = i8::max_value() as u64;
+        let max = i8::max_value() as usize;
 
         if self > max {
             Err(ParseError::InvalidNumber(self.to_string()))
@@ -35,9 +35,9 @@ impl ToI8 for u64 {
     }
 }
 
-impl ToI16 for u64 {
+impl ToI16 for usize {
     fn to_i16_res(self) -> ParseResultI16 {
-        let max = i16::max_value() as u64;
+        let max = i16::max_value() as usize;
 
         if self > max {
             Err(ParseError::InvalidNumber(self.to_string()))
@@ -52,9 +52,9 @@ impl ToI16 for u64 {
     }
 }
 
-impl ToI32 for u64 {
+impl ToI32 for usize {
     fn to_i32_res(self) -> ParseResultI32 {
-        let max = i32::max_value() as u64;
+        let max = i32::max_value() as usize;
 
         if self > max {
             Err(ParseError::InvalidNumber(self.to_string()))
@@ -69,9 +69,9 @@ impl ToI32 for u64 {
     }
 }
 
-impl ToI64 for u64 {
+impl ToI64 for usize {
     fn to_i64_res(self) -> ParseResultI64 {
-        let max = i64::max_value() as u64;
+        let max = i64::max_value() as usize;
 
         if self > max {
             Err(ParseError::InvalidNumber(self.to_string()))
@@ -86,9 +86,9 @@ impl ToI64 for u64 {
     }
 }
 
-impl ToIsize for u64 {
+impl ToIsize for usize {
     fn to_isize_res(self) -> ParseResultIsize {
-        let max = isize::max_value() as u64;
+        let max = isize::max_value() as usize;
 
         if self > max {
             Err(ParseError::InvalidNumber(self.to_string()))
@@ -103,9 +103,9 @@ impl ToIsize for u64 {
     }
 }
 
-impl ToU8 for u64 {
+impl ToU8 for usize {
     fn to_u8_res(self) -> ParseResultU8 {
-        let max = u8::max_value() as u64;
+        let max = u8::max_value() as usize;
 
         if self > max {
             Err(ParseError::InvalidNumber(self.to_string()))
@@ -120,9 +120,9 @@ impl ToU8 for u64 {
     }
 }
 
-impl ToU16 for u64 {
+impl ToU16 for usize {
     fn to_u16_res(self) -> ParseResultU16 {
-        let max = u16::max_value() as u64;
+        let max = u16::max_value() as usize;
 
         if self > max {
             Err(ParseError::InvalidNumber(self.to_string()))
@@ -137,9 +137,9 @@ impl ToU16 for u64 {
     }
 }
 
-impl ToU32 for u64 {
+impl ToU32 for usize {
     fn to_u32_res(self) -> ParseResultU32 {
-        let max = u32::max_value() as u64;
+        let max = u32::max_value() as usize;
 
         if self > max {
             Err(ParseError::InvalidNumber(self.to_string()))

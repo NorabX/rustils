@@ -1,21 +1,33 @@
+use parse::{
+    ToI8,
+    ToBool
+};
 
-/*
-pub fn to_bool(b:u8) -> bool {
-    if b == 0 { false }
-    else { true }
-}
+use parse::{
+    ParseResultI8
+};
 
-pub fn toi8(b:u8) -> ParseResultI8 {
-    let max = i8::max_value() as u8;
+use ParseError;
 
-    if b > max {
-        Err(ParseError::InvalidNumber(b.to_string()))
-    } else { Ok(b as i8) }
-}
-
-pub fn toi8p(b:u8) -> i8 {
-    match toi8(b) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToBool for u8 {
+    fn to_bool(self) -> bool {
+        if self == 0 { false } else { true }
     }
-}*/
+}
+
+impl ToI8 for u8 {
+    fn to_i8_res(self) -> ParseResultI8 {
+        let max = i8::max_value() as u8;
+
+        if self > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as i8) }
+    }
+
+    fn to_i8(self) -> i8 {
+        match self.to_i8_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}

@@ -1,70 +1,69 @@
-/*use parse::error::ParseError;
-use parse::types::{
-    ParseResultI8,ParseResultI16,
+use parse::{
+    ToI8, ToI16,
+    ToU8,
+    ToBool
+};
+
+use parse::{
+    ParseResultI8, ParseResultI16,
     ParseResultU8
 };
 
-///Converts `0_u16` to `false` and all other numbers to `true`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::ushort;
-///
-/// let x = 1_u16;
-/// let y = 42_u16;
-/// let z = 0_u16;
-///
-/// assert_eq!(ushort::to_bool(x), true);
-/// assert_eq!(ushort::to_bool(y), true);
-/// assert_eq!(ushort::to_bool(z), false);
-/// ```
-pub fn to_bool(s:u16) -> bool {
-    if s == 0 { false }
-    else { true }
-}
+use ParseError;
 
-pub fn toi8(s:u16) -> ParseResultI8 {
-    let max = i8::max_value() as u16;
-
-    if s > max {
-        Err(ParseError::InvalidNumber(s.to_string()))
-    } else { Ok(s as i8) }
-}
-
-pub fn toi16(s:u16) -> ParseResultI16 {
-    let max = i16::max_value() as u16;
-
-    if s > max {
-        Err(ParseError::InvalidNumber(s.to_string()))
-    } else { Ok(s as i16) }
-}
-
-pub fn tou8(s:u16) -> ParseResultU8 {
-    let max = u8::max_value() as u16;
-
-    if s > max {
-        Err(ParseError::InvalidNumber(s.to_string()))
-    } else { Ok(s as u8) }
-}
-
-pub fn toi8p(s:u16) -> i8 {
-    match toi8(s) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToBool for u16 {
+    fn to_bool(self) -> bool {
+        if self == 0 { false } else { true }
     }
 }
 
-pub fn toi16p(s:u16) -> i16 {
-    match toi16(s) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToI8 for u16 {
+    fn to_i8_res(self) -> ParseResultI8 {
+        let max = i8::max_value() as u16;
+
+        if self > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as i8) }
+    }
+
+    fn to_i8(self) -> i8 {
+        match self.to_i8_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
 
-pub fn tou8p(s:u16) -> u8 {
-    match tou8(s) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToI16 for u16 {
+    fn to_i16_res(self) -> ParseResultI16 {
+        let max = i16::max_value() as u16;
+
+        if self > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as i16) }
+    }
+
+    fn to_i16(self) -> i16 {
+        match self.to_i16_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
-*/
+
+impl ToU8 for u16 {
+    fn to_u8_res(self) -> ParseResultU8 {
+        let max = u8::max_value() as u16;
+
+        if self > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as u8) }
+    }
+
+    fn to_u8(self) -> u8 {
+        match self.to_u8_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}
