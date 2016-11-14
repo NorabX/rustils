@@ -4,3 +4,4 @@ pub mod double;
 pub mod float;
 pub mod int;
 pub mod long;
+pub mod short;

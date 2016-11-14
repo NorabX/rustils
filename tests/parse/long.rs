@@ -24,11 +24,11 @@ fn parse_i64_to_i8_0() {
 
 #[test]
 #[should_panic(expected = "Invalid Number: -129")]
-fn parse_i64_to_i8_1() { (-129_i32).to_i8(); }
+fn parse_i64_to_i8_1() { (-129_i64).to_i8(); }
 
 #[test]
 #[should_panic(expected = "Invalid Number: 128")]
-fn parse_i64_to_i8_2() { (128_i32).to_i8(); }
+fn parse_i64_to_i8_2() { (128_i64).to_i8(); }
 
 
 #[test]
@@ -42,11 +42,11 @@ fn parse_i64_to_i16_0() {
 
 #[test]
 #[should_panic(expected = "Invalid Number: -32769")]
-fn parse_i64_to_i16_1() { (-32769_i32).to_i16(); }
+fn parse_i64_to_i16_1() { (-32769_i64).to_i16(); }
 
 #[test]
 #[should_panic(expected = "Invalid Number: 32768")]
-fn parse_i64_to_i16_2() { (32768_i32).to_i16(); }
+fn parse_i64_to_i16_2() { (32768_i64).to_i16(); }
 
 
 #[test]
@@ -78,11 +78,11 @@ fn parse_i64_to_u8_0() {
 
 #[test]
 #[should_panic(expected = "Invalid Number: -1")]
-fn parse_i64_to_u8_1() { (-1_i32).to_u8(); }
+fn parse_i64_to_u8_1() { (-1_i64).to_u8(); }
 
 #[test]
 #[should_panic(expected = "Invalid Number: 256")]
-fn parse_i64_to_u8_2() { (256_i32).to_u8(); }
+fn parse_i64_to_u8_2() { (256_i64).to_u8(); }
 
 
 #[test]
@@ -96,11 +96,11 @@ fn parse_i64_to_u16_0() {
 
 #[test]
 #[should_panic(expected = "Invalid Number: -1")]
-fn parse_i64_to_u16_1() { (-1_i32).to_u16(); }
+fn parse_i64_to_u16_1() { (-1_i64).to_u16(); }
 
 #[test]
 #[should_panic(expected = "Invalid Number: 65536")]
-fn parse_i64_to_u16_2() { (65536_i32).to_u16(); }
+fn parse_i64_to_u16_2() { (65536_i64).to_u16(); }
 
 
 #[test]
@@ -114,7 +114,11 @@ fn parse_i64_to_u32_0() {
 
 #[test]
 #[should_panic(expected = "Invalid Number: -1")]
-fn parse_i64_to_u32_1() { (-1_i32).to_u32(); }
+fn parse_i64_to_u32_1() { (-1_i64).to_u32(); }
+
+#[test]
+#[should_panic(expected = "Invalid Number: 4294967296")]
+fn parse_i64_to_u32_2() { (4294967296_i64).to_u16(); }
 
 
 #[test]
@@ -128,7 +132,7 @@ fn parse_i64_to_u64_0() {
 
 #[test]
 #[should_panic(expected = "Invalid Number: -1")]
-fn parse_i64_to_u64_1() { (-1_i32).to_u64(); }
+fn parse_i64_to_u64_1() { (-1_i64).to_u64(); }
 
 
 #[test]
@@ -142,4 +146,4 @@ fn parse_i64_to_usize_0() {
 
 #[test]
 #[should_panic(expected = "Invalid Number: -1")]
-fn parse_i64_to_usize_1() { (-1_i32).to_usize(); }
+fn parse_i64_to_usize_1() { (-1_i64).to_usize(); }

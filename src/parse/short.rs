@@ -1,94 +1,115 @@
-/*use parse::error::ParseError;
-use parse::types::{
-    ParseResultI8,
-    ParseResultU8,ParseResultU16,ParseResultU32,ParseResultU64,
+use parse::{
+    ToI8,
+    ToU8, ToU16, ToU32, ToU64,
+    ToUsize,
+    ToBool
 };
 
-///Converts `0_i16` to `false` and all other numbers to `true`.
-/// # Example
-///
-/// ```
-/// use rustils::parse::short;
-///
-/// let x = 1_i16;
-/// let y = 42_i16;
-/// let z = 0_i16;
-///
-/// assert_eq!(short::to_bool(x), true);
-/// assert_eq!(short::to_bool(y), true);
-/// assert_eq!(short::to_bool(z), false);
-/// ```
-pub fn to_bool(s:i16) -> bool {
-    if s == 0 { false }
-    else { true }
-}
+use parse::{
+    ParseResultI8,
+    ParseResultU8, ParseResultU16, ParseResultU32, ParseResultU64,
+    ParseResultUsize
+};
 
-pub fn toi8(s:i16) -> ParseResultI8 {
-    let min = i8::min_value() as i16;
-    let max = i8::max_value() as i16;
+use ParseError;
 
-    if s < min || s > max {
-        Err(ParseError::InvalidNumber(s.to_string()))
-    } else { Ok(s as i8) }
-}
-
-pub fn tou8(s:i16) -> ParseResultU8 {
-    let max = u8::max_value() as i16;
-
-    if s < 0 || s > max {
-        Err(ParseError::InvalidNumber(s.to_string()))
-    } else { Ok(s as u8) }
-}
-
-pub fn tou16(s:i16) -> ParseResultU16 {
-    if s < 0 {
-        Err(ParseError::InvalidNumber(s.to_string()))
-    } else { Ok(s as u16) }
-}
-
-pub fn tou32(s:i16) -> ParseResultU32 {
-    if s < 0 {
-        Err(ParseError::InvalidNumber(s.to_string()))
-    } else { Ok(s as u32) }
-}
-
-pub fn tou64(s:i16) -> ParseResultU64 {
-    if s < 0 {
-        Err(ParseError::InvalidNumber(s.to_string()))
-    } else { Ok(s as u64) }
-}
-
-pub fn toi8p(s:i16) -> i8 {
-    match toi8(s) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToBool for i16 {
+    fn to_bool(self) -> bool {
+        if self == 0 { false } else { true }
     }
 }
 
-pub fn tou8p(s:i16) -> u8 {
-    match tou8(s) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToI8 for i16 {
+    fn to_i8_res(self) -> ParseResultI8 {
+        let min = i8::min_value() as i16;
+        let max = i8::max_value() as i16;
+
+        if self < min || self > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as i8) }
+    }
+
+    fn to_i8(self) -> i8 {
+        match self.to_i8_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
 
-pub fn tou16p(s:i16) -> u16 {
-    match tou16(s) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToU8 for i16 {
+    fn to_u8_res(self) -> ParseResultU8 {
+        let max = u8::max_value() as i16;
+
+        if self < 0 || self > max {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as u8) }
+    }
+
+    fn to_u8(self) -> u8 {
+        match self.to_u8_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
 
-pub fn tou32p(s:i16) -> u32 {
-    match tou32(s) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToU16 for i16 {
+    fn to_u16_res(self) -> ParseResultU16 {
+        if self < 0 {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as u16) }
+    }
+
+    fn to_u16(self) -> u16 {
+        match self.to_u16_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
     }
 }
 
-pub fn tou64p(s:i16) -> u64 {
-    match tou64(s) {
-        Ok(i) => i,
-        Err(err) => panic!("{}",err)
+impl ToU32 for i16 {
+    fn to_u32_res(self) -> ParseResultU32 {
+        if self < 0 {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as u32) }
     }
-}*/
+
+    fn to_u32(self) -> u32 {
+        match self.to_u32_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}
+
+impl ToU64 for i16 {
+    fn to_u64_res(self) -> ParseResultU64 {
+        if self < 0 {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as u64) }
+    }
+
+    fn to_u64(self) -> u64 {
+        match self.to_u64_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}
+
+impl ToUsize for i16 {
+    fn to_usize_res(self) -> ParseResultUsize {
+        if self < 0 {
+            Err(ParseError::InvalidNumber(self.to_string()))
+        } else { Ok(self as usize) }
+    }
+
+    fn to_usize(self) -> usize {
+        match self.to_usize_res() {
+            Ok(i) => i,
+            Err(err) => panic!("{}",err)
+        }
+    }
+}
