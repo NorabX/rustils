@@ -5,3 +5,4 @@ pub mod float;
 pub mod int;
 pub mod long;
 pub mod short;
+pub mod string;

@@ -24,7 +24,8 @@ pub enum SortingAlgorithmn{
 
 #[derive(PartialEq)]
 pub enum ParseError {
-    InvalidNumber(String)
+    InvalidNumber(String),
+    InvalidString(String)
 }
 
 impl Error for ParseError{
@@ -35,7 +36,8 @@ impl Error for ParseError{
 impl Debug for ParseError {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         match self{
-            &ParseError::InvalidNumber(ref i) => write!(f, "Invalid Number: {}", i)
+            &ParseError::InvalidNumber(ref i) => write!(f, "Invalid Number: {}", i),
+            &ParseError::InvalidString(ref i) => write!(f, "Invalid String: {}", i)
         }
     }
 }
@@ -43,7 +45,8 @@ impl Debug for ParseError {
 impl Display for ParseError {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
         match self{
-            &ParseError::InvalidNumber(ref i) => write!(f, "Invalid Number: {}", i)
+            &ParseError::InvalidNumber(ref i) => write!(f, "Invalid Number: {}", i),
+            &ParseError::InvalidString(ref i) => write!(f, "Invalid String: {}", i)
         }
     }
 }
