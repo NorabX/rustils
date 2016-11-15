@@ -21,9 +21,9 @@ impl<T: Ord + Copy> ArrayUtils for [T] {
 
     fn shuffle(&mut self) {
         for _ in 0..self.len() {
-            let a = in_range(0,self.len()-1);
-            let b = in_range(0,self.len()-1);
-            self.swap(a,b);
+            let a = in_range(0, self.len()-1);
+            let b = in_range(0, self.len()-1);
+            self.swap(a, b);
         }
     }
 }
