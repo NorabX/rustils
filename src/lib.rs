@@ -3,15 +3,17 @@ extern crate regex;
 extern crate core;
 
 pub mod parse;
-pub mod array;
 pub mod boolean;
 pub mod random;
 pub mod sorting;
-pub mod string;
+
+#[doc(hidden)] pub mod array;
+#[doc(hidden)] pub mod string;
 
 use std::fmt;
 use std::fmt::{ Display, Formatter };
 use std::error::Error;
+use std::string::FromUtf8Error;
 
 pub enum RoundingMode { Trunc, Round, Ceil, Floor }
 
@@ -48,7 +50,12 @@ impl Display for ParseError {
 pub enum ArithmeticError { DivideByZero }
 
 impl Error for ArithmeticError {
-    fn description(&self) -> &'static str { "Invalid Number" }
+    fn description(&self) -> &'static str {
+        match self{
+            &ArithmeticError::DivideByZero => "DivideByZero"
+        }
+    }
+
     fn cause(&self) -> Option<&Error> { None }
 }
 
@@ -58,4 +65,37 @@ impl Display for ArithmeticError {
             &ArithmeticError::DivideByZero => write!(f, "DivideByZero")
         }
     }
+}
+
+pub trait ArrayUtils<T> {
+    fn swap(&mut self, a: usize, b: usize) -> bool;
+    fn shuffle(&mut self);
+    //fn is_same_len_as(&self, other: &[T]) -> bool;
+    //fn is_same_len_as_mut(&mut self, other: &mut [T]) -> bool;
+    fn index_of(&self, search: &T) -> usize;
+}
+
+pub trait StringUtils {
+    fn adv_contains_all_chars(&self, search: &[char])
+        -> (bool, Vec<usize>, Vec<char>);
+    fn adv_contains_all_strs(&self, search: &[&str])
+        -> (bool,Vec<usize>,Vec<String>);
+    fn adv_contains_any_char(&self, search: &[char]) -> (bool, usize, char);
+    fn adv_contains_any_str(&self, search: &[&str]) -> (bool, usize, String);
+    fn adv_contains_none_char(&self, search: &[char]) -> (bool, usize, char);
+    fn adv_contains_none_str(&self, search: &[&str]) -> (bool, usize, String);
+    fn adv_ends_with(&self, search: &str) -> (bool, String);
+    fn adv_starts_with(&self, search: &str) -> (bool, String);
+    fn contains_all_chars(&self, search: &[char]) -> bool;
+    fn contains_all_strs(&self, search: &[&str]) -> bool;
+    fn contains_any_char(&self, search: &[char]) -> bool;
+    fn contains_any_str(&self, search: &[&str]) -> bool;
+    fn contains_none_char(&self, search: &[char]) -> bool;
+    fn contains_none_str(&self, search: &[&str]) -> bool;
+    fn cmp_ignore_case(&self, cmp: &str) -> bool;
+    fn peek_opt(&self) -> Option<char>;
+    fn peek(&self) -> char;
+    fn reverse_mut(&mut self);
+    fn reverse_str(&self) -> &'static str;
+    fn reverse(&self) -> String;
 }

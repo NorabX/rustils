@@ -1,16 +1,43 @@
+#[doc(hidden)]
 pub mod boolean;
+
+#[doc(hidden)]
 pub mod string;
+
+#[doc(hidden)]
 pub mod double;
+
+#[doc(hidden)]
 pub mod float;
+
+#[doc(hidden)]
 pub mod ulong;
+
+#[doc(hidden)]
 pub mod usize;
+
+#[doc(hidden)]
 pub mod uint;
+
+#[doc(hidden)]
 pub mod ushort;
+
+#[doc(hidden)]
 pub mod ubyte;
+
+#[doc(hidden)]
 pub mod long;
+
+#[doc(hidden)]
 pub mod int;
+
+#[doc(hidden)]
 pub mod isize;
+
+#[doc(hidden)]
 pub mod short;
+
+#[doc(hidden)]
 pub mod byte;
 
 use { RoundingMode, ParseError };
