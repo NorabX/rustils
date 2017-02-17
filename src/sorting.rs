@@ -1,20 +1,21 @@
+
 use SortingAlgorithmn;
 use std::cmp::Ordering;
 
 pub trait Sort {
-    fn adv_sort(&mut self, algo: SortingAlgorithmn);
+    fn adv_sort_mut(&mut self, algo: SortingAlgorithmn);
 }
 
 impl<T: Ord + Clone> Sort for [T]{
-    fn adv_sort(&mut self, algo: SortingAlgorithmn){
+    fn adv_sort_mut(&mut self, algo: SortingAlgorithmn){
         match algo {
-            SortingAlgorithmn::Bubble => bubble_sort(self),
-            SortingAlgorithmn::Quick => quick_sort(self),
+            SortingAlgorithmn::Bubble => bubble_sort_mut(self),
+            SortingAlgorithmn::Quick => quick_sort_mut(self),
         }
     }
 }
 
-pub fn bubble_sort<T: Ord + Clone>(list: &mut [T]){
+pub fn bubble_sort_mut<T: Ord + Clone>(list: &mut [T]){
     for i in 0..list.len() - 1 {
         for j in 0..list.len() - i - 1 {
             if list[j] > list[j + 1] {
@@ -24,7 +25,7 @@ pub fn bubble_sort<T: Ord + Clone>(list: &mut [T]){
     }
 }
 
-pub fn quick_sort<T: Ord + Clone>(list: &mut [T]){
+pub fn quick_sort_mut<T: Ord + Clone>(list: &mut [T]){
     if 1 < list.len() {
         let (mut p, mut x) = (0, list.len()-1);
         for _ in 0..list.len() - 1 {
@@ -37,39 +38,39 @@ pub fn quick_sort<T: Ord + Clone>(list: &mut [T]){
             }
         }
 
-        quick_sort(&mut list[..p]);
-        quick_sort(&mut list[p + 1..]);
+        quick_sort_mut(&mut list[..p]);
+        quick_sort_mut(&mut list[p + 1..]);
     }
 }
 
 pub trait SortBy<T: PartialOrd, F: FnMut(&T, &T) -> Ordering> {
-    fn adv_sort_by(&mut self, compare: &mut F, algo: SortingAlgorithmn);
+    fn adv_sort_by_mut(&mut self, compare: &mut F, algo: SortingAlgorithmn);
 }
 
 impl<T: PartialOrd, F: FnMut(&T, &T) -> Ordering> SortBy<T,F> for [T] {
-    fn adv_sort_by(&mut self, compare: &mut F, algo: SortingAlgorithmn){
+    fn adv_sort_by_mut(&mut self, compare: &mut F, algo: SortingAlgorithmn){
         match algo{
-            SortingAlgorithmn::Bubble => bubble_sort_by(self,compare),
-            SortingAlgorithmn::Quick => quick_sort_by(self,compare),
+            SortingAlgorithmn::Bubble => bubble_sort_by_mut(compare, self),
+            SortingAlgorithmn::Quick => quick_sort_by_mut(compare, self),
         }
     }
 }
 
-pub fn bubble_sort_by<T, F: FnMut(&T,&T) -> Ordering>(list: &mut [T], compare: &mut F){
+fn bubble_sort_by_mut<T, F: FnMut(&T,&T) -> Ordering>(compare: &mut F, list: &mut [T]){
     for i in 0..list.len() - 1 {
         for j in 0..list.len() - i - 1 {
-            if compare(&list[j],&list[j + 1]) == Ordering::Greater {
+            if compare(&list[j], &list[j + 1]) == Ordering::Greater {
                 list.swap(j, j + 1);
             }
         }
     }
 }
 
-pub fn quick_sort_by<T, F: FnMut(&T,&T) -> Ordering>(list: &mut [T], compare: &mut F){
+fn quick_sort_by_mut<T, F: FnMut(&T,&T) -> Ordering>(compare: &mut F, list: &mut [T]){
     if 1 < list.len() {
         let (mut p, mut x) = (0, list.len()-1);
         for _ in 0..list.len() - 1 {
-            if compare(&list[p],&list[p + 1]) == Ordering::Less {
+            if compare(&list[p], &list[p + 1]) == Ordering::Less {
                 list.swap(p + 1, x);
                 x -= 1;
             }else{
@@ -78,7 +79,7 @@ pub fn quick_sort_by<T, F: FnMut(&T,&T) -> Ordering>(list: &mut [T], compare: &m
             }
         }
 
-        quick_sort_by(&mut list[..p],compare);
-        quick_sort_by(&mut list[p + 1..],compare);
+        quick_sort_by_mut(compare, &mut list[..p]);
+        quick_sort_by_mut(compare, &mut list[p + 1..]);
     }
 }
