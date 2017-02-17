@@ -67,10 +67,9 @@ impl Display for ArithmeticError {
 }
 
 pub trait ArrayUtils<T> {
-    fn swap(&mut self, a: usize, b: usize) -> bool;
+    fn swaping(&mut self, a: usize, b: usize) -> bool;
     fn shuffle(&mut self);
-    //fn is_same_len_as(&self, other: &[T]) -> bool;
-    //fn is_same_len_as_mut(&mut self, other: &mut [T]) -> bool;
+    fn shuffle_seed(&mut self, seed: &[usize]);
     fn index_of(&self, search: &T) -> usize;
 }
 

@@ -1,9 +1,11 @@
-use random::in_range;
+extern crate rand;
+
 use ArrayUtils;
 use std::usize::MAX;
+use rand::{thread_rng, Rng, SeedableRng, StdRng};
 
 impl<T: Ord + Copy> ArrayUtils<T> for [T] {
-    fn swap(&mut self, a: usize, b: usize) -> bool {
+    fn swaping(&mut self, a: usize, b: usize) -> bool {
         if a == b { return true }
         else{
             if a > self.len()-1 || b > self.len()-1 { return false }
@@ -17,21 +19,15 @@ impl<T: Ord + Copy> ArrayUtils<T> for [T] {
     }
 
     fn shuffle(&mut self) {
-        for _ in 0..self.len() {
-            let a = in_range(0, self.len()-1);
-            let b = in_range(0, self.len()-1);
-            self.swap(a, b);
-        }
-    }
-/*
-    fn is_same_len_as(&self, other: &[T]) -> bool {
-        self.len() == other.len()
+        let mut rng = thread_rng();
+        rng.shuffle(self);
     }
 
-    fn is_same_len_as_mut(&mut self, other: &mut [T]) -> bool {
-        self.len() == other.len()
+    fn shuffle_seed(&mut self, seed: &[usize]){
+        let mut rng_seed: StdRng = SeedableRng::from_seed(seed);
+        rng_seed.shuffle(self);
     }
-*/
+
     fn index_of(&self, search: &T) -> usize {
         for i in 0..self.len() {
             if &self[i] == search {
