@@ -13,7 +13,6 @@ pub mod sorting;
 use std::fmt;
 use std::fmt::{ Display, Formatter };
 use std::error::Error;
-use std::string::FromUtf8Error;
 
 pub enum RoundingMode { Trunc, Round, Ceil, Floor }
 
@@ -93,8 +92,8 @@ pub trait StringUtils {
     fn contains_none_char(&self, search: &[char]) -> bool;
     fn contains_none_str(&self, search: &[&str]) -> bool;
     fn cmp_ignore_case(&self, cmp: &str) -> bool;
-    fn peek_opt(&self) -> Option<char>;
     fn peek(&self) -> char;
+    fn peek_opt(&self) -> Option<char>;
     fn reverse_mut(&mut self);
     fn reverse_str(&self) -> &'static str;
     fn reverse(&self) -> String;
