@@ -10,3 +10,6 @@
 ![project status](https://img.shields.io/badge/status-alpha-red.svg)
 &nbsp;
 [![license](https://img.shields.io/crates/l/rustils.svg)](https://github.com/NorabX/rustils/blob/master/LICENSE.md)
+
+## Documentation
+Click [here](hhttps://docs.rs/rustils/)

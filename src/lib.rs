@@ -1,3 +1,22 @@
+/*!
+
+# Usage
+
+This crate is [on crates.io](https://crates.io/crates/rustils/) and can be
+used by adding `rustils` to your dependencies in your project's `Cargo.toml`.
+
+```toml
+[dependencies]
+rustils = "0.0.8"
+```
+
+and this to your crate root:
+
+```rust
+extern crate rustils;
+```
+*/
+
 extern crate rand;
 extern crate regex;
 extern crate core;
