@@ -12,4 +12,4 @@
 [![license](https://img.shields.io/crates/l/rustils.svg)](https://github.com/NorabX/rustils/blob/master/LICENSE.md)
 
 ## Documentation
-Click [here](hhttps://docs.rs/rustils/)
+Click [here](https://docs.rs/rustils/)
