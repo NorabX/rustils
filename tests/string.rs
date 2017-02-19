@@ -3,13 +3,13 @@ use rustils::StringUtils;
 
 #[test]
 pub fn test_adv_contains_all_chars_string() {
-    let chars1 = ['你','l'];
+    let chars1 = ['好','l'];
     let chars2 = ['a','？'];
     let chars3 = ['l',':'];
     let text = "Hello, World! 你好吗？".to_string();
 
     assert_eq!(
-        (true, vec!(14,2), vec!('你','l')),
+        (true, vec!(17,2), vec!('好','l')),
         text.adv_contains_all_chars(&chars1)
     );
 
@@ -26,13 +26,13 @@ pub fn test_adv_contains_all_chars_string() {
 
 #[test]
 pub fn test_adv_contains_all_chars_str() {
-    let chars1 = ['你','l'];
+    let chars1 = ['好','l'];
     let chars2 = ['a','？'];
     let chars3 = ['l',':'];
     let text = "Hello, World! 你好吗？";
 
     assert_eq!(
-        (true, vec!(14,2), vec!('你','l')),
+        (true, vec!(17,2), vec!('好','l')),
         text.adv_contains_all_chars(&chars1)
     );
 
@@ -510,6 +510,96 @@ pub fn test_cmp_ignore_case_str(){
 }
 
 #[test]
+pub fn test_differnce_string(){
+    let text1 = "Hello, World! 你好吗？".to_string();
+    let text2 = "Hallo, Welt ! 你好嗎？".to_string();
+    let text3 = "Hello!".to_string();
+
+    assert_eq!(
+        vec!(1, 8, 9, 10, 11, 16),
+        text1.difference(&text2)
+    );
+
+    assert_eq!(
+        vec!(5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17),
+        text1.difference(&text3)
+    );
+
+    assert_eq!(
+        vec!(5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17),
+        text3.difference(&text1)
+    );
+
+    assert!(text1.difference(&text2) == text2.difference(&text1));
+}
+
+#[test]
+pub fn test_differnce_str(){
+    let text1 = "Hello, World! 你好吗？";
+    let text2 = "Hallo, Welt ! 你好嗎？";
+    let text3 = "Hello!";
+
+    assert_eq!(
+        vec!(1, 8, 9, 10, 11, 16),
+        text1.difference(text2)
+    );
+
+    assert_eq!(
+        vec!(5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17),
+        text1.difference(text3)
+    );
+
+    assert_eq!(
+        vec!(5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17),
+        text3.difference(text1)
+    );
+
+    assert!(text1.difference(text2) == text2.difference(text1));
+}
+
+#[test]
+pub fn test_find_char_string_0(){
+    let text = "Hello, World! 你好吗？".to_string();
+    assert_eq!(15, text.find_char('好'));
+}
+
+#[test]
+#[should_panic(expected = "string doesn't contain #")]
+pub fn test_find_char_string_1(){
+    let text = "Hello, World! 你好吗？".to_string();
+    text.find_char('#');
+}
+
+#[test]
+pub fn test_find_char_opt_string(){
+    let text = "Hello, World! 你好吗？".to_string();
+
+    assert_eq!(Some(15), text.find_char_opt('好'));
+    assert_eq!(None, text.find_char_opt('#'));
+}
+
+#[test]
+pub fn test_find_char_str_0(){
+    let text = "Hello, World! 你好吗？";
+    assert_eq!(15, text.find_char('好'));
+}
+
+#[test]
+#[should_panic(expected = "string doesn't contain #")]
+pub fn test_find_char_str_1(){
+    let text = "Hello, World! 你好吗？";
+    text.find_char('#');
+}
+
+#[test]
+pub fn test_find_char_opt_str(){
+    let text = "Hello, World! 你好吗？";
+
+    assert_eq!(Some(15), text.find_char_opt('好'));
+    assert_eq!(None, text.find_char_opt('#'));
+}
+
+#[test]
 pub fn test_peek_string_0(){
     let text = "Hello, World! 你好吗？".to_string();
     assert_eq!('？', text.peek());
@@ -549,6 +639,164 @@ pub fn test_peek_opt_str(){
 
     assert_eq!(Some('？'), text.peek_opt());
     assert_eq!(None, empty.peek_opt());
+}
+
+#[test]
+pub fn test_remove_all_regex_string_0(){
+    let text = "Hello, World! 你好吗？".to_string();
+    let regex = r"[好]+|[aeiuo]+";
+
+    assert_eq!(
+        "Hll, Wrld! 你吗？".to_string(),
+        text.remove_all_regex(regex)
+    );
+}
+
+#[test]
+#[should_panic]
+pub fn test_remove_all_regex_string_1(){
+    let text = "Hello, World! 你好吗？".to_string();
+    let regex = "Hello||World";
+
+    text.remove_all_regex(regex);
+}
+
+#[test]
+pub fn test_remove_all_regex_str_0(){
+    let text = "Hello, World! 你好吗？";
+    let regex = r"[好]+|[aeiuo]+";
+
+    assert_eq!(
+        "Hll, Wrld! 你吗？",
+        text.remove_all_regex(regex)
+    );
+}
+
+#[test]
+#[should_panic]
+pub fn test_remove_all_regex_str_1(){
+    let text = "Hello, World! 你好吗？";
+    let regex = "Hello||World";
+
+    text.remove_all_regex(regex);
+}
+
+#[test]
+pub fn test_remove_all_regex_mut_string_0(){
+    let text = &mut "Hello, World! 你好吗？".to_string();
+    let regex = r"[好]+|[aeiuo]+";
+
+    text.remove_all_regex_mut(regex);
+
+    assert_eq!(&mut "Hll, Wrld! 你吗？".to_string(), text);
+}
+
+#[test]
+#[should_panic]
+pub fn test_remove_all_regex_mut_string_1(){
+    let text = &mut "Hello, World! 你好吗？".to_string();
+    let regex = "Hello||World";
+
+    text.remove_all_regex_mut(regex);
+}
+
+#[test]
+#[should_panic(expected = "not yet implemented")]
+pub fn test_remove_all_regex_mut_str_0(){
+    let text = &mut "Hello, World! 你好吗？";
+    let regex = r"[好]+|[aeiuo]+";
+
+    text.remove_all_regex_mut(regex);
+
+    assert_eq!(&mut "Hll, Wrld! 你吗？", text);
+}
+
+#[test]
+#[should_panic(expected = "not yet implemented")]
+pub fn test_remove_all_regex_mut_str_1(){
+    let text = &mut "Hello, World! 你好吗？";
+    let regex = "Hello||World";
+
+    text.remove_all_regex_mut(regex);
+}
+
+#[test]
+pub fn test_remove_regex_string_0(){
+    let text = "Hello, World! 你好吗？".to_string();
+    let regex = r"[好]+|[aeiuo]+";
+
+    assert_eq!(
+        "Hllo, World! 你好吗？".to_string(),
+        text.remove_regex(regex)
+    );
+}
+
+#[test]
+#[should_panic]
+pub fn test_remove_regex_string_1(){
+    let text = "Hello, World! 你好吗？".to_string();
+    let regex = "Hello||World";
+
+    text.remove_regex(regex);
+}
+
+#[test]
+pub fn test_remove_regex_str_0(){
+    let text = "Hello, World! 你好吗？";
+    let regex = r"[好]+|[aeiuo]+";
+
+    assert_eq!(
+        "Hllo, World! 你好吗？",
+        text.remove_regex(regex)
+    );
+}
+
+#[test]
+#[should_panic]
+pub fn test_remove_regex_str_1(){
+    let text = "Hello, World! 你好吗？";
+    let regex = "Hello||World";
+
+    text.remove_regex(regex);
+}
+
+#[test]
+pub fn test_remove_regex_mut_string_0(){
+    let text = &mut "Hello, World! 你好吗？".to_string();
+    let regex = r"[好]+|[aeiuo]+";
+
+    text.remove_regex_mut(regex);
+
+    assert_eq!(&mut "Hllo, World! 你好吗？".to_string(), text);
+}
+
+#[test]
+#[should_panic]
+pub fn test_remove_regex_mut_string_1(){
+    let text = &mut "Hello, World! 你好吗？".to_string();
+    let regex = "Hello||World";
+
+    text.remove_regex_mut(regex);
+}
+
+#[test]
+#[should_panic(expected = "not yet implemented")]
+pub fn test_remove_regex_mut_str_0(){
+    let text = &mut "Hello, World! 你好吗？";
+    let regex = r"[好]+|[aeiuo]+";
+
+    text.remove_regex_mut(regex);
+
+    assert_eq!(&mut "Hllo, World! 你好吗？", text);
+}
+
+#[test]
+#[should_panic(expected = "not yet implemented")]
+pub fn test_remove_regex_mut_str_1(){
+    let text = &mut "Hello, World! 你好吗？";
+    let regex = "Hello||World";
+
+    text.remove_regex_mut(regex);
 }
 
 #[test]

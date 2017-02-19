@@ -1,8 +1,10 @@
 use std::iter::Iterator;
 use parse::ToStr;
 use StringUtils;
+use regex::Regex;
 
 impl StringUtils for String {
+
     fn adv_contains_all_chars(&self, search: &[char])
         -> (bool, Vec<usize>, Vec<char>) {
 
@@ -136,6 +138,46 @@ impl StringUtils for String {
         self.to_lowercase() == String::from(cmp).to_lowercase()
     }
 
+    fn difference(&self, diff: &str) -> Vec<usize>{
+        let mut c1 = (*self).chars();
+        let mut c2 = diff.chars();
+        let mut vec = Vec::<usize>::new();
+        let mut i: usize = 0;
+
+        loop {
+            let n1 = c1.next();
+            let n2 = c2.next();
+
+            if n1 != None || n2 != None {
+                if n1 != n2 { vec.push(i); }
+            } else { break; }
+
+            i = i + 1;
+        }
+
+        vec
+    }
+
+    fn find_char(&self, search: char) -> usize {
+        match self.find_char_opt(search) {
+            Some(n) => n,
+            None => panic!(format!("string doesn't contain {}", search))
+        }
+    }
+
+    fn find_char_opt(&self, search: char) -> Option<usize> {
+        let mut c = (*self).chars();
+        let mut i: usize = 0;
+
+        loop {
+            let n = c.next();
+            if n == None { return None; }
+            if n == Some(search) { return Some(i); }
+
+            i = i + 1;
+        }
+    }
+
     fn peek(&self) -> char{
         match self.peek_opt() {
             Some(n) => n,
@@ -145,6 +187,63 @@ impl StringUtils for String {
 
     fn peek_opt(&self) -> Option<char> {
         self.chars().last()
+    }
+
+    fn remove_all_regex(&self, regex: &str) -> String {
+        let mut target = self.to_string();
+
+        match Regex::new(regex) {
+            Ok(r) => {
+                let mut i = 0;
+                for mat in r.find_iter(&self){
+                    let j = mat.0 - i;
+                    let mut k = 0;
+
+                    while k < mat.1 - mat.0{
+                        let n = target.remove(j).len_utf8();
+                        k = k + n;
+                        i = i + n;
+                    }
+                }
+            },
+            Err(err) => panic!("{}", err)
+        }
+
+        target
+    }
+
+    fn remove_all_regex_mut(&mut self, regex: &str){
+        let temp = self.remove_all_regex(regex);
+        self.clear();
+        self.push_str(&temp);
+    }
+
+    fn remove_regex(&self, regex: &str) -> String{
+        let mut target = self.to_string();
+
+        match Regex::new(regex) {
+            Ok(r) => {
+                let mat = r.find(&self).unwrap();
+
+                let j = mat.0;
+                let mut k = 0;
+
+                while k < mat.1 - mat.0{
+                    let n = target.remove(j).len_utf8();
+                    k = k + n;
+                }
+
+            },
+            Err(err) => panic!("{}", err)
+        }
+
+        target
+    }
+
+    fn remove_regex_mut(&mut self, regex: &str){
+        let temp = self.remove_regex(regex);
+        self.clear();
+        self.push_str(&temp)
     }
 
     fn reverse(&self) -> String {
@@ -228,12 +327,40 @@ impl StringUtils for &'static str {
         self.to_string().cmp_ignore_case(cmp)
     }
 
+    fn difference(&self, diff: &str) -> Vec<usize>{
+        self.to_string().difference(diff)
+    }
+
+    fn find_char(&self, search: char) -> usize {
+        self.to_string().find_char(search)
+    }
+
+    fn find_char_opt(&self, search: char) -> Option<usize> {
+        self.to_string().find_char_opt(search)
+    }
+
     fn peek(&self) -> char {
         self.to_string().peek()
     }
 
     fn peek_opt(&self) -> Option<char> {
         self.to_string().peek_opt()
+    }
+
+    fn remove_all_regex(&self, regex: &str) -> String {
+        self.to_string().remove_all_regex(regex)
+    }
+
+    fn remove_all_regex_mut(&mut self, regex: &str){
+        unimplemented!()
+    }
+
+    fn remove_regex(&self, regex: &str) -> String{
+        self.to_string().remove_regex(regex)
+    }
+
+    fn remove_regex_mut(&mut self, regex: &str){
+        unimplemented!()
     }
 
     fn reverse(&self) -> String {

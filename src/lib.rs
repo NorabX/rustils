@@ -91,9 +91,16 @@ pub trait StringUtils {
     fn contains_none_char(&self, search: &[char]) -> bool;
     fn contains_none_str(&self, search: &[&str]) -> bool;
     fn cmp_ignore_case(&self, cmp: &str) -> bool;
+    fn difference(&self, diff: &str) -> Vec<usize>;
+    fn find_char(&self, search: char) -> usize;
+    fn find_char_opt(&self, search: char) -> Option<usize>;
     fn peek(&self) -> char;
     fn peek_opt(&self) -> Option<char>;
+    fn remove_regex(&self, regex: &str) -> String;
+    fn remove_regex_mut(&mut self, regex: &str);
+    fn remove_all_regex(&self, regex: &str) -> String;
+    fn remove_all_regex_mut(&mut self, regex: &str);
+    fn reverse(&self) -> String;
     fn reverse_mut(&mut self);
     fn reverse_str(&self) -> &'static str;
-    fn reverse(&self) -> String;
 }
