@@ -2,6 +2,9 @@ use std::iter::Iterator;
 use parse::ToStr;
 use StringUtils;
 use regex::Regex;
+use CharProp;
+use has_char_property;
+use is_char_property;
 
 impl StringUtils for String {
 
@@ -99,232 +102,52 @@ impl StringUtils for String {
         }
     }
 
-    fn adv_has_alpha(&self) -> (bool, Vec<bool>){
-        let mut b = true;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_alphabetic();
-                vec.push(temp);
-
-                if !b { b |= temp; }
-            }
-        }
-
-        (b, vec)
+    fn adv_has_alpha(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, &CharProp::Alpha)
     }
 
     fn adv_has_alphanumeric(&self) -> (bool, Vec<bool>){
-        let mut b = true;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_alphanumeric();
-                vec.push(temp);
-
-                if !b { b |= temp; }
-            }
-        }
-
-        (b, vec)
+        has_char_property(self, &CharProp::AlphaNumeric)
     }
 
     fn adv_has_lowercase(&self) -> (bool, Vec<bool>){
-        let mut b = false;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_lowercase();
-                vec.push(temp);
-
-                if !b { b |= temp; }
-            }
-        }
-
-        (b, vec)
+        has_char_property(self, &CharProp::Lower)
     }
 
     fn adv_has_numeric(&self) -> (bool, Vec<bool>){
-        let mut b = false;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_numeric();
-                vec.push(temp);
-
-                if !b { b |= temp; }
-            }
-        }
-
-        (b, vec)
+        has_char_property(self, &CharProp::Numeric)
     }
 
     fn adv_has_uppercase(&self) -> (bool, Vec<bool>){
-        let mut b = false;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_uppercase();
-                vec.push(temp);
-
-                if !b { b |= temp; }
-            }
-        }
-
-        (b, vec)
+        has_char_property(self, &CharProp::Upper)
     }
 
     fn adv_has_whitespace(&self) -> (bool, Vec<bool>){
-        let mut b = false;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_whitespace();
-                vec.push(temp);
-
-                if !b { b |= temp; }
-            }
-        }
-
-        (b, vec)
+        has_char_property(self, &CharProp::Whitespace)
     }
 
     fn adv_is_alpha(&self) -> (bool, Vec<bool>){
-        let mut b = true;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_alphabetic();
-                vec.push(temp);
-
-                if b { b &= temp; }
-            }
-        }
-
-        (b, vec)
+        is_char_property(self, &CharProp::Alpha)
     }
 
     fn adv_is_alphanumeric(&self) -> (bool, Vec<bool>){
-        let mut b = true;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_alphanumeric();
-                vec.push(temp);
-
-                if b { b &= temp; }
-            }
-        }
-
-        (b, vec)
+        is_char_property(self, &CharProp::AlphaNumeric)
     }
 
     fn adv_is_numeric(&self) -> (bool, Vec<bool>) {
-        let mut b = true;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_numeric();
-                vec.push(temp);
-
-                if b { b &= temp; }
-            }
-        }
-
-        (b, vec)
+        is_char_property(self, &CharProp::Numeric)
     }
 
     fn adv_is_lowercase(&self) -> (bool, Vec<bool>) {
-        let mut b = true;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_numeric();
-                vec.push(temp);
-
-                if b { b &= temp; }
-            }
-        }
-
-        (b, vec)
+        is_char_property(self, &CharProp::Lower)
     }
 
     fn adv_is_uppercase(&self) -> (bool, Vec<bool>) {
-        let mut b = true;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_uppercase();
-                vec.push(temp);
-
-                if b { b &= temp; }
-            }
-        }
-
-        (b, vec)
+        is_char_property(self, &CharProp::Upper)
     }
 
     fn adv_is_whitespace(&self) -> (bool, Vec<bool>) {
-        let mut b = true;
-        let mut c = (*self).chars();
-        let mut vec = Vec::<bool>::new();
-
-        loop {
-            let n = c.next();
-            if n == None { break; }
-            else {
-                let temp = n.unwrap().is_whitespace();
-                vec.push(temp);
-
-                if b { b &= temp; }
-            }
-        }
-
-        (b, vec)
+        is_char_property(self, &CharProp::Whitespace)
     }
 
     fn adv_remove_all_regex(&self, regex: &str) -> (bool, Vec<(usize, usize)>, String) {

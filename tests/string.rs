@@ -346,18 +346,17 @@ pub fn test_remove_all_regex_mut_string_0(){
     let text = &mut "Hello, World! 你好吗？".to_string();
     let regex = r"[好]+|[aeiuo]+";
 
-    text.remove_all_regex_mut(regex);
-
+    assert_eq!(true, text.remove_all_regex_mut(regex));
     assert_eq!(&mut "Hll, Wrld! 你吗？".to_string(), text);
 }
 
 #[test]
-#[should_panic]
 pub fn test_remove_all_regex_mut_string_1(){
     let text = &mut "Hello, World! 你好吗？".to_string();
     let regex = "Hello||World";
 
-    text.remove_all_regex_mut(regex);
+    assert_eq!(false, text.remove_all_regex_mut(regex));
+    assert_eq!(&mut "Hello, World! 你好吗？".to_string(), text);
 }
 
 #[test]
@@ -385,18 +384,17 @@ pub fn test_remove_regex_mut_string_0(){
     let text = &mut "Hello, World! 你好吗？".to_string();
     let regex = r"[好]+|[aeiuo]+";
 
-    text.remove_regex_mut(regex);
-
+    assert_eq!(true, text.remove_regex_mut(regex));
     assert_eq!(&mut "Hllo, World! 你好吗？".to_string(), text);
 }
 
 #[test]
-#[should_panic]
 pub fn test_remove_regex_mut_string_1(){
     let text = &mut "Hello, World! 你好吗？".to_string();
     let regex = "Hello||World";
 
-    text.remove_regex_mut(regex);
+    assert_eq!(false, text.remove_regex_mut(regex));
+    assert_eq!(&mut "Hello, World! 你好吗？".to_string(), text);
 }
 
 #[test]

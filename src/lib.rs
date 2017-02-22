@@ -189,3 +189,47 @@ pub trait StringUtils {
     fn reverse_mut(&mut self);
     fn reverse_str(&self) -> &'static str;
 }
+
+pub enum CharProp { Alpha, AlphaNumeric, AlphaNumericSpace, AlphaSpace, Lower, Numeric, Upper, Whitespace }
+pub enum Logic { And, Or }
+
+pub fn char_property(s: &str, prop: &CharProp, logic: &Logic) -> (bool, Vec<bool>) {
+    let mut b = true;
+    let mut c = (*s).chars();
+    let mut vec = Vec::<bool>::new();
+
+    loop {
+        let n = c.next();
+        if n == None { break; }
+        else {
+            let nu = n.unwrap();
+            let temp = match prop {
+                Alpha => nu.is_alphabetic(),
+                AlphaNumeric => nu.is_alphanumeric(),
+                AlphaNumericSpace => nu.is_alphanumeric() || nu.is_whitespace(),
+                AlphaSpace => nu.is_alphabetic() || nu.is_whitespace(),
+                Lower => nu.is_lowercase(),
+                Numeric => nu.is_numeric(),
+                Upper => nu.is_uppercase(),
+                Whitespace => nu.is_whitespace()
+            };
+
+            match logic {
+                And => if !b { b &= temp; },
+                Or => if !b { b |= temp; }
+            }
+
+            vec.push(temp);
+        }
+    }
+
+    (b, vec)
+}
+
+pub fn has_char_property(s: &str, prop: &CharProp) -> (bool, Vec<bool>){
+    char_property(s, prop, &Logic::Or)
+}
+
+pub fn is_char_property(s: &str, prop: &CharProp) -> (bool, Vec<bool>) {
+    char_property(s, prop, &Logic::And)
+}

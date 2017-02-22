@@ -17,7 +17,7 @@ use parse::{
 
 use ParseError;
 use RoundingMode;
-use RoundingMode::{Trunc,Ceil,Floor,Round};
+use RoundingMode:: { Trunc, Ceil, Floor, Round };
 
 impl ToBool for f64 {
     fn to_bool(self) -> bool {
