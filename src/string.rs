@@ -103,51 +103,60 @@ impl StringUtils for String {
     }
 
     fn adv_has_alpha(&self) -> (bool, Vec<bool>) {
-        has_char_property(self, &CharProp::Alpha)
+        has_char_property(self, CharProp::Alpha)
     }
 
-    fn adv_has_alphanumeric(&self) -> (bool, Vec<bool>){
-        has_char_property(self, &CharProp::AlphaNumeric)
+    fn adv_has_alphanumeric(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, CharProp::AlphaNumeric)
     }
 
-    fn adv_has_lowercase(&self) -> (bool, Vec<bool>){
-        has_char_property(self, &CharProp::Lower)
+    fn adv_has_alphanumeric_space(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, CharProp::AlphaNumericSpace)
     }
 
-    fn adv_has_numeric(&self) -> (bool, Vec<bool>){
-        has_char_property(self, &CharProp::Numeric)
+    fn adv_has_alpha_space(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, CharProp::AlphaSpace)
     }
 
-    fn adv_has_uppercase(&self) -> (bool, Vec<bool>){
-        has_char_property(self, &CharProp::Upper)
+
+    fn adv_has_lowercase(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, CharProp::Lower)
     }
 
-    fn adv_has_whitespace(&self) -> (bool, Vec<bool>){
-        has_char_property(self, &CharProp::Whitespace)
+    fn adv_has_numeric(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, CharProp::Numeric)
     }
 
-    fn adv_is_alpha(&self) -> (bool, Vec<bool>){
-        is_char_property(self, &CharProp::Alpha)
+    fn adv_has_uppercase(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, CharProp::Upper)
     }
 
-    fn adv_is_alphanumeric(&self) -> (bool, Vec<bool>){
-        is_char_property(self, &CharProp::AlphaNumeric)
+    fn adv_has_whitespace(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, CharProp::Whitespace)
+    }
+
+    fn adv_is_alpha(&self) -> (bool, Vec<bool>) {
+        is_char_property(self, CharProp::Alpha)
+    }
+
+    fn adv_is_alphanumeric(&self) -> (bool, Vec<bool>) {
+        is_char_property(self, CharProp::AlphaNumeric)
     }
 
     fn adv_is_numeric(&self) -> (bool, Vec<bool>) {
-        is_char_property(self, &CharProp::Numeric)
+        is_char_property(self, CharProp::Numeric)
     }
 
     fn adv_is_lowercase(&self) -> (bool, Vec<bool>) {
-        is_char_property(self, &CharProp::Lower)
+        is_char_property(self, CharProp::Lower)
     }
 
     fn adv_is_uppercase(&self) -> (bool, Vec<bool>) {
-        is_char_property(self, &CharProp::Upper)
+        is_char_property(self, CharProp::Upper)
     }
 
     fn adv_is_whitespace(&self) -> (bool, Vec<bool>) {
-        is_char_property(self, &CharProp::Whitespace)
+        is_char_property(self, CharProp::Whitespace)
     }
 
     fn adv_remove_all_regex(&self, regex: &str) -> (bool, Vec<(usize, usize)>, String) {

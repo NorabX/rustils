@@ -143,6 +143,8 @@ pub trait StringUtils {
     fn adv_ends_with(&self, search: &str) -> (bool, String);
     fn adv_has_alpha(&self) -> (bool, Vec<bool>);
     fn adv_has_alphanumeric(&self) -> (bool, Vec<bool>);
+    fn adv_has_alphanumeric_space(&self) -> (bool, Vec<bool>);
+    fn adv_has_alpha_space(&self) -> (bool, Vec<bool>);
     fn adv_has_lowercase(&self) -> (bool, Vec<bool>);
     fn adv_has_numeric(&self) -> (bool, Vec<bool>);
     fn adv_has_uppercase(&self) -> (bool, Vec<bool>);
@@ -190,11 +192,12 @@ pub trait StringUtils {
     fn reverse_str(&self) -> &'static str;
 }
 
-pub enum CharProp { Alpha, AlphaNumeric, AlphaNumericSpace, AlphaSpace, Lower, Numeric, Upper, Whitespace }
-pub enum Logic { And, Or }
+#[derive(Debug)]
+enum CharProp { Alpha, AlphaNumeric, AlphaNumericSpace, AlphaSpace, Lower, Numeric, NumericSpace, Upper, Whitespace }
 
-pub fn char_property(s: &str, prop: &CharProp, logic: &Logic) -> (bool, Vec<bool>) {
-    let mut b = true;
+fn char_property(s: &str, prop: CharProp, logic: bool) -> (bool, Vec<bool>) {
+    let mut b = logic;
+
     let mut c = (*s).chars();
     let mut vec = Vec::<bool>::new();
 
@@ -203,21 +206,23 @@ pub fn char_property(s: &str, prop: &CharProp, logic: &Logic) -> (bool, Vec<bool
         if n == None { break; }
         else {
             let nu = n.unwrap();
+            println!("{:?}", prop);
             let temp = match prop {
-                Alpha => nu.is_alphabetic(),
-                AlphaNumeric => nu.is_alphanumeric(),
-                AlphaNumericSpace => nu.is_alphanumeric() || nu.is_whitespace(),
-                AlphaSpace => nu.is_alphabetic() || nu.is_whitespace(),
-                Lower => nu.is_lowercase(),
-                Numeric => nu.is_numeric(),
-                Upper => nu.is_uppercase(),
-                Whitespace => nu.is_whitespace()
+                CharProp::Alpha => nu.is_alphabetic(),
+                CharProp::AlphaNumeric => nu.is_alphanumeric(),
+                CharProp::AlphaNumericSpace => nu.is_alphanumeric() || nu.is_whitespace(),
+                CharProp::AlphaSpace => nu.is_alphabetic() || nu.is_whitespace(),
+                CharProp::Lower => nu.is_lowercase(),
+                CharProp::Numeric => nu.is_numeric(),
+                CharProp::NumericSpace => nu.is_numeric() || nu.is_whitespace(),
+                CharProp::Upper => nu.is_uppercase(),
+                CharProp::Whitespace => nu.is_whitespace()
             };
 
-            match logic {
-                And => if !b { b &= temp; },
-                Or => if !b { b |= temp; }
-            }
+            println!("{:?} {:?}", temp, b);
+
+            if logic { b &= temp; }
+            else { b |= temp; }
 
             vec.push(temp);
         }
@@ -226,10 +231,10 @@ pub fn char_property(s: &str, prop: &CharProp, logic: &Logic) -> (bool, Vec<bool
     (b, vec)
 }
 
-pub fn has_char_property(s: &str, prop: &CharProp) -> (bool, Vec<bool>){
-    char_property(s, prop, &Logic::Or)
+fn has_char_property(s: &str, prop: CharProp) -> (bool, Vec<bool>){
+    char_property(s, prop, false)
 }
 
-pub fn is_char_property(s: &str, prop: &CharProp) -> (bool, Vec<bool>) {
-    char_property(s, prop, &Logic::And)
+fn is_char_property(s: &str, prop: CharProp) -> (bool, Vec<bool>) {
+    char_property(s, prop, true)
 }

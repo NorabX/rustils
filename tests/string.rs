@@ -157,6 +157,102 @@ pub fn test_adv_ends_with_string() {
 }
 
 #[test]
+pub fn test_adv_has_alpha_string(){
+    let text1 = "Hello!".to_string();
+    let text2 = "2017".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, false)),
+        text1.adv_has_alpha()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false)),
+        text2.adv_has_alpha()
+    );
+}
+
+#[test]
+pub fn test_adv_has_alphanumeric_string(){
+    let text1 = "H3ll0!".to_string();
+    let text2 = " ! ".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, false)),
+        text1.adv_has_alphanumeric()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_has_alphanumeric()
+    );
+}
+
+#[test]
+pub fn test_adv_has_alphanumeric_space_string(){
+    let text1 = "By3 bye!".to_string();
+    let text2 = ":?!".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, true, true, false)),
+        text1.adv_has_alphanumeric_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_has_alphanumeric_space()
+    );
+}
+
+#[test]
+pub fn test_adv_has_alpha_space_string(){
+    let text1 = "By3 bye!".to_string();
+    let text2 = "42!".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, false, true, true, true, true, false)),
+        text1.adv_has_alpha_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_has_alpha_space()
+    );
+}
+
+#[test]
+pub fn test_adv_has_lowercase_string(){
+    let text1 = "Hello!".to_string();
+    let text2 = "HELLO!".to_string();
+
+    assert_eq!(
+        (true, vec!(false, true, true, true, true, false)),
+        text1.adv_has_lowercase()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false, false)),
+        text2.adv_has_lowercase()
+    );
+}
+
+#[test]
+pub fn test_adv_has_numeric_string(){
+    let text1 = "H3ll0!".to_string();
+    let text2 = "Hello!".to_string();
+
+    assert_eq!(
+        (true, vec!(false, true, false, false, true, false)),
+        text1.adv_has_numeric()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false, false)),
+        text2.adv_has_numeric()
+    );
+}
+
+#[test]
 pub fn test_adv_starts_with_string() {
     let search1 = "Hello";
     let search2 = "你好";
