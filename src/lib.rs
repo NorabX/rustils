@@ -15,6 +15,45 @@ and this to your crate root:
 ```rust
 extern crate rustils;
 ```
+
+# Examples
+
+```
+use rustils::StringUtils;
+
+let text = "你好。How are you?";
+
+//Rust function
+assert_eq!(text.find('好'), Some(3));
+
+//rustils functions
+assert_eq!(text.find_char_opt('好'), Some(1));
+assert_eq!(text.find_char('好'), 1);
+```
+
+```
+use rustils::StringUtils;
+
+let text1 = &mut String::from("你好。How are you?");
+
+//Rust function
+assert_eq!(text1.remove(3), '好');
+assert_eq!(text1, "你。How are you?");
+
+let text3 = String::from("你好。How are you?");
+let text4 = &mut String::from("你好。How are you?");
+let regex = r"[aeiou]+|[好]+";
+
+//rustils functions
+assert_eq!(text3.remove_regex(regex), String::from("你。How are you?"));
+assert_eq!(text3.remove_all_regex(regex), String::from("你。Hw r y?"));
+
+assert_eq!(true, text4.remove_regex_mut(regex));
+assert_eq!(text4, "你。How are you?");
+
+assert_eq!(true, text4.remove_all_regex_mut(regex));
+assert_eq!(text4, "你。Hw r y?");
+```
 */
 
 extern crate rand;
@@ -102,6 +141,21 @@ pub trait StringUtils {
     fn adv_contains_none_char(&self, search: &[char]) -> (bool, usize, char);
     fn adv_contains_none_str(&self, search: &[&str]) -> (bool, usize, String);
     fn adv_ends_with(&self, search: &str) -> (bool, String);
+    fn adv_has_alpha(&self) -> (bool, Vec<bool>);
+    fn adv_has_alphanumeric(&self) -> (bool, Vec<bool>);
+    fn adv_has_lowercase(&self) -> (bool, Vec<bool>);
+    fn adv_has_numeric(&self) -> (bool, Vec<bool>);
+    fn adv_has_uppercase(&self) -> (bool, Vec<bool>);
+    fn adv_has_whitespace(&self) -> (bool, Vec<bool>);
+    fn adv_is_alpha(&self) -> (bool, Vec<bool>);
+    fn adv_is_alphanumeric(&self) -> (bool, Vec<bool>);
+    fn adv_is_lowercase(&self) -> (bool, Vec<bool>);
+    fn adv_is_numeric(&self) -> (bool, Vec<bool>);
+    fn adv_is_uppercase(&self) -> (bool, Vec<bool>);
+    fn adv_is_whitespace(&self) -> (bool, Vec<bool>);
+    fn adv_remove_all_regex(&self, regex: &str)
+        -> (bool, Vec<(usize, usize)>, String);
+    fn adv_remove_regex(&self, regex: &str) -> (bool, usize, String);
     fn adv_starts_with(&self, search: &str) -> (bool, String);
     fn contains_all_chars(&self, search: &[char]) -> bool;
     fn contains_all_strs(&self, search: &[&str]) -> bool;
@@ -113,12 +167,24 @@ pub trait StringUtils {
     fn difference(&self, diff: &str) -> Vec<usize>;
     fn find_char(&self, search: char) -> usize;
     fn find_char_opt(&self, search: char) -> Option<usize>;
+    fn has_alpha(&self) -> bool;
+    fn has_alphanumeric(&self) -> bool;
+    fn has_lowercase(&self) -> bool;
+    fn has_numeric(&self) -> bool;
+    fn has_uppercase(&self) -> bool;
+    fn has_whitespace(&self) -> bool;
+    fn is_alpha(&self) -> bool;
+    fn is_alphanumeric(&self) -> bool;
+    fn is_lowercase(&self) -> bool;
+    fn is_numeric(&self) -> bool;
+    fn is_uppercase(&self) -> bool;
+    fn is_whitespace(&self) -> bool;
     fn peek(&self) -> char;
     fn peek_opt(&self) -> Option<char>;
-    fn remove_regex(&self, regex: &str) -> String;
-    fn remove_regex_mut(&mut self, regex: &str);
     fn remove_all_regex(&self, regex: &str) -> String;
-    fn remove_all_regex_mut(&mut self, regex: &str);
+    fn remove_all_regex_mut(&mut self, regex: &str) -> bool;
+    fn remove_regex(&self, regex: &str) -> String;
+    fn remove_regex_mut(&mut self, regex: &str) -> bool;
     fn reverse(&self) -> String;
     fn reverse_mut(&mut self);
     fn reverse_str(&self) -> &'static str;
