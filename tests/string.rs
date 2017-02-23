@@ -253,6 +253,198 @@ pub fn test_adv_has_numeric_string(){
 }
 
 #[test]
+pub fn test_adv_has_numeric_space_string(){
+    let text1 = "(1, 2)".to_string();
+    let text2 = "Hello!".to_string();
+
+    assert_eq!(
+        (true, vec!(false, true, false, true, true, false)),
+        text1.adv_has_numeric_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false, false)),
+        text2.adv_has_numeric_space()
+    );
+}
+
+#[test]
+pub fn test_adv_has_uppercase_string(){
+    let text1 = "Hello!".to_string();
+    let text2 = "hello".to_string();
+
+    assert_eq!(
+        (true, vec!(true, false, false, false, false, false)),
+        text1.adv_has_uppercase()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false)),
+        text2.adv_has_uppercase()
+    );
+}
+
+#[test]
+pub fn test_adv_has_whitespace_string(){
+    let text1 = "Bye bye".to_string();
+    let text2 = "hello".to_string();
+
+    assert_eq!(
+        (true, vec!(false, false, false, true, false, false, false)),
+        text1.adv_has_whitespace()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false)),
+        text2.adv_has_whitespace()
+    );
+}
+
+#[test]
+pub fn test_adv_is_alpha_string(){
+    let text1 = "Hello".to_string();
+    let text2 = "H3ll0".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true)),
+        text1.adv_is_alpha()
+    );
+
+    assert_eq!(
+        (false, vec!(true, false, true, true, false)),
+        text2.adv_is_alpha()
+    );
+}
+
+#[test]
+pub fn test_adv_is_alphanumeric_string(){
+    let text1 = "H3ll0".to_string();
+    let text2 = " ! ".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true)),
+        text1.adv_is_alphanumeric()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_is_alphanumeric()
+    );
+}
+
+#[test]
+pub fn test_adv_is_alphanumeric_space_string(){
+    let text1 = "By3 bye".to_string();
+    let text2 = ":?!".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, true, true)),
+        text1.adv_is_alphanumeric_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_is_alphanumeric_space()
+    );
+}
+
+#[test]
+pub fn test_adv_is_alpha_space_string(){
+    let text1 = "Bye bye".to_string();
+    let text2 = "By3 bye".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, true, true)),
+        text1.adv_is_alpha_space()
+    );
+
+    assert_eq!(
+        (false, vec!(true, true, false, true, true, true, true)),
+        text2.adv_is_alpha_space()
+    );
+}
+
+#[test]
+pub fn test_adv_is_lowercase_string(){
+    let text1 = "hello".to_string();
+    let text2 = "Hello".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true)),
+        text1.adv_is_lowercase()
+    );
+
+    assert_eq!(
+        (false, vec!(false, true, true, true, true)),
+        text2.adv_is_lowercase()
+    );
+}
+
+#[test]
+pub fn test_adv_is_numeric_string(){
+    let text1 = "2017".to_string();
+    let text2 = "2OI7".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true)),
+        text1.adv_is_numeric()
+    );
+
+    assert_eq!(
+        (false, vec!(true, false, false, true)),
+        text2.adv_is_numeric()
+    );
+}
+
+#[test]
+pub fn test_adv_is_numeric_space_string(){
+    let text1 = "1 2".to_string();
+    let text2 = "(1, 2)".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true)),
+        text1.adv_is_numeric_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, true, false, true, true, false)),
+        text2.adv_is_numeric_space()
+    );
+}
+
+#[test]
+pub fn test_adv_is_uppercase_string(){
+    let text1 = "HELLO".to_string();
+    let text2 = "Hello".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true)),
+        text1.adv_is_uppercase()
+    );
+
+    assert_eq!(
+        (false, vec!(true, false, false, false, false)),
+        text2.adv_is_uppercase()
+    );
+}
+
+#[test]
+pub fn test_adv_is_whitespace_string(){
+    let text1 = "   ".to_string();
+    let text2 = " ! ".to_string();
+
+    assert_eq!(
+        (true, vec!(true, true, true)),
+        text1.adv_is_whitespace()
+    );
+
+    assert_eq!(
+        (false, vec!(true, false, true)),
+        text2.adv_is_whitespace()
+    );
+}
+
+#[test]
 pub fn test_adv_starts_with_string() {
     let search1 = "Hello";
     let search2 = "你好";
@@ -394,6 +586,168 @@ pub fn test_find_char_opt_string(){
 
     assert_eq!(Some(15), text.find_char_opt('好'));
     assert_eq!(None, text.find_char_opt('#'));
+}
+
+#[test]
+pub fn test_has_alpha_string(){
+    let text1 = "Hello!".to_string();
+    let text2 = "2017".to_string();
+
+    assert_eq!(true, text1.has_alpha());
+    assert_eq!(false, text2.has_alpha());
+}
+
+#[test]
+pub fn test_has_alphanumeric_string(){
+    let text1 = "H3ll0!".to_string();
+    let text2 = " ! ".to_string();
+
+    assert_eq!(true, text1.has_alphanumeric());
+    assert_eq!(false, text2.has_alphanumeric());
+}
+
+#[test]
+pub fn test_has_alphanumeric_space_string(){
+    let text1 = "By3 bye!".to_string();
+    let text2 = ":?!".to_string();
+
+    assert_eq!(true, text1.has_alphanumeric_space());
+    assert_eq!(false, text2.has_alphanumeric_space());
+}
+
+#[test]
+pub fn test_has_alpha_space_string(){
+    let text1 = "By3 bye!".to_string();
+    let text2 = "42!".to_string();
+
+    assert_eq!(true, text1.has_alpha_space());
+    assert_eq!(false, text2.has_alpha_space());
+}
+
+#[test]
+pub fn test_has_lowercase_string(){
+    let text1 = "Hello!".to_string();
+    let text2 = "HELLO!".to_string();
+
+    assert_eq!(true, text1.has_lowercase());
+    assert_eq!(false, text2.has_lowercase());
+}
+
+#[test]
+pub fn test_has_numeric_string(){
+    let text1 = "H3ll0!".to_string();
+    let text2 = "Hello!".to_string();
+
+    assert_eq!(true, text1.has_numeric());
+    assert_eq!(false, text2.has_numeric());
+}
+
+#[test]
+pub fn test_has_numeric_space_string(){
+    let text1 = "(1, 2)".to_string();
+    let text2 = "Hello!".to_string();
+
+    assert_eq!(true, text1.has_numeric_space());
+    assert_eq!(false, text2.has_numeric_space());
+}
+
+#[test]
+pub fn test_has_uppercase_string(){
+    let text1 = "Hello!".to_string();
+    let text2 = "hello".to_string();
+
+    assert_eq!(true, text1.has_uppercase());
+    assert_eq!(false, text2.has_uppercase());
+}
+
+#[test]
+pub fn test_has_whitespace_string(){
+    let text1 = "Bye bye".to_string();
+    let text2 = "hello".to_string();
+
+    assert_eq!(true, text1.has_whitespace());
+    assert_eq!(false, text2.has_whitespace());
+}
+
+#[test]
+pub fn test_is_alpha_string(){
+    let text1 = "Hello".to_string();
+    let text2 = "H3ll0".to_string();
+
+    assert_eq!(true, text1.is_alpha());
+    assert_eq!(false, text2.is_alpha());
+}
+
+#[test]
+pub fn test_is_alphanumeric_string(){
+    let text1 = "H3ll0".to_string();
+    let text2 = " ! ".to_string();
+
+    assert_eq!(true, text1.is_alphanumeric());
+    assert_eq!(false, text2.is_alphanumeric());
+}
+
+#[test]
+pub fn test_is_alphanumeric_space_string(){
+    let text1 = "By3 bye".to_string();
+    let text2 = ":?!".to_string();
+
+    assert_eq!(true, text1.is_alphanumeric_space());
+    assert_eq!(false, text2.is_alphanumeric_space());
+}
+
+#[test]
+pub fn test_is_alpha_space_string(){
+    let text1 = "Bye bye".to_string();
+    let text2 = "By3 bye".to_string();
+
+    assert_eq!(true, text1.is_alpha_space());
+    assert_eq!(false, text2.is_alpha_space());
+}
+
+#[test]
+pub fn test_is_lowercase_string(){
+    let text1 = "hello".to_string();
+    let text2 = "Hello".to_string();
+
+    assert_eq!(true, text1.is_lowercase());
+    assert_eq!(false, text2.is_lowercase());
+}
+
+#[test]
+pub fn test_is_numeric_string(){
+    let text1 = "2017".to_string();
+    let text2 = "2OI7".to_string();
+
+    assert_eq!(true, text1.is_numeric());
+    assert_eq!(false, text2.is_numeric());
+}
+
+#[test]
+pub fn test_is_numeric_space_string(){
+    let text1 = "1 2".to_string();
+    let text2 = "(1, 2)".to_string();
+
+    assert_eq!(true, text1.is_numeric_space());
+    assert_eq!(false, text2.is_numeric_space());
+}
+
+#[test]
+pub fn test_is_uppercase_string(){
+    let text1 = "HELLO".to_string();
+    let text2 = "Hello".to_string();
+
+    assert_eq!(true, text1.is_uppercase());
+    assert_eq!(false, text2.is_uppercase());
+}
+
+#[test]
+pub fn test_is_whitespace_string(){
+    let text1 = "   ".to_string();
+    let text2 = " ! ".to_string();
+
+    assert_eq!(true, text1.is_whitespace());
+    assert_eq!(false, text2.is_whitespace());
 }
 
 #[test]

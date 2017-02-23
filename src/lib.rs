@@ -7,7 +7,7 @@ used by adding `rustils` to your dependencies in your project's `Cargo.toml`.
 
 ```toml
 [dependencies]
-rustils = "0.0.8"
+rustils = "0.0.9"
 ```
 
 and this to your crate root:
@@ -17,6 +17,28 @@ extern crate rustils;
 ```
 
 # Examples
+
+```
+use rustils::parse::ToI8;
+use rustils::ParseError::InvalidNumber;
+
+let a = -128_i32;
+let b = 127_i32;
+let c = -129_i32;
+let d = 128_i32;
+
+//Rust
+assert_eq!(a as i8, -128_i8);
+assert_eq!(b as i8, 127_i8);
+assert_eq!(c as i8, 127_i8);
+assert_eq!(d as i8, -128_i8);
+
+//rustils
+assert_eq!(a.to_i8(), -128_i8);
+assert_eq!(b.to_i8(), 127_i8);
+assert_eq!(c.to_i8_res(), Err(InvalidNumber("-129".to_string())));
+assert_eq!(d.to_i8_res(), Err(InvalidNumber("128".to_string())));
+```
 
 ```
 use rustils::StringUtils;
@@ -67,6 +89,7 @@ pub mod sorting;
 
 #[doc(hidden)] pub mod array;
 #[doc(hidden)] pub mod string;
+#[doc(hidden)] pub mod str_;
 
 use std::fmt;
 use std::fmt::{ Display, Formatter };
@@ -147,12 +170,16 @@ pub trait StringUtils {
     fn adv_has_alpha_space(&self) -> (bool, Vec<bool>);
     fn adv_has_lowercase(&self) -> (bool, Vec<bool>);
     fn adv_has_numeric(&self) -> (bool, Vec<bool>);
+    fn adv_has_numeric_space(&self) -> (bool, Vec<bool>);
     fn adv_has_uppercase(&self) -> (bool, Vec<bool>);
     fn adv_has_whitespace(&self) -> (bool, Vec<bool>);
     fn adv_is_alpha(&self) -> (bool, Vec<bool>);
     fn adv_is_alphanumeric(&self) -> (bool, Vec<bool>);
+    fn adv_is_alphanumeric_space(&self) -> (bool, Vec<bool>);
+    fn adv_is_alpha_space(&self) -> (bool, Vec<bool>);
     fn adv_is_lowercase(&self) -> (bool, Vec<bool>);
     fn adv_is_numeric(&self) -> (bool, Vec<bool>);
+    fn adv_is_numeric_space(&self) -> (bool, Vec<bool>);
     fn adv_is_uppercase(&self) -> (bool, Vec<bool>);
     fn adv_is_whitespace(&self) -> (bool, Vec<bool>);
     fn adv_remove_all_regex(&self, regex: &str)
@@ -171,14 +198,20 @@ pub trait StringUtils {
     fn find_char_opt(&self, search: char) -> Option<usize>;
     fn has_alpha(&self) -> bool;
     fn has_alphanumeric(&self) -> bool;
+    fn has_alphanumeric_space(&self) -> bool;
+    fn has_alpha_space(&self) -> bool;
     fn has_lowercase(&self) -> bool;
     fn has_numeric(&self) -> bool;
+    fn has_numeric_space(&self) -> bool;
     fn has_uppercase(&self) -> bool;
     fn has_whitespace(&self) -> bool;
     fn is_alpha(&self) -> bool;
     fn is_alphanumeric(&self) -> bool;
+    fn is_alphanumeric_space(&self) -> bool;
+    fn is_alpha_space(&self) -> bool;
     fn is_lowercase(&self) -> bool;
     fn is_numeric(&self) -> bool;
+    fn is_numeric_space(&self) -> bool;
     fn is_uppercase(&self) -> bool;
     fn is_whitespace(&self) -> bool;
     fn peek(&self) -> char;
@@ -206,7 +239,6 @@ fn char_property(s: &str, prop: CharProp, logic: bool) -> (bool, Vec<bool>) {
         if n == None { break; }
         else {
             let nu = n.unwrap();
-            println!("{:?}", prop);
             let temp = match prop {
                 CharProp::Alpha => nu.is_alphabetic(),
                 CharProp::AlphaNumeric => nu.is_alphanumeric(),
@@ -218,8 +250,6 @@ fn char_property(s: &str, prop: CharProp, logic: bool) -> (bool, Vec<bool>) {
                 CharProp::Upper => nu.is_uppercase(),
                 CharProp::Whitespace => nu.is_whitespace()
             };
-
-            println!("{:?} {:?}", temp, b);
 
             if logic { b &= temp; }
             else { b |= temp; }

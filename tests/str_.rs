@@ -1,4 +1,3 @@
-/*
 extern crate rustils;
 use rustils::StringUtils;
 
@@ -158,6 +157,294 @@ pub fn test_adv_ends_with_str() {
 }
 
 #[test]
+pub fn test_adv_has_alpha_str(){
+    let text1 = "Hello!";
+    let text2 = "2017";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, false)),
+        text1.adv_has_alpha()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false)),
+        text2.adv_has_alpha()
+    );
+}
+
+#[test]
+pub fn test_adv_has_alphanumeric_str(){
+    let text1 = "H3ll0!";
+    let text2 = " ! ";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, false)),
+        text1.adv_has_alphanumeric()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_has_alphanumeric()
+    );
+}
+
+#[test]
+pub fn test_adv_has_alphanumeric_space_str(){
+    let text1 = "By3 bye!";
+    let text2 = ":?!";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, true, true, false)),
+        text1.adv_has_alphanumeric_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_has_alphanumeric_space()
+    );
+}
+
+#[test]
+pub fn test_adv_has_alpha_space_str(){
+    let text1 = "By3 bye!";
+    let text2 = "42!";
+
+    assert_eq!(
+        (true, vec!(true, true, false, true, true, true, true, false)),
+        text1.adv_has_alpha_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_has_alpha_space()
+    );
+}
+
+#[test]
+pub fn test_adv_has_lowercase_str(){
+    let text1 = "Hello!";
+    let text2 = "HELLO!";
+
+    assert_eq!(
+        (true, vec!(false, true, true, true, true, false)),
+        text1.adv_has_lowercase()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false, false)),
+        text2.adv_has_lowercase()
+    );
+}
+
+#[test]
+pub fn test_adv_has_numeric_str(){
+    let text1 = "H3ll0!";
+    let text2 = "Hello!";
+
+    assert_eq!(
+        (true, vec!(false, true, false, false, true, false)),
+        text1.adv_has_numeric()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false, false)),
+        text2.adv_has_numeric()
+    );
+}
+
+#[test]
+pub fn test_adv_has_numeric_space_str(){
+    let text1 = "(1, 2)";
+    let text2 = "Hello!";
+
+    assert_eq!(
+        (true, vec!(false, true, false, true, true, false)),
+        text1.adv_has_numeric_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false, false)),
+        text2.adv_has_numeric_space()
+    );
+}
+
+#[test]
+pub fn test_adv_has_uppercase_str(){
+    let text1 = "Hello!";
+    let text2 = "hello";
+
+    assert_eq!(
+        (true, vec!(true, false, false, false, false, false)),
+        text1.adv_has_uppercase()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false)),
+        text2.adv_has_uppercase()
+    );
+}
+
+#[test]
+pub fn test_adv_has_whitespace_str(){
+    let text1 = "Bye bye";
+    let text2 = "hello";
+
+    assert_eq!(
+        (true, vec!(false, false, false, true, false, false, false)),
+        text1.adv_has_whitespace()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false, false, false)),
+        text2.adv_has_whitespace()
+    );
+}
+
+#[test]
+pub fn test_adv_is_alpha_str(){
+    let text1 = "Hello";
+    let text2 = "H3ll0";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true)),
+        text1.adv_is_alpha()
+    );
+
+    assert_eq!(
+        (false, vec!(true, false, true, true, false)),
+        text2.adv_is_alpha()
+    );
+}
+
+#[test]
+pub fn test_adv_is_alphanumeric_str(){
+    let text1 = "H3ll0";
+    let text2 = " ! ";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true)),
+        text1.adv_is_alphanumeric()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_is_alphanumeric()
+    );
+}
+
+#[test]
+pub fn test_adv_is_alphanumeric_space_str(){
+    let text1 = "By3 bye";
+    let text2 = ":?!";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, true, true)),
+        text1.adv_is_alphanumeric_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, false, false)),
+        text2.adv_is_alphanumeric_space()
+    );
+}
+
+#[test]
+pub fn test_adv_is_alpha_space_str(){
+    let text1 = "Bye bye";
+    let text2 = "By3 bye";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true, true, true)),
+        text1.adv_is_alpha_space()
+    );
+
+    assert_eq!(
+        (false, vec!(true, true, false, true, true, true, true)),
+        text2.adv_is_alpha_space()
+    );
+}
+
+#[test]
+pub fn test_adv_is_lowercase_str(){
+    let text1 = "hello";
+    let text2 = "Hello";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true)),
+        text1.adv_is_lowercase()
+    );
+
+    assert_eq!(
+        (false, vec!(false, true, true, true, true)),
+        text2.adv_is_lowercase()
+    );
+}
+
+#[test]
+pub fn test_adv_is_numeric_str(){
+    let text1 = "2017";
+    let text2 = "2OI7";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true)),
+        text1.adv_is_numeric()
+    );
+
+    assert_eq!(
+        (false, vec!(true, false, false, true)),
+        text2.adv_is_numeric()
+    );
+}
+
+#[test]
+pub fn test_adv_is_numeric_space_str(){
+    let text1 = "1 2";
+    let text2 = "(1, 2)";
+
+    assert_eq!(
+        (true, vec!(true, true, true)),
+        text1.adv_is_numeric_space()
+    );
+
+    assert_eq!(
+        (false, vec!(false, true, false, true, true, false)),
+        text2.adv_is_numeric_space()
+    );
+}
+
+#[test]
+pub fn test_adv_is_uppercase_str(){
+    let text1 = "HELLO";
+    let text2 = "Hello";
+
+    assert_eq!(
+        (true, vec!(true, true, true, true, true)),
+        text1.adv_is_uppercase()
+    );
+
+    assert_eq!(
+        (false, vec!(true, false, false, false, false)),
+        text2.adv_is_uppercase()
+    );
+}
+
+#[test]
+pub fn test_adv_is_whitespace_str(){
+    let text1 = "   ";
+    let text2 = " ! ";
+
+    assert_eq!(
+        (true, vec!(true, true, true)),
+        text1.adv_is_whitespace()
+    );
+
+    assert_eq!(
+        (false, vec!(true, false, true)),
+        text2.adv_is_whitespace()
+    );
+}
+
+#[test]
 pub fn test_adv_starts_with_str() {
     let search1 = "Hello";
     let search2 = "你好";
@@ -302,6 +589,168 @@ pub fn test_find_char_opt_str(){
 }
 
 #[test]
+pub fn test_has_alpha_str(){
+    let text1 = "Hello!";
+    let text2 = "2017";
+
+    assert_eq!(true, text1.has_alpha());
+    assert_eq!(false, text2.has_alpha());
+}
+
+#[test]
+pub fn test_has_alphanumeric_str(){
+    let text1 = "H3ll0!";
+    let text2 = " ! ";
+
+    assert_eq!(true, text1.has_alphanumeric());
+    assert_eq!(false, text2.has_alphanumeric());
+}
+
+#[test]
+pub fn test_has_alphanumeric_space_str(){
+    let text1 = "By3 bye!";
+    let text2 = ":?!";
+
+    assert_eq!(true, text1.has_alphanumeric_space());
+    assert_eq!(false, text2.has_alphanumeric_space());
+}
+
+#[test]
+pub fn test_has_alpha_space_str(){
+    let text1 = "By3 bye!";
+    let text2 = "42!";
+
+    assert_eq!(true, text1.has_alpha_space());
+    assert_eq!(false, text2.has_alpha_space());
+}
+
+#[test]
+pub fn test_has_lowercase_str(){
+    let text1 = "Hello!";
+    let text2 = "HELLO!";
+
+    assert_eq!(true, text1.has_lowercase());
+    assert_eq!(false, text2.has_lowercase());
+}
+
+#[test]
+pub fn test_has_numeric_str(){
+    let text1 = "H3ll0!";
+    let text2 = "Hello!";
+
+    assert_eq!(true, text1.has_numeric());
+    assert_eq!(false, text2.has_numeric());
+}
+
+#[test]
+pub fn test_has_numeric_space_str(){
+    let text1 = "(1, 2)";
+    let text2 = "Hello!";
+
+    assert_eq!(true, text1.has_numeric_space());
+    assert_eq!(false, text2.has_numeric_space());
+}
+
+#[test]
+pub fn test_has_uppercase_str(){
+    let text1 = "Hello!";
+    let text2 = "hello";
+
+    assert_eq!(true, text1.has_uppercase());
+    assert_eq!(false, text2.has_uppercase());
+}
+
+#[test]
+pub fn test_has_whitespace_str(){
+    let text1 = "Bye bye";
+    let text2 = "hello";
+
+    assert_eq!(true, text1.has_whitespace());
+    assert_eq!(false, text2.has_whitespace());
+}
+
+#[test]
+pub fn test_is_alpha_str(){
+    let text1 = "Hello";
+    let text2 = "H3ll0";
+
+    assert_eq!(true, text1.is_alpha());
+    assert_eq!(false, text2.is_alpha());
+}
+
+#[test]
+pub fn test_is_alphanumeric_str(){
+    let text1 = "H3ll0";
+    let text2 = " ! ";
+
+    assert_eq!(true, text1.is_alphanumeric());
+    assert_eq!(false, text2.is_alphanumeric());
+}
+
+#[test]
+pub fn test_is_alphanumeric_space_str(){
+    let text1 = "By3 bye";
+    let text2 = ":?!";
+
+    assert_eq!(true, text1.is_alphanumeric_space());
+    assert_eq!(false, text2.is_alphanumeric_space());
+}
+
+#[test]
+pub fn test_is_alpha_space_str(){
+    let text1 = "Bye bye";
+    let text2 = "By3 bye";
+
+    assert_eq!(true, text1.is_alpha_space());
+    assert_eq!(false, text2.is_alpha_space());
+}
+
+#[test]
+pub fn test_is_lowercase_str(){
+    let text1 = "hello";
+    let text2 = "Hello";
+
+    assert_eq!(true, text1.is_lowercase());
+    assert_eq!(false, text2.is_lowercase());
+}
+
+#[test]
+pub fn test_is_numeric_str(){
+    let text1 = "2017";
+    let text2 = "2OI7";
+
+    assert_eq!(true, text1.is_numeric());
+    assert_eq!(false, text2.is_numeric());
+}
+
+#[test]
+pub fn test_is_numeric_space_str(){
+    let text1 = "1 2";
+    let text2 = "(1, 2)";
+
+    assert_eq!(true, text1.is_numeric_space());
+    assert_eq!(false, text2.is_numeric_space());
+}
+
+#[test]
+pub fn test_is_uppercase_str(){
+    let text1 = "HELLO";
+    let text2 = "Hello";
+
+    assert_eq!(true, text1.is_uppercase());
+    assert_eq!(false, text2.is_uppercase());
+}
+
+#[test]
+pub fn test_is_whitespace_str(){
+    let text1 = "   ";
+    let text2 = " ! ";
+
+    assert_eq!(true, text1.is_whitespace());
+    assert_eq!(false, text2.is_whitespace());
+}
+
+#[test]
 pub fn test_peek_str_0(){
     let text = "Hello, World! 你好吗？";
     assert_eq!('？', text.peek());
@@ -428,4 +877,3 @@ pub fn test_reverse_str_str(){
     assert_eq!("？吗好你 !dlroW ,olleH", temp);
     assert_eq!(text, temp.reverse_str());
 }
-*/

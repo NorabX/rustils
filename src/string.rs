@@ -118,13 +118,16 @@ impl StringUtils for String {
         has_char_property(self, CharProp::AlphaSpace)
     }
 
-
     fn adv_has_lowercase(&self) -> (bool, Vec<bool>) {
         has_char_property(self, CharProp::Lower)
     }
 
     fn adv_has_numeric(&self) -> (bool, Vec<bool>) {
         has_char_property(self, CharProp::Numeric)
+    }
+
+    fn adv_has_numeric_space(&self) -> (bool, Vec<bool>) {
+        has_char_property(self, CharProp::NumericSpace)
     }
 
     fn adv_has_uppercase(&self) -> (bool, Vec<bool>) {
@@ -143,12 +146,24 @@ impl StringUtils for String {
         is_char_property(self, CharProp::AlphaNumeric)
     }
 
-    fn adv_is_numeric(&self) -> (bool, Vec<bool>) {
-        is_char_property(self, CharProp::Numeric)
+    fn adv_is_alphanumeric_space(&self) -> (bool, Vec<bool>) {
+        is_char_property(self, CharProp::AlphaNumericSpace)
+    }
+
+    fn adv_is_alpha_space(&self) -> (bool, Vec<bool>) {
+        is_char_property(self, CharProp::AlphaSpace)
     }
 
     fn adv_is_lowercase(&self) -> (bool, Vec<bool>) {
         is_char_property(self, CharProp::Lower)
+    }
+
+    fn adv_is_numeric(&self) -> (bool, Vec<bool>) {
+        is_char_property(self, CharProp::Numeric)
+    }
+
+    fn adv_is_numeric_space(&self) -> (bool, Vec<bool>) {
+        is_char_property(self, CharProp::NumericSpace)
     }
 
     fn adv_is_uppercase(&self) -> (bool, Vec<bool>) {
@@ -297,12 +312,24 @@ impl StringUtils for String {
         self.adv_has_alphanumeric().0
     }
 
+    fn has_alphanumeric_space(&self) -> bool {
+        self.adv_has_alphanumeric_space().0
+    }
+
+    fn has_alpha_space(&self) -> bool {
+        self.adv_has_alpha_space().0
+    }
+
     fn has_lowercase(&self) -> bool {
         self.adv_has_lowercase().0
     }
 
     fn has_numeric(&self) -> bool {
         self.adv_has_numeric().0
+    }
+
+    fn has_numeric_space(&self) -> bool {
+        self.adv_has_numeric_space().0
     }
 
     fn has_uppercase(&self) -> bool {
@@ -321,6 +348,14 @@ impl StringUtils for String {
         self.adv_is_alphanumeric().0
     }
 
+    fn is_alphanumeric_space(&self) -> bool {
+        self.adv_is_alphanumeric_space().0
+    }
+
+    fn is_alpha_space(&self) -> bool {
+        self.adv_is_alpha_space().0
+    }
+
     fn is_lowercase(&self) -> bool {
         self.adv_is_lowercase().0
     }
@@ -329,8 +364,12 @@ impl StringUtils for String {
         self.adv_is_numeric().0
     }
 
+    fn is_numeric_space(&self) -> bool {
+        self.adv_is_numeric_space().0
+    }
+
     fn is_uppercase(&self) -> bool {
-        self.adv_is_lowercase().0
+        self.adv_is_uppercase().0
     }
 
     fn is_whitespace(&self) -> bool {
