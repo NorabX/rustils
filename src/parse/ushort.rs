@@ -9,7 +9,7 @@ use parse::{
     ParseResultU8
 };
 
-use ParseError;
+use error::ParseError;
 
 impl ToBool for u16 {
     fn to_bool(self) -> bool {

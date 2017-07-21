@@ -1,85 +1,94 @@
-
-use SortingAlgorithmn;
+// <editor-fold> # Uses
 use std::cmp::Ordering;
+// </editor-fold>
 
+// <editor-fold> # Enums
+pub enum SortingAlgorithmn {
+    Bubble,
+    Quick
+}
+// </editor-fold>
+
+// <editor-fold> # Traits
 pub trait Sort {
+
     fn adv_sort_mut(&mut self, algo: SortingAlgorithmn);
 }
 
-impl<T: Ord + Clone> Sort for [T]{
-    fn adv_sort_mut(&mut self, algo: SortingAlgorithmn){
-        match algo {
-            SortingAlgorithmn::Bubble => bubble_sort_mut(self),
-            SortingAlgorithmn::Quick => quick_sort_mut(self),
-        }
-    }
-}
+pub trait SortBy<T: PartialOrd, F: FnMut(&T, &T)
+    -> Ordering> {
 
-pub fn bubble_sort_mut<T: Ord + Clone>(list: &mut [T]){
-    for i in 0..list.len() - 1 {
-        for j in 0..list.len() - i - 1 {
-            if list[j] > list[j + 1] {
-                list.swap(j, j + 1);
-            }
-        }
-    }
-}
-
-pub fn quick_sort_mut<T: Ord + Clone>(list: &mut [T]){
-    if 1 < list.len() {
-        let (mut p, mut x) = (0, list.len()-1);
-        for _ in 0..list.len() - 1 {
-            if list[p] < list[p + 1] {
-                list.swap(p + 1, x);
-                x -= 1;
-            }else{
-                list.swap(p, p + 1);
-                p += 1;
-            }
-        }
-
-        quick_sort_mut(&mut list[..p]);
-        quick_sort_mut(&mut list[p + 1..]);
-    }
-}
-
-pub trait SortBy<T: PartialOrd, F: FnMut(&T, &T) -> Ordering> {
     fn adv_sort_by_mut(&mut self, compare: &mut F, algo: SortingAlgorithmn);
 }
+// </editor-fold>
 
-impl<T: PartialOrd, F: FnMut(&T, &T) -> Ordering> SortBy<T,F> for [T] {
-    fn adv_sort_by_mut(&mut self, compare: &mut F, algo: SortingAlgorithmn){
-        match algo{
-            SortingAlgorithmn::Bubble => bubble_sort_by_mut(compare, self),
-            SortingAlgorithmn::Quick => quick_sort_by_mut(compare, self),
-        }
-    }
-}
+// <editor-fold> # Functions
 
-fn bubble_sort_by_mut<T, F: FnMut(&T,&T) -> Ordering>(compare: &mut F, list: &mut [T]){
-    for i in 0..list.len() - 1 {
-        for j in 0..list.len() - i - 1 {
-            if compare(&list[j], &list[j + 1]) == Ordering::Greater {
-                list.swap(j, j + 1);
+// <editor-fold> ## Bubble
+pub fn bubble_sort_mut<T: Ord + Clone>(ary: &mut [T]) {
+
+    for i in 0..ary.len() - 1 {
+        for j in 0..ary.len() - i - 1 {
+            if ary[j] > ary[j + 1] {
+                ary.swap(j, j + 1);
             }
         }
     }
 }
 
-fn quick_sort_by_mut<T, F: FnMut(&T,&T) -> Ordering>(compare: &mut F, list: &mut [T]){
-    if 1 < list.len() {
-        let (mut p, mut x) = (0, list.len()-1);
-        for _ in 0..list.len() - 1 {
-            if compare(&list[p], &list[p + 1]) == Ordering::Less {
-                list.swap(p + 1, x);
+pub fn bubble_sort_by_mut<T, F: FnMut(&T, &T)
+    -> Ordering>(compare: &mut F, ary: &mut [T]) {
+
+    for i in 0..ary.len() - 1 {
+        for j in 0..ary.len() - i - 1 {
+            if compare(&ary[j], &ary[j + 1]) == Ordering::Greater {
+                ary.swap(j, j + 1);
+            }
+        }
+    }
+}
+// </editor-fold>
+
+// <editor-fold> ## Quick
+pub fn quick_sort_mut<T: Ord + Clone>(ary: &mut [T]) {
+
+    if 1 < ary.len() {
+        let (mut p, mut x) = (0, ary.len()-1);
+        for _ in 0..ary.len() - 1 {
+            if ary[p] < ary[p + 1] {
+                ary.swap(p + 1, x);
                 x -= 1;
             }else{
-                list.swap(p, p + 1);
+                ary.swap(p, p + 1);
                 p += 1;
             }
         }
 
-        quick_sort_by_mut(compare, &mut list[..p]);
-        quick_sort_by_mut(compare, &mut list[p + 1..]);
+        quick_sort_mut(&mut ary[..p]);
+        quick_sort_mut(&mut ary[p + 1..]);
     }
 }
+
+
+pub fn quick_sort_by_mut<T, F: FnMut(&T, &T)
+    -> Ordering>(compare: &mut F, ary: &mut [T]) {
+
+    if 1 < ary.len() {
+        let (mut p, mut x) = (0, ary.len()-1);
+        for _ in 0..ary.len() - 1 {
+            if compare(&ary[p], &ary[p + 1]) == Ordering::Less {
+                ary.swap(p + 1, x);
+                x -= 1;
+            }else{
+                ary.swap(p, p + 1);
+                p += 1;
+            }
+        }
+
+        quick_sort_by_mut(compare, &mut ary[..p]);
+        quick_sort_by_mut(compare, &mut ary[p + 1..]);
+    }
+}
+// </editor-fold>
+
+// </editor-fold>

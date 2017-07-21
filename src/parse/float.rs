@@ -15,7 +15,7 @@ use parse::{
     ParseResultIsize, ParseResultUsize
 };
 
-use ParseError;
+use error::ParseError;
 use RoundingMode;
 use RoundingMode::{Trunc,Ceil,Floor,Round};
 

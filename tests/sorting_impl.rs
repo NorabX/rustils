@@ -1,7 +1,7 @@
 extern crate rustils;
 
 use rustils::sorting::*;
-use rustils::SortingAlgorithmn::{ Bubble, Quick };
+use rustils::sorting::SortingAlgorithmn::{ Bubble, Quick };
 
 #[test]
 pub fn test_adv_sort_mut_bubble(){

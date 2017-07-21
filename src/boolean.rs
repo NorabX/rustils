@@ -1,3 +1,4 @@
+// <editor-fold> # Macros
 #[macro_export]
 macro_rules! and {
     ( $( $x:expr ),* ) => {
@@ -36,3 +37,4 @@ macro_rules! xor {
         }
     };
 }
+// </editor-fold>

@@ -11,7 +11,7 @@ use parse::{
     ParseResultUsize
 };
 
-use ParseError;
+use error::ParseError;
 
 impl ToBool for i16 {
     fn to_bool(self) -> bool {

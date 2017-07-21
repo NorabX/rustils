@@ -1,5 +1,5 @@
 extern crate rustils;
-use rustils::StringUtils;
+use rustils::string::StringUtils;
 
 #[test]
 pub fn test_adv_contains_all_chars_string() {

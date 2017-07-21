@@ -10,7 +10,7 @@ use parse::{
     ParseResultIsize
 };
 
-use ParseError;
+use error::ParseError;
 
 impl ToBool for u64 {
     fn to_bool(self) -> bool {

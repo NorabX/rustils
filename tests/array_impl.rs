@@ -1,6 +1,6 @@
 extern crate rustils;
 
-use rustils::ArrayUtils;
+use rustils::array::ArrayUtils;
 use std::usize::MAX;
 
 #[test]

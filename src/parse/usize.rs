@@ -10,7 +10,7 @@ use parse::{
     ParseResultIsize
 };
 
-use ParseError;
+use error::ParseError;
 
 impl ToBool for usize {
     fn to_bool(self) -> bool {

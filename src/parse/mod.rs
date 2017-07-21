@@ -40,7 +40,8 @@ pub mod short;
 #[doc(hidden)]
 pub mod byte;
 
-use { RoundingMode, ParseError };
+use { RoundingMode };
+use error::ParseError;
 
 pub type ParseResultI8 = Result<i8,ParseError>;
 pub type ParseResultI16 = Result<i16,ParseError>;

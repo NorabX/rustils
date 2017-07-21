@@ -11,7 +11,7 @@ use parse::{
     ParseResultIsize, ParseResultUsize, ParseResultF32, ParseResultF64,
 };
 
-use ParseError;
+use error::ParseError;
 use std::mem::{forget,transmute};
 
 impl ToStr for String {
