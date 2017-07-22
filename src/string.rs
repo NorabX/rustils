@@ -1,6 +1,7 @@
 // <editor-fold> # Uses
+
 use std::iter::Iterator;
-use parse::ToStr;
+use parse::string::ToStr;
 use regex::Regex;
 use CharProp;
 use has_char_property;
@@ -8,6 +9,7 @@ use is_char_property;
 // </editor-fold>
 
 // <editor-fold> # Traits
+
 pub trait StringUtils {
 
     fn adv_contains_all_chars(&self, search: &[char])
@@ -208,6 +210,7 @@ pub trait StringUtils {
 // <editor-fold> # Functions
 
 // <editor-fold> ## contains
+
 pub fn adv_contains_all_chars(s: &String, search: &[char])
     -> (bool, Vec<usize>, Vec<char>) {
 
@@ -336,6 +339,7 @@ pub fn contains_none_str(s: &String, search: &[&str])
 // </editor-fold>
 
 // <editor-fold> ## * with
+
 pub fn adv_ends_with(s: &String, search: &str)
     -> (bool, String) {
 
@@ -365,6 +369,7 @@ pub fn adv_starts_with(s: &String, search: &str)
 // </editor-fold>
 
 // <editor-fold> ## has
+
 pub fn adv_has_alpha(s: &String)
     -> (bool, Vec<bool>) {
 
@@ -475,6 +480,7 @@ pub fn has_whitespace(s: &String)
 // </editor-fold>
 
 // <editor-fold> ## is
+
 pub fn adv_is_alpha(s: &String)
     -> (bool, Vec<bool>) {
 
@@ -585,6 +591,7 @@ pub fn is_whitespace(s: &String)
 // </editor-fold>
 
 // <editor-fold> ## remove
+
 pub fn adv_remove_all_regex(s: &String, regex: &str)
     -> (bool, Vec<(usize, usize)>, String) {
 
@@ -684,6 +691,7 @@ pub fn remove_regex_mut(s: &mut String, regex: &str)
 // </editor-fold>
 
 // <editor-fold> ## reverse
+
 pub fn reverse(s: &String)
     -> String {
 
@@ -705,6 +713,7 @@ pub fn reverse_str(s: &String)
 // </editor-fold>
 
 // <editor-fold> ## others
+
 pub fn cmp_ignore_case(s: &String, cmp: &str)
     -> bool {
 

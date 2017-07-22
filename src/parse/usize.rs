@@ -1,155 +1,249 @@
-use parse::{
-    ToI8, ToI16, ToI32, ToI64,
-    ToU8, ToU16, ToU32,
-    ToIsize, ToBool
-};
-
-use parse::{
-    ParseResultI8, ParseResultI16, ParseResultI32, ParseResultI64,
-    ParseResultU8, ParseResultU16, ParseResultU32,
-    ParseResultIsize
-};
+// <editor-fold> # Uses
 
 use error::ParseError;
+use RoundingMode;
+use RoundingMode::*;
+// </editor-fold>
 
-impl ToBool for usize {
-    fn to_bool(self) -> bool {
-        if self == 0 { false } else { true }
+// <editor-fold> # Traits
+
+pub trait ToUsize {
+
+    fn to_usize_res(self)
+        -> ParseResultUsize;
+
+    fn to_usize(self)
+        -> usize;
+}
+
+pub trait ToUsizeRM {
+
+    fn to_usize_rm_res(self, rm: RoundingMode)
+        -> ParseResultUsize;
+
+    fn to_usize_rm(self, rm: RoundingMode)
+        -> usize;
+}
+// </editor-fold>
+
+// <editor-fold> # Functions
+
+// <editor-fold> ## bool
+
+pub fn bool_to_usize_res(a: bool)
+    -> ParseResultUsize {
+
+    if a { Ok(1) } else { Ok(0) }
+}
+
+pub fn bool_to_usize(a: bool)
+    -> usize {
+
+    if a { 1 } else { 0 }
+}
+// </editor-fold>
+
+// <editor-fold> ## 8
+
+pub fn i8_to_usize_res(a: i8)
+    -> ParseResultUsize {
+
+    if a < 0 {
+        Err(ParseError::InvalidNumber(a.to_string()))
+    } else { Ok(a as usize) }
+}
+
+pub fn i8_to_usize(a: i8)
+    -> usize {
+
+    match i8_to_usize_res(a) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
+    }
+}
+// </editor-fold>
+
+// <editor-fold> ## 16
+
+pub fn i16_to_usize_res(a: i16)
+    -> ParseResultUsize {
+
+    if a < 0 {
+        Err(ParseError::InvalidNumber(a.to_string()))
+    } else { Ok(a as usize) }
+}
+
+pub fn i16_to_usize(a: i16)
+    -> usize {
+
+    match i16_to_usize_res(a) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
+    }
+}
+// </editor-fold>
+
+// <editor-fold> ## 32
+
+pub fn i32_to_usize_res(a: i32)
+    -> ParseResultUsize {
+
+    if a < 0 {
+        Err(ParseError::InvalidNumber(a.to_string()))
+    } else { Ok(a as usize) }
+}
+
+pub fn i32_to_usize(a: i32)
+    -> usize {
+
+    match i32_to_usize_res(a) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
     }
 }
 
-impl ToI8 for usize {
-    fn to_i8_res(self) -> ParseResultI8 {
-        let max = i8::max_value() as usize;
+pub fn f32_to_usize_res(a: f32)
+    -> ParseResultUsize {
 
-        if self > max {
-            Err(ParseError::InvalidNumber(self.to_string()))
-        } else { Ok(self as i8) }
+    f32_to_usize_rm_res(a, Trunc)
+}
+
+pub fn f32_to_usize(a: f32)
+    -> usize {
+
+    f32_to_usize_rm(a, Trunc)
+}
+
+pub fn f32_to_usize_rm_res(a: f32, rm: RoundingMode)
+    -> ParseResultUsize {
+
+    let max = 16777215_f32;
+
+    let x = match rm {
+        Round => a.round(),
+        Ceil => a.ceil(),
+        Floor => a.floor(),
+        Trunc => a.trunc()
+    };
+
+    if x.is_nan() || x < 0.0 || x > max {
+        Err(ParseError::InvalidNumber(a.to_string()))
+    } else { Ok(x as usize) }
+}
+
+pub fn f32_to_usize_rm(a: f32, rm: RoundingMode)
+    -> usize {
+
+    match f32_to_usize_rm_res(a, rm) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
     }
+}
+// </editor-fold>
 
-    fn to_i8(self) -> i8 {
-        match self.to_i8_res() {
-            Ok(i) => i,
-            Err(err) => panic!("{}",err)
-        }
+// <editor-fold> ## 64
+
+pub fn f64_to_usize_res(a: f64)
+    -> ParseResultUsize {
+
+    f64_to_usize_rm_res(a, Trunc)
+}
+
+pub fn f64_to_usize(a: f64)
+    -> usize {
+
+    f64_to_usize_rm(a, Trunc)
+}
+
+pub fn f64_to_usize_rm_res(a: f64, rm: RoundingMode)
+    -> ParseResultUsize {
+
+    let max = 9007199254740991_f64;
+
+    let x = match rm {
+        Round => a.round(),
+        Ceil => a.ceil(),
+        Floor => a.floor(),
+        Trunc => a.trunc()
+    };
+
+    if x.is_nan() || x < 0.0 || x > max {
+        Err(ParseError::InvalidNumber(a.to_string()))
+    } else { Ok(x as usize) }
+}
+
+pub fn f64_to_usize_rm(a: f64, rm: RoundingMode)
+    -> usize {
+
+    match f64_to_usize_rm_res(a, rm) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
+    }
+}
+// </editor-fold>
+
+// <editor-fold> ## size
+
+pub fn isize_to_usize_res(a: isize)
+    -> ParseResultUsize {
+
+    if a < 0 {
+        Err(ParseError::InvalidNumber(a.to_string()))
+    } else { Ok(a as usize) }
+}
+
+pub fn isize_to_usize(a: isize)
+    -> usize {
+
+    match isize_to_usize_res(a) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
+    }
+}
+// </editor-fold>
+
+// <editor-fold> ## string
+
+pub fn string_to_usize_res(a: String)
+    -> ParseResultUsize {
+
+    match a.parse::<usize>() {
+        Ok(n) => Ok(n),
+        Err(_) => Err(ParseError::InvalidNumber(a))
     }
 }
 
-impl ToI16 for usize {
-    fn to_i16_res(self) -> ParseResultI16 {
-        let max = i16::max_value() as usize;
+pub fn string_to_usize(a: String)
+    -> usize {
 
-        if self > max {
-            Err(ParseError::InvalidNumber(self.to_string()))
-        } else { Ok(self as i16) }
-    }
-
-    fn to_i16(self) -> i16 {
-        match self.to_i16_res() {
-            Ok(i) => i,
-            Err(err) => panic!("{}",err)
-        }
+    match string_to_usize_res(a) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
     }
 }
 
-impl ToI32 for usize {
-    fn to_i32_res(self) -> ParseResultI32 {
-        let max = i32::max_value() as usize;
+pub fn str_to_usize_res(a: &str)
+    -> ParseResultUsize {
 
-        if self > max {
-            Err(ParseError::InvalidNumber(self.to_string()))
-        } else { Ok(self as i32) }
-    }
-
-    fn to_i32(self) -> i32 {
-        match self.to_i32_res() {
-            Ok(i) => i,
-            Err(err) => panic!("{}",err)
-        }
+    match a.parse::<usize>() {
+        Ok(n) => Ok(n),
+        Err(_) => Err(ParseError::InvalidNumber(a.to_string()))
     }
 }
 
-impl ToI64 for usize {
-    fn to_i64_res(self) -> ParseResultI64 {
-        let max = i64::max_value() as usize;
+pub fn str_to_usize(a: &str)
+    -> usize {
 
-        if self > max {
-            Err(ParseError::InvalidNumber(self.to_string()))
-        } else { Ok(self as i64) }
-    }
-
-    fn to_i64(self) -> i64 {
-        match self.to_i64_res() {
-            Ok(i) => i,
-            Err(err) => panic!("{}",err)
-        }
+    match str_to_usize_res(a) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
     }
 }
+// </editor-fold>
 
-impl ToIsize for usize {
-    fn to_isize_res(self) -> ParseResultIsize {
-        let max = isize::max_value() as usize;
+// </editor-fold>
 
-        if self > max {
-            Err(ParseError::InvalidNumber(self.to_string()))
-        } else { Ok(self as isize) }
-    }
+// <editor-fold> # Types
 
-    fn to_isize(self) -> isize {
-        match self.to_isize_res() {
-            Ok(i) => i,
-            Err(err) => panic!("{}",err)
-        }
-    }
-}
-
-impl ToU8 for usize {
-    fn to_u8_res(self) -> ParseResultU8 {
-        let max = u8::max_value() as usize;
-
-        if self > max {
-            Err(ParseError::InvalidNumber(self.to_string()))
-        } else { Ok(self as u8) }
-    }
-
-    fn to_u8(self) -> u8 {
-        match self.to_u8_res() {
-            Ok(i) => i,
-            Err(err) => panic!("{}",err)
-        }
-    }
-}
-
-impl ToU16 for usize {
-    fn to_u16_res(self) -> ParseResultU16 {
-        let max = u16::max_value() as usize;
-
-        if self > max {
-            Err(ParseError::InvalidNumber(self.to_string()))
-        } else { Ok(self as u16) }
-    }
-
-    fn to_u16(self) -> u16 {
-        match self.to_u16_res() {
-            Ok(i) => i,
-            Err(err) => panic!("{}",err)
-        }
-    }
-}
-
-impl ToU32 for usize {
-    fn to_u32_res(self) -> ParseResultU32 {
-        let max = u32::max_value() as usize;
-
-        if self > max {
-            Err(ParseError::InvalidNumber(self.to_string()))
-        } else { Ok(self as u32) }
-    }
-
-    fn to_u32(self) -> u32 {
-        match self.to_u32_res() {
-            Ok(i) => i,
-            Err(err) => panic!("{}",err)
-        }
-    }
-}
+pub type ParseResultUsize = Result<usize, ParseError>;
+// </editor-fold>

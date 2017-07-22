@@ -1,20 +1,29 @@
 extern crate rand;
 
 // <editor-fold> # Uses
+
 use std::usize::MAX;
-use rand::{thread_rng, Rng, SeedableRng, StdRng};
+use rand::{ thread_rng, Rng, SeedableRng, StdRng };
 // </editor-fold>
 
 // <editor-fold> # Traits
+
 pub trait ArrayUtils<T> {
-    fn swaping(&mut self, a: usize, b: usize) -> bool;
+
+    fn swaping(&mut self, a: usize, b: usize)
+        -> bool;
+
     fn shuffle(&mut self);
+
     fn shuffle_seed(&mut self, seed: &[usize]);
-    fn index_of(&self, search: &T) -> usize;
+
+    fn index_of(&self, search: &T)
+        -> usize;
 }
 // </editor-fold>
 
 // <editor-fold> # Functions
+
 pub fn swaping<T: Ord + Copy>(ary: &mut [T], a: usize, b: usize)
     -> bool {
 

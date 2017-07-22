@@ -1,7 +1,14 @@
+// <editor-fold> # Uses
+
 use std::fmt;
 use std::fmt::{ Display, Formatter };
 use std::error::Error;
 use error::*;
+// </editor-fold>
+
+// <editor-fold> # Impl
+
+// <editor-fold> ## ParseError
 
 impl Error for ParseError{
     fn description(&self) -> &'static str {
@@ -22,6 +29,9 @@ impl Display for ParseError {
         }
     }
 }
+// </editor-fold>
+
+// <editor-fold> ## ArithmeticError
 
 impl Error for ArithmeticError {
     fn description(&self) -> &'static str {
@@ -40,3 +50,6 @@ impl Display for ArithmeticError {
         }
     }
 }
+// </editor-fold>
+
+// </editor-fold>
