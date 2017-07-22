@@ -1,3 +1,5 @@
+#[doc(hidden)] pub mod parse;
+
 #[doc(hidden)] pub mod array_impl;
 #[doc(hidden)] pub mod error_impl;
 #[doc(hidden)] pub mod sorting_impl;

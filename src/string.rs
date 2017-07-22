@@ -700,7 +700,7 @@ pub fn reverse_mut(s: &mut String) {
 pub fn reverse_str(s: &String)
     -> &'static str {
 
-    reverse(s).to_str()
+    ""//TODO: reverse(s).to_str()
 }
 // </editor-fold>
 
