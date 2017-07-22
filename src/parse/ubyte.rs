@@ -1,3 +1,7 @@
+use error::ParseError;
+use RoundingMode;
+use RoundingMode::*;
+
 // <editor-fold> # Traits
 
 pub trait ToU8 {
@@ -86,7 +90,7 @@ pub fn u16_to_u8_res(a: u16)
     } else { Ok(a as u8) }
 }
 
-pub fn u16_to_u8(a_ u16)
+pub fn u16_to_u8(a: u16)
     -> u8 {
 
     match u16_to_u8_res(a) {

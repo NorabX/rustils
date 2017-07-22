@@ -88,19 +88,3 @@
 //     }
 // }
 //
-// impl ToU32 for usize {
-//     fn to_u32_res(self) -> ParseResultU32 {
-//         let max = u32::max_value() as usize;
-//
-//         if self > max {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(self as u32) }
-//     }
-//
-//     fn to_u32(self) -> u32 {
-//         match self.to_u32_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }

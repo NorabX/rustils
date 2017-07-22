@@ -174,37 +174,7 @@ pub trait ToStr {
 //     }
 // }
 //
-// impl ToU32 for String {
-//     fn to_u32_res(self) -> ParseResultU32 {
-//         match self.parse::<u32>() {
-//             Ok(n) => Ok(n),
-//             Err(_) => Err(ParseError::InvalidNumber(self))
-//         }
-//     }
-//
-//     fn to_u32(self) -> u32 {
-//         match self.to_u32_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
-//
-// impl ToU32 for &'static str {
-//     fn to_u32_res(self) -> ParseResultU32 {
-//         match self.parse::<u32>() {
-//             Ok(n) => Ok(n),
-//             Err(_) => Err(ParseError::InvalidNumber(self.to_string()))
-//         }
-//     }
-//
-//     fn to_u32(self) -> u32 {
-//         match self.to_u32_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
+
 //
 // impl ToU64 for String {
 //     fn to_u64_res(self) -> ParseResultU64 {

@@ -363,20 +363,7 @@ pub type ParseResultI16 = Result<i16, ParseError>;
 //     }
 // }
 //
-// impl ToU32 for i16 {
-//     fn to_u32_res(self) -> ParseResultU32 {
-//         if self < 0 {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(self as u32) }
-//     }
-//
-//     fn to_u32(self) -> u32 {
-//         match self.to_u32_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
+
 //
 // impl ToU64 for i16 {
 //     fn to_u64_res(self) -> ParseResultU64 {

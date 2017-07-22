@@ -217,15 +217,7 @@ pub fn str_to_bool(a: &str)
 //     }
 // }
 //
-// impl ToU32 for bool {
-//     fn to_u32_res(self) -> ParseResultU32 {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_u32(self) -> u32 {
-//         if self { 1 } else { 0 }
-//     }
-// }
+
 //
 // impl ToU64 for bool {
 //     fn to_u64_res(self) -> ParseResultU64 {

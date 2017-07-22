@@ -8,7 +8,7 @@ pub mod long;
 pub mod short;
 pub mod string;
 pub mod ubyte;
-// pub mod uint;
+pub mod uint;
 // pub mod ulong;
 // pub mod ushort;
 // pub mod usize;
@@ -17,25 +17,12 @@ use { RoundingMode };
 use error::ParseError;
 
 
-
-
-
 pub type ParseResultU16 = Result<u16,ParseError>;
-pub type ParseResultU32 = Result<u32,ParseError>;
+
 pub type ParseResultU64 = Result<u64,ParseError>;
 
 
 pub type ParseResultUsize = Result<usize,ParseError>;
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -49,15 +36,7 @@ pub trait ToU16RM {
     fn to_u16_rm(self, rm: RoundingMode) -> u16;
 }
 
-pub trait ToU32 {
-    fn to_u32_res(self) -> ParseResultU32;
-    fn to_u32(self) -> u32;
-}
 
-pub trait ToU32RM {
-    fn to_u32_rm_res(self, rm: RoundingMode) -> ParseResultU32;
-    fn to_u32_rm(self, rm: RoundingMode) -> u32;
-}
 
 pub trait ToU64 {
     fn to_u64_res(self) -> ParseResultU64;

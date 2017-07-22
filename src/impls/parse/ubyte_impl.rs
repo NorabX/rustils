@@ -1,3 +1,6 @@
+use parse::ubyte::*;
+use RoundingMode;
+
 impl ToU8 for bool {
 
     fn to_u8_res(self)
@@ -108,7 +111,7 @@ impl ToU8RM for f32 {
     fn to_u8_rm_res(self, rm: RoundingMode)
         -> ParseResultU8 {
 
-        f32_to_u8_res(self, rm)
+        f32_to_u8_rm_res(self, rm)
     }
 
     fn to_u8_rm(self, rm: RoundingMode)

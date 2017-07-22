@@ -249,39 +249,9 @@ pub type ParseResultF32 = Result<f32,ParseError>;
 //     }
 // }
 //
-// impl ToU32 for f32 {
-//     fn to_u32_res(self) -> ParseResultU32 {
-//         self.to_u32_rm_res(Trunc)
-//     }
+
 //
-//     fn to_u32(self) -> u32 {
-//         self.to_u32_rm(Trunc)
-//     }
-// }
-//
-// impl ToU32RM for f32 {
-//     fn to_u32_rm_res(self, rm: RoundingMode) -> ParseResultU32 {
-//         let max = 16777215_f32;
-//
-//         let x = match rm {
-//             Round => self.round(),
-//             Ceil => self.ceil(),
-//             Floor => self.floor(),
-//             Trunc => self.trunc()
-//         };
-//
-//         if x.is_nan() || x < 0.0 || x > max {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(x as u32) }
-//     }
-//
-//     fn to_u32_rm(self, rm: RoundingMode) -> u32 {
-//         match self.to_u32_rm_res(rm) {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
+
 //
 // impl ToU64 for f32 {
 //     fn to_u64_res(self) -> ParseResultU64 {
