@@ -4,7 +4,7 @@ use parse::int::*;
 use RoundingMode;
 // </editor-fold>
 
-// <editor-fold> # Impl
+// <editor-fold> # Impls
 
 // <editor-fold> ## ToI32
 

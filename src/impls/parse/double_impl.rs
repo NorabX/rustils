@@ -3,7 +3,7 @@
 use parse::double::*;
 // </editor-fold>
 
-// <editor-fold> # Impl
+// <editor-fold> # Impls
 
 // <editor-fold> ## ToF64
 

@@ -3,7 +3,7 @@
 use parse::boolean::*;
 // </editor-fold>
 
-// <editor-fold> # Impl
+// <editor-fold> # Impls
 
 // <editor-fold> ## ToBool
 

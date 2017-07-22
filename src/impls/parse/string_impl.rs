@@ -4,7 +4,7 @@ use std::mem::{ forget, transmute };
 use parse::string::*;
 // </editor-fold>
 
-// <editor-fold> # Impl
+// <editor-fold> # Impls
 
 // <editor-fold> ## ToStr
 
