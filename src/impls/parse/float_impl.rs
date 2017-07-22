@@ -1,4 +1,11 @@
+// <editor-fold> # Uses
+
 use parse::float::*;
+// </editor-fold>
+
+// <editor-fold> # Impl
+
+// <editor-fold> ## ToF32
 
 impl ToF32 for bool {
 
@@ -44,3 +51,6 @@ impl ToF32 for &'static str {
         str_to_f32(self)
     }
 }
+// </editor-fold>
+
+// </editor-fold>

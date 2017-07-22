@@ -1,5 +1,12 @@
+// <editor-fold> # Uses
+
 use parse::uint::*;
 use RoundingMode;
+// </editor-fold>
+
+// <editor-fold> # Impls
+
+// <editor-fold> ## ToU32
 
 impl ToU32 for bool {
 
@@ -211,3 +218,6 @@ impl ToU32 for &'static str {
         str_to_u32(self)
     }
 }
+// </editor-fold>
+
+// </editor-fold>

@@ -1,5 +1,12 @@
+// <editor-fold> # Uses
+
 use std::mem::{ forget, transmute };
 use parse::string::*;
+// </editor-fold>
+
+// <editor-fold> # Impl
+
+// <editor-fold> ## ToStr
 
 impl ToStr for String {
 
@@ -13,3 +20,6 @@ impl ToStr for String {
         }
     }
 }
+// </editor-fold>
+
+// </editor-fold>

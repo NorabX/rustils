@@ -1,5 +1,12 @@
+// <editor-fold> # Uses
+
 use parse::ulong::*;
 use RoundingMode;
+// </editor-fold>
+
+// <editor-fold> # Impls
+
+// <editor-fold> ## ToU64
 
 impl ToU64 for bool {
 
@@ -181,3 +188,6 @@ impl ToU64 for &'static str {
         str_to_u64(self)
     }
 }
+// </editor-fold>
+
+// </editor-fold>

@@ -1,6 +1,13 @@
 extern crate rand;
 
+// <editor-fold> # Uses
+
 use array;
+//</editor-fold>
+
+// <editor-fold> # Impls
+
+// <editor-fold> ## ArrayUtils
 
 impl<T: Ord + Copy> array::ArrayUtils<T> for [T] {
 
@@ -25,3 +32,6 @@ impl<T: Ord + Copy> array::ArrayUtils<T> for [T] {
         array::index_of(self, search)
     }
 }
+// </editor-fold>
+
+// </editor-fold>

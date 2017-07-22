@@ -1,5 +1,12 @@
+// <editor-fold> # Uses
+
 use parse::isize::*;
 use RoundingMode;
+// </editor-fold>
+
+// <editor-fold> # Impl
+
+// <editor-fold> ## ToIsize
 
 impl ToIsize for bool {
 
@@ -135,3 +142,6 @@ impl ToIsize for &'static str {
         str_to_isize(self)
     }
 }
+// </editor-fold>
+
+// </editor-fold>

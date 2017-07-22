@@ -1,5 +1,12 @@
+// <editor-fold> # Uses
+
 use std::cmp::Ordering;
 use sorting::*;
+// </editor-fold>
+
+// <editor-fold> # Impls
+
+// <editor-fold> ## Sort
 
 impl<T: Ord + Clone> Sort for [T] {
     fn adv_sort_mut(&mut self, algo: SortingAlgorithmn) {
@@ -9,6 +16,9 @@ impl<T: Ord + Clone> Sort for [T] {
         }
     }
 }
+// </editor-fold>
+
+// <editor-fold> ## SortBy
 
 impl<T: PartialOrd, F: FnMut(&T, &T) -> Ordering> SortBy<T, F> for [T] {
     fn adv_sort_by_mut(&mut self, compare: &mut F, algo: SortingAlgorithmn) {
@@ -18,3 +28,6 @@ impl<T: PartialOrd, F: FnMut(&T, &T) -> Ordering> SortBy<T, F> for [T] {
         }
     }
 }
+// </editor-fold>
+
+// </editor-fold>

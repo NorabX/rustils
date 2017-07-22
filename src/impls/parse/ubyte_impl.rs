@@ -1,5 +1,12 @@
+// <editor-fold> # Uses
+
 use parse::ubyte::*;
 use RoundingMode;
+// </editor-fold>
+
+// <editor-fold> # Impls
+
+// <editor-fold> ## ToU8
 
 impl ToU8 for bool {
 
@@ -240,3 +247,6 @@ impl ToU8 for &'static str {
         str_to_u8(self)
     }
 }
+// </editor-fold>
+
+// </editor-fold>

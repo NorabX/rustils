@@ -1,5 +1,12 @@
+// <editor-fold> # Uses
+
 use parse::long::*;
 use RoundingMode;
+// </editor-fold>
+
+// <editor-fold> # Impl
+
+// <editor-fold> ## ToI64
 
 impl ToI64 for bool {
 
@@ -135,3 +142,6 @@ impl ToI64 for &'static str {
         str_to_i64(self)
     }
 }
+// </editor-fold>
+
+// </editor-fold>
