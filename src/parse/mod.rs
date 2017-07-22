@@ -10,27 +10,19 @@ pub mod string;
 pub mod ubyte;
 pub mod uint;
 pub mod ulong;
-// pub mod ushort;
+pub mod ushort;
 // pub mod usize;
 
 use { RoundingMode };
 use error::ParseError;
 
 
-pub type ParseResultU16 = Result<u16,ParseError>;
+
 pub type ParseResultUsize = Result<usize,ParseError>;
 
 
 
-pub trait ToU16 {
-    fn to_u16_res(self) -> ParseResultU16;
-    fn to_u16(self) -> u16;
-}
 
-pub trait ToU16RM {
-    fn to_u16_rm_res(self, rm: RoundingMode) -> ParseResultU16;
-    fn to_u16_rm(self, rm: RoundingMode) -> u16;
-}
 
 pub trait ToUsize {
     fn to_usize_res(self) -> ParseResultUsize;
