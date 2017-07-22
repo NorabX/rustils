@@ -11,25 +11,4 @@ pub mod ubyte;
 pub mod uint;
 pub mod ulong;
 pub mod ushort;
-// pub mod usize;
-
-use { RoundingMode };
-use error::ParseError;
-
-
-
-pub type ParseResultUsize = Result<usize,ParseError>;
-
-
-
-
-
-pub trait ToUsize {
-    fn to_usize_res(self) -> ParseResultUsize;
-    fn to_usize(self) -> usize;
-}
-
-pub trait ToUsizeRM {
-    fn to_usize_rm_res(self, rm: RoundingMode) -> ParseResultUsize;
-    fn to_usize_rm(self, rm: RoundingMode) -> usize;
-}
+pub mod usize;

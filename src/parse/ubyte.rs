@@ -1,6 +1,9 @@
+// <editor-fold> # Uses
+
 use error::ParseError;
 use RoundingMode;
 use RoundingMode::*;
+// </editor-fold>
 
 // <editor-fold> # Traits
 
@@ -26,6 +29,7 @@ pub trait ToU8RM {
 // <editor-fold> # Functions
 
 // <editor-fold> ## bool
+
 pub fn bool_to_u8_res(a: bool)
     -> ParseResultU8 {
 
@@ -341,36 +345,6 @@ pub fn str_to_u8(a: &str)
 // </editor-fold>
 
 // <editor-fold> # Types
+
 pub type ParseResultU8 = Result<u8, ParseError>;
 // </editor-fold>
-
-
-// use parse::{
-//     ToI8,
-//     ToBool
-// };
-//
-// use parse::{
-//     ParseResultI8
-// };
-//
-// use error::ParseError;
-//
-
-//
-// impl ToI8 for u8 {
-//     fn to_i8_res(self) -> ParseResultI8 {
-//         let max = i8::max_value() as u8;
-//
-//         if self > max {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(self as i8) }
-//     }
-//
-//     fn to_i8(self) -> i8 {
-//         match self.to_i8_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }

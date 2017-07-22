@@ -1,8 +1,10 @@
 // <editor-fold> # Uses
+
 use error::ParseError;
 // </editor-fold>
 
 // <editor-fold> # Traits
+
 pub trait ToBool {
 
     fn to_bool(self)
@@ -13,7 +15,6 @@ pub trait ToBool {
 // <editor-fold> # Functions
 
 // <editor-fold> ## 8
-
 
 /// Parse i8 to bool
 ///
@@ -51,6 +52,7 @@ pub fn u8_to_bool(a: u8)
 // </editor-fold>
 
 // <editor-fold> ## 16
+
 pub fn i16_to_bool(a: i16)
     -> bool {
 
@@ -65,6 +67,7 @@ pub fn u16_to_bool(a: u16)
 // </editor-fold>
 
 // <editor-fold> ## 32
+
 pub fn i32_to_bool(a: i32)
     -> bool {
 
@@ -85,6 +88,7 @@ pub fn f32_to_bool(a: f32)
 // </editor-fold>
 
 // <editor-fold> ## 64
+
 pub fn i64_to_bool(a: i64)
     -> bool {
 
@@ -105,6 +109,7 @@ pub fn f64_to_bool(a: f64)
 // </editor-fold>
 
 // <editor-fold> ## size
+
 pub fn isize_to_bool(a: isize)
     -> bool {
 
@@ -119,6 +124,7 @@ pub fn usize_to_bool(a: usize)
 // </editor-fold>
 
 // <editor-fold> ## string
+
 pub fn string_to_bool(a: String)
     -> bool {
 
@@ -161,102 +167,3 @@ pub fn str_to_bool(a: &str)
 // </editor-fold>
 
 // </editor-fold>
-
-// use parse::{
-//     ToI8, ToI16, ToI32, ToI64,
-//     ToU8, ToU16, ToU32, ToU64,
-//     ToF32, ToF64, ToIsize, ToUsize
-// };
-// use parse::{
-//     ParseResultI8, ParseResultI16, ParseResultI32, ParseResultI64,
-//     ParseResultU8, ParseResultU16, ParseResultU32, ParseResultU64,
-//     ParseResultF32, ParseResultF64, ParseResultIsize, ParseResultUsize
-// };
-//
-// impl ToI8 for bool {
-//     fn to_i8_res(self) -> ParseResultI8 {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_i8(self) -> i8 {
-//         if self { 1 } else { 0 }
-//     }
-// }
-//
-
-//
-// impl ToI32 for bool {
-//     fn to_i32_res(self) -> ParseResultI32 {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_i32(self) -> i32 {
-//         if self { 1 } else { 0 }
-//     }
-// }
-//
-// impl ToI64 for bool {
-//     fn to_i64_res(self) -> ParseResultI64 {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_i64(self) -> i64 {
-//         if self { 1 } else { 0 }
-//     }
-// }
-//
-
-//
-// impl ToU16 for bool {
-//     fn to_u16_res(self) -> ParseResultU16 {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_u16(self) -> u16 {
-//         if self { 1 } else { 0 }
-//     }
-// }
-//
-
-//
-
-//
-// impl ToF32 for bool {
-//     fn to_f32_res(self) -> ParseResultF32 {
-//         if self { Ok(1.0) } else { Ok(0.0) }
-//     }
-//
-//     fn to_f32(self) -> f32 {
-//         if self { 1.0 } else { 0.0 }
-//     }
-// }
-//
-// impl ToF64 for bool {
-//     fn to_f64_res(self) -> ParseResultF64 {
-//         if self { Ok(1.0) } else { Ok(0.0) }
-//     }
-//
-//     fn to_f64(self) -> f64 {
-//         if self { 1.0 } else { 0.0 }
-//     }
-// }
-//
-// impl ToIsize for bool {
-//     fn to_isize_res(self) -> ParseResultIsize {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_isize(self) -> isize {
-//         if self { 1 } else { 0 }
-//     }
-// }
-//
-// impl ToUsize for bool {
-//     fn to_usize_res(self) -> ParseResultUsize {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_usize(self) -> usize {
-//         if self { 1 } else { 0 }
-//     }
-// }

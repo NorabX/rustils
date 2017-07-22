@@ -1,6 +1,9 @@
+// <editor-fold> # Uses
+
 use error::ParseError;
-use parse::RoundingMode;
-use parse::RoundingMode::*;
+use RoundingMode;
+use RoundingMode::*;
+// </editor-fold>
 
 // <editor-fold> # Traits
 
@@ -877,56 +880,6 @@ pub fn str_to_i8(a: &str)
 // </editor-fold>
 
 // <editor-fold> # Types
-pub type ParseResultI8 = Result<i8,ParseError>;
+
+pub type ParseResultI8 = Result<i8, ParseError>;
 // </editor-fold>
-
-// use parse::{
-//     ToU8, ToU16, ToU32, ToU64,
-//     ToUsize,
-//     ToBool
-// };
-//
-// use parse::{
-//     ParseResultU8, ParseResultU16, ParseResultU32, ParseResultU64,
-//     ParseResultUsize
-// };
-//
-// use error::ParseError;
-//
-
-//
-
-//
-// impl ToU16 for i8 {
-//     fn to_u16_res(self) -> ParseResultU16 {
-//         if self < 0 {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(self as u16) }
-//     }
-//
-//     fn to_u16(self) -> u16 {
-//         match self.to_u16_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
-//
-
-//
-
-//
-// impl ToUsize for i8 {
-//     fn to_usize_res(self) -> ParseResultUsize {
-//         if self < 0 {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(self as usize) }
-//     }
-//
-//     fn to_usize(self) -> usize {
-//         match self.to_usize_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
