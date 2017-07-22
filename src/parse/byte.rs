@@ -57,21 +57,8 @@ pub fn bool_to_i8(a: bool)
 /// # Examples
 ///
 /// ```
-/// extern crate rustils;
+/// rustils::parse::byte::u8_to_i8_res;
 ///
-/// use rustils::parse::byte::u8_to_i8_res;
-/// use rustils::error::ParseError::InvalidNumber;
-///
-/// let a = 42_u8;
-/// let b = 128_u8;
-///
-/// assert_eq!(
-///     u8_to_i8_res(a),
-///     Ok(42_i8));
-///
-/// assert_eq!(
-///     u8_to_i8_res(b),
-///     Err(InvalidNumber("128")));
 /// ```
 pub fn u8_to_i8_res(a: u8)
     -> ParseResultI8 {
@@ -95,16 +82,8 @@ pub fn u8_to_i8_res(a: u8)
 /// # Examples
 ///
 /// ```
-/// extern crate rustils;
+/// rustils::parse::byte::u8_to_i8;
 ///
-/// use rustils::parse::byte::u8_to_i8;
-/// use rustils::error::ParseError::InvalidNumber;
-///
-/// let a = 42_u8;
-///
-/// assert_eq!(
-///     u8_to_i8_res(a),
-///     42_i8);
 /// ```
 pub fn u8_to_i8(a: u8)
     -> i8 {

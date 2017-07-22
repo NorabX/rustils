@@ -143,6 +143,23 @@ pub fn f32_to_usize_rm(a: f32, rm: RoundingMode)
 
 // <editor-fold> ## 64
 
+pub fn i64_to_usize_res(a: i64)
+    -> ParseResultUsize {
+
+    if a < 0 {
+        Err(ParseError::InvalidNumber(a.to_string()))
+    } else { Ok(a as usize) }
+}
+
+pub fn i64_to_usize(a: i64)
+    -> usize {
+
+    match i64_to_usize_res(a) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
+    }
+}
+
 pub fn f64_to_usize_res(a: f64)
     -> ParseResultUsize {
 

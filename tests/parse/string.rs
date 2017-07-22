@@ -1,6 +1,20 @@
 extern crate rustils;
 
 use rustils::parse::*;
+use rustils::parse::boolean::*;
+use rustils::parse::byte::*;
+use rustils::parse::double::*;
+use rustils::parse::float::*;
+use rustils::parse::int::*;
+use rustils::parse::isize::*;
+use rustils::parse::long::*;
+use rustils::parse::short::*;
+use rustils::parse::string::*;
+use rustils::parse::ubyte::*;
+use rustils::parse::uint::*;
+use rustils::parse::ulong::*;
+use rustils::parse::ushort::*;
+use rustils::parse::usize::*;
 
 #[test]
 fn parse_string_to_bool_0() {

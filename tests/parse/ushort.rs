@@ -1,6 +1,10 @@
 extern crate rustils;
 
-use rustils::parse::*;
+use rustils::parse::boolean::*;
+use rustils::parse::byte::*;
+use rustils::parse::float::*;
+use rustils::parse::short::*;
+use rustils::parse::ubyte::*;
 
 #[test]
 fn parse_u16_to_bool() {

@@ -98,6 +98,20 @@ impl ToUsizeRM for f32 {
     }
 }
 
+impl ToUsize for i64 {
+    fn to_usize_res(self)
+        -> ParseResultUsize {
+
+        i64_to_usize_res(self)
+    }
+
+    fn to_usize(self)
+        -> usize {
+
+        i64_to_usize(self)
+    }
+}
+
 impl ToUsize for f64 {
 
     fn to_usize_res(self)

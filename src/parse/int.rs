@@ -45,6 +45,25 @@ pub fn bool_to_i32(a: bool)
 
 // <editor-fold> ## 32
 
+pub fn u32_to_i32_res(a: u32)
+    -> ParseResultI32 {
+
+    let max = i32::max_value() as u32;
+
+    if a > max {
+        Err(ParseError::InvalidNumber(a.to_string()))
+    } else { Ok(a as i32) }
+}
+
+pub fn u32_to_i32(a: u32)
+    -> i32 {
+
+    match u32_to_i32_res(a) {
+        Ok(i) => i,
+        Err(err) => panic!("{}",err)
+    }
+}
+
 pub fn f32_to_i32_res(a: f32)
     -> ParseResultI32 {
 

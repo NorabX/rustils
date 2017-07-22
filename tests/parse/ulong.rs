@@ -1,6 +1,14 @@
 extern crate rustils;
 
-use rustils::parse::*;
+use rustils::parse::boolean::*;
+use rustils::parse::byte::*;
+use rustils::parse::int::*;
+use rustils::parse::isize::*;
+use rustils::parse::long::*;
+use rustils::parse::short::*;
+use rustils::parse::ubyte::*;
+use rustils::parse::uint::*;
+use rustils::parse::ushort::*;
 
 #[test]
 fn parse_u64_to_bool() {

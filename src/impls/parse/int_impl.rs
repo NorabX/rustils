@@ -23,6 +23,20 @@ impl ToI32 for bool {
     }
 }
 
+impl ToI32 for u32 {
+    fn to_i32_res(self)
+        -> ParseResultI32 {
+
+        u32_to_i32_res(self)
+    }
+
+    fn to_i32(self)
+        -> i32 {
+
+        u32_to_i32(self)
+    }
+}
+
 impl ToI32 for f32 {
 
     fn to_i32_res(self)

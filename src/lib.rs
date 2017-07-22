@@ -19,8 +19,8 @@ extern crate rustils;
 # Examples
 
 ```
-use rustils::parse::ToI8;
-use rustils::ParseError::InvalidNumber;
+use rustils::parse::byte::ToI8;
+use rustils::error::ParseError::InvalidNumber;
 
 let a = -128_i32;
 let b = 127_i32;
