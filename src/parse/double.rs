@@ -218,39 +218,7 @@ pub type ParseResultF64 = Result<f64, ParseError>;
 //     }
 // }
 //
-// impl ToU8 for f64 {
-//     fn to_u8_res(self) -> ParseResultU8{
-//         self.to_u8_rm_res(Trunc)
-//     }
-//
-//     fn to_u8(self) -> u8 {
-//         self.to_u8_rm(Trunc)
-//     }
-// }
-//
-// impl ToU8RM for f64 {
-//     fn to_u8_rm_res(self, rm: RoundingMode) -> ParseResultU8 {
-//         let max = u8::max_value() as f64;
-//
-//         let x = match rm {
-//             Round => self.round(),
-//             Ceil => self.ceil(),
-//             Floor => self.floor(),
-//             Trunc => self.trunc()
-//         };
-//
-//         if x.is_nan() || x < 0.0 || x > max {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(x as u8) }
-//     }
-//
-//     fn to_u8_rm(self, rm: RoundingMode) -> u8 {
-//         match self.to_u8_rm_res(rm) {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
+
 //
 // impl ToU16 for f64 {
 //     fn to_u16_res(self) -> ParseResultU16 {

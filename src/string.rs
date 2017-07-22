@@ -1,6 +1,6 @@
 // <editor-fold> # Uses
 use std::iter::Iterator;
-use parse::ToStr;
+use parse::string::ToStr;
 use regex::Regex;
 use CharProp;
 use has_char_property;
@@ -700,7 +700,7 @@ pub fn reverse_mut(s: &mut String) {
 pub fn reverse_str(s: &String)
     -> &'static str {
 
-    ""//TODO: reverse(s).to_str()
+    reverse(s).to_str()
 }
 // </editor-fold>
 

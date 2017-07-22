@@ -205,15 +205,7 @@ pub fn str_to_bool(a: &str)
 //     }
 // }
 //
-// impl ToU8 for bool {
-//     fn to_u8_res(self) -> ParseResultU8 {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_u8(self) -> u8 {
-//         if self { 1 } else { 0 }
-//     }
-// }
+
 //
 // impl ToU16 for bool {
 //     fn to_u16_res(self) -> ParseResultU16 {

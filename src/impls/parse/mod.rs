@@ -6,3 +6,5 @@
 #[doc(hidden)] pub mod isize_impl;
 #[doc(hidden)] pub mod long_impl;
 #[doc(hidden)] pub mod short_impl;
+#[doc(hidden)] pub mod string_impl;
+#[doc(hidden)] pub mod ubyte_impl;

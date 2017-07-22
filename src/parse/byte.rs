@@ -895,20 +895,7 @@ pub type ParseResultI8 = Result<i8,ParseError>;
 //
 
 //
-// impl ToU8 for i8 {
-//     fn to_u8_res(self) -> ParseResultU8 {
-//         if self < 0 {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(self as u8) }
-//     }
-//
-//     fn to_u8(self) -> u8 {
-//         match self.to_u8_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
+
 //
 // impl ToU16 for i8 {
 //     fn to_u16_res(self) -> ParseResultU16 {

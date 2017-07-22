@@ -1,3 +1,15 @@
+
+// <editor-fold> # Traits
+
+pub trait ToStr {
+
+    fn to_str(self)
+        -> &'static str;
+}
+// </editor-fold>
+
+
+
 // use parse::{
 //     ToI8, ToI16, ToI32, ToI64,
 //     ToU8, ToU16, ToU32, ToU64,
@@ -128,37 +140,7 @@
 //     }
 // }
 //
-// impl ToU8 for String {
-//     fn to_u8_res(self) -> ParseResultU8 {
-//         match self.parse::<u8>() {
-//             Ok(n) => Ok(n),
-//             Err(_) => Err(ParseError::InvalidNumber(self))
-//         }
-//     }
-//
-//     fn to_u8(self) -> u8 {
-//         match self.to_u8_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
-//
-// impl ToU8 for &'static str {
-//     fn to_u8_res(self) -> ParseResultU8 {
-//         match self.parse::<u8>() {
-//             Ok(n) => Ok(n),
-//             Err(_) => Err(ParseError::InvalidNumber(self.to_string()))
-//         }
-//     }
-//
-//     fn to_u8(self) -> u8 {
-//         match self.to_u8_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
+
 //
 // impl ToU16 for String {
 //     fn to_u16_res(self) -> ParseResultU16 {
