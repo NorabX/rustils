@@ -9,3 +9,4 @@
 #[doc(hidden)] pub mod string_impl;
 #[doc(hidden)] pub mod ubyte_impl;
 #[doc(hidden)] pub mod uint_impl;
+#[doc(hidden)] pub mod ulong_impl;

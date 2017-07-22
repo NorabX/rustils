@@ -285,20 +285,7 @@ pub type ParseResultI64 = Result<i64, ParseError>;
 //
 
 //
-// impl ToU64 for i64 {
-//     fn to_u64_res(self) -> ParseResultU64 {
-//         if self < 0 {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(self as u64) }
-//     }
-//
-//     fn to_u64(self) -> u64 {
-//         match self.to_u64_res() {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
+
 //
 // impl ToUsize for i64 {
 //     fn to_usize_res(self) -> ParseResultUsize {

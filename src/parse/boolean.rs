@@ -219,15 +219,7 @@ pub fn str_to_bool(a: &str)
 //
 
 //
-// impl ToU64 for bool {
-//     fn to_u64_res(self) -> ParseResultU64 {
-//         if self { Ok(1) } else { Ok(0) }
-//     }
-//
-//     fn to_u64(self) -> u64 {
-//         if self { 1 } else { 0 }
-//     }
-// }
+
 //
 // impl ToF32 for bool {
 //     fn to_f32_res(self) -> ParseResultF32 {

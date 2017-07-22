@@ -256,39 +256,9 @@ pub type ParseResultF64 = Result<f64, ParseError>;
 //
 
 //
-// impl ToU64 for f64 {
-//     fn to_u64_res(self) -> ParseResultU64 {
-//         self.to_u64_rm_res(Trunc)
-//     }
+
 //
-//     fn to_u64(self) -> u64 {
-//         self.to_u64_rm(Trunc)
-//     }
-// }
-//
-// impl ToU64RM for f64 {
-//     fn to_u64_rm_res(self, rm: RoundingMode) -> ParseResultU64 {
-//         let max = 9007199254740991_f64;
-//
-//         let x = match rm {
-//             Round => self.round(),
-//             Ceil => self.ceil(),
-//             Floor => self.floor(),
-//             Trunc => self.trunc()
-//         };
-//
-//         if x.is_nan() || x < 0.0 || x > max {
-//             Err(ParseError::InvalidNumber(self.to_string()))
-//         } else { Ok(x as u64) }
-//     }
-//
-//     fn to_u64_rm(self, rm: RoundingMode) -> u64 {
-//         match self.to_u64_rm_res(rm) {
-//             Ok(i) => i,
-//             Err(err) => panic!("{}",err)
-//         }
-//     }
-// }
+
 //
 // impl ToUsize for f64 {
 //     fn to_usize_res(self) -> ParseResultUsize {
