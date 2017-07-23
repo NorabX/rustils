@@ -30,12 +30,54 @@ pub trait ToI8RM {
 
 // <editor-fold> ## bool
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::byte;
+///
+/// assert_eq!(
+///     byte::bool_to_i8_res(true),
+///     Ok(1_i8)
+/// );
+///
+/// assert_eq!(
+///     byte::bool_to_i8_res(false),
+///     Ok(0_i8)
+/// );
+/// ```
 pub fn bool_to_i8_res(a: bool)
     -> ParseResultI8 {
 
     if a { Ok(1) } else { Ok(0) }
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::byte;
+///
+/// assert_eq!(
+///     byte::bool_to_i8(true),
+///     1_i8
+/// );
+///
+/// assert_eq!(
+///     byte::bool_to_i8(false),
+///     0_i8
+/// );
+/// ```
 pub fn bool_to_i8(a: bool)
     -> i8 {
 
