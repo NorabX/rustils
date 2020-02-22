@@ -25,24 +25,6 @@ pub fn test_swaping_str(){
     assert_eq!(&mut ["one", "four", "three", "two"], ary);
 }
 
-// #[test]
-// pub fn test_shuffle_seed_integer(){
-//     let ary = &mut [1, 2, 3, 4, 5, 6, 7];
-//     let seed: &[_] = &[1, 2, 3, 4, 5];
-//
-//     ary.shuffle_seed(seed);
-//     assert_eq!(&mut [4, 5, 1, 3, 2, 7, 6], ary);
-// }
-//
-// #[test]
-// pub fn test_shuffle_seed_str(){
-//     let ary = &mut ["one", "two", "three", "four", "five", "six", "seven"];
-//     let seed: &[_] = &[1, 2, 3, 4, 5];
-//
-//     ary.shuffle_seed(seed);
-//     assert_eq!(&mut ["four", "five", "one", "three", "two", "seven", "six"], ary);
-// }
-
 #[test]
 pub fn test_index_of_integer(){
     let ary = [1, 2, 2, 4];
