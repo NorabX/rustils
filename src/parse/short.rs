@@ -1,11 +1,6 @@
-// <editor-fold> Uses
-
 use error::ParseError;
 use RoundingMode;
 use RoundingMode::*;
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait ToI16 {
 
@@ -24,11 +19,6 @@ pub trait ToI16RM {
     fn to_i16_rm(self, rm: RoundingMode)
         -> i16;
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
-
-// <editor-fold> ## bool
 
 pub fn bool_to_i16_res(a: bool)
     -> ParseResultI16 {
@@ -41,10 +31,6 @@ pub fn bool_to_i16(a: bool)
 
     if a { 1 } else { 0 }
 }
-
-// </editor-fold>
-
-// <editor-fold> ## 16
 
 pub fn u16_to_i16_res(a: u16)
     -> ParseResultI16 {
@@ -64,9 +50,6 @@ pub fn u16_to_i16(a: u16)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## 32
 
 pub fn i32_to_i16_res(a: i32)
     -> ParseResultI16 {
@@ -145,9 +128,6 @@ pub fn f32_to_i16_rm(a: f32, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## 64
 
 pub fn i64_to_i16_res(a: i64)
     -> ParseResultI16 {
@@ -226,9 +206,6 @@ pub fn f64_to_i16_rm(a: f64, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## size
 
 pub fn isize_to_i16_res(a: isize)
     -> ParseResultI16 {
@@ -268,9 +245,6 @@ pub fn usize_to_i16(a: usize)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## string
 
 pub fn string_to_i16_res(a: String)
     -> ParseResultI16 {
@@ -307,11 +281,5 @@ pub fn str_to_i16(a: &str)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// </editor-fold>
-
-// <editor-fold> # Types
 
 pub type ParseResultI16 = Result<i16, ParseError>;
-// </editor-fold>

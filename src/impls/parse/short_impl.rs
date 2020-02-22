@@ -1,12 +1,5 @@
-// <editor-fold> # Uses
-
 use parse::short::*;
 use RoundingMode;
-// </editor-fold>
-
-// <editor-fold> # Impls
-
-// <editor-fold> ## ToI16
 
 impl ToI16 for bool {
 
@@ -220,6 +213,3 @@ impl ToI16 for &'static str {
         str_to_i16(self)
     }
 }
-// </editor-fold>
-
-// </editor-fold>

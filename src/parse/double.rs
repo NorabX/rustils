@@ -1,10 +1,5 @@
-// <editor-fold> # Uses
-
 use error::ParseError;
 use RoundingMode;
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait ToF64 {
 
@@ -23,11 +18,6 @@ pub trait ToF64RM {
     fn to_f64_rm(self, rm: RoundingMode)
         -> f64;
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
-
-// <editor-fold> ## bool
 
 pub fn bool_to_f64_res(a: bool)
     -> ParseResultF64 {
@@ -40,9 +30,6 @@ pub fn bool_to_f64(a: bool)
 
     if a { 1.0 } else { 0.0 }
 }
-// </editor-fold>
-
-// <editor-fold> ## string
 
 pub fn string_to_f64_res(a: String)
     -> ParseResultF64 {
@@ -79,11 +66,5 @@ pub fn str_to_f64(a: &str)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// </editor-fold>
-
-// <editor-fold> # Types
 
 pub type ParseResultF64 = Result<f64, ParseError>;
-// </editor-fold>

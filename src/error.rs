@@ -1,5 +1,3 @@
-// <editor-fold> # Enums
-
 #[derive(PartialEq, Debug)]
 pub enum ParseError {
 
@@ -9,7 +7,6 @@ pub enum ParseError {
 
 #[derive(PartialEq, Debug)]
 pub enum ArithmeticError {
-    
+
     DivideByZero
 }
-// </editor-fold>

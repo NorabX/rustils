@@ -1,12 +1,5 @@
-// <editor-fold> # Uses
-
 use parse::int::*;
 use RoundingMode;
-// </editor-fold>
-
-// <editor-fold> # Impls
-
-// <editor-fold> ## ToI32
 
 impl ToI32 for bool {
 
@@ -186,6 +179,3 @@ impl ToI32 for &'static str {
         str_to_i32(self)
     }
 }
-// </editor-fold>
-
-// </editor-fold>

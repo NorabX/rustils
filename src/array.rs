@@ -1,12 +1,7 @@
 extern crate rand;
 
-// <editor-fold> # Uses
-
 use std::usize::MAX;
 use rand::{ thread_rng, Rng, SeedableRng, StdRng };
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait ArrayUtils<T> {
 
@@ -20,9 +15,6 @@ pub trait ArrayUtils<T> {
     fn index_of(&self, search: &T)
         -> usize;
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
 
 pub fn swaping<T: Ord + Copy>(ary: &mut [T], a: usize, b: usize)
     -> bool {
@@ -62,4 +54,3 @@ pub fn index_of<T: Ord + Copy>(ary: &[T], search: &T)
 
     MAX
 }
-// </editor-fold>

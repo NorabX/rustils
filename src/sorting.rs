@@ -1,17 +1,9 @@
-// <editor-fold> # Uses
-
 use std::cmp::Ordering;
-// </editor-fold>
-
-// <editor-fold> # Enums
 
 pub enum SortingAlgorithmn {
     Bubble,
     Quick
 }
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait Sort {
 
@@ -23,11 +15,6 @@ pub trait SortBy<T: PartialOrd, F: FnMut(&T, &T)
 
     fn adv_sort_by_mut(&mut self, compare: &mut F, algo: SortingAlgorithmn);
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
-
-// <editor-fold> ## Bubble
 
 pub fn bubble_sort_mut<T: Ord + Clone>(ary: &mut [T]) {
 
@@ -51,9 +38,6 @@ pub fn bubble_sort_by_mut<T, F: FnMut(&T, &T)
         }
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## Quick
 
 pub fn quick_sort_mut<T: Ord + Clone>(ary: &mut [T]) {
 
@@ -94,6 +78,3 @@ pub fn quick_sort_by_mut<T, F: FnMut(&T, &T)
         quick_sort_by_mut(compare, &mut ary[p + 1..]);
     }
 }
-// </editor-fold>
-
-// </editor-fold>

@@ -1,11 +1,4 @@
-// <editor-fold> # Uses
-
 use string;
-// </editor-fold>
-
-// <editor-fold> # Impls
-
-// <editor-fold> ## StringUtils
 
 impl string::StringUtils for &'static str {
 
@@ -398,6 +391,3 @@ impl string::StringUtils for &'static str {
         string::reverse_str(&self.to_string())
     }
 }
-// </editor-fold>
-
-// </editor-fold>

@@ -1,11 +1,6 @@
-// <editor-fold> # Uses
-
 use error::ParseError;
 use RoundingMode;
 use RoundingMode::*;
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait ToI32 {
 
@@ -24,11 +19,6 @@ pub trait ToI32RM {
     fn to_i32_rm(self, rm: RoundingMode)
         -> i32;
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
-
-// <editor-fold> ## bool
 
 pub fn bool_to_i32_res(a: bool)
     -> ParseResultI32 {
@@ -41,9 +31,6 @@ pub fn bool_to_i32(a: bool)
 
     if a { 1 } else { 0 }
 }
-// </editor-fold>
-
-// <editor-fold> ## 32
 
 pub fn u32_to_i32_res(a: u32)
     -> ParseResultI32 {
@@ -102,9 +89,6 @@ pub fn f32_to_i32_rm(a: f32, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## 64
 
 pub fn i64_to_i32_res(a: i64)
     -> ParseResultI32 {
@@ -183,9 +167,6 @@ pub fn f64_to_i32_rm(a: f64, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## size
 
 pub fn isize_to_i32_res(a: isize)
     -> ParseResultI32 {
@@ -225,9 +206,6 @@ pub fn usize_to_i32(a: usize)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## string
 
 pub fn string_to_i32_res(a: String)
     -> ParseResultI32 {
@@ -264,11 +242,5 @@ pub fn str_to_i32(a: &str)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// </editor-fold>
-
-// <editor-fold> # Types
 
 pub type ParseResultI32 = Result<i32, ParseError>;
-// </editor-fold>

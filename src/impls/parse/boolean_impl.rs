@@ -1,11 +1,4 @@
-// <editor-fold> # Uses
-
 use parse::boolean::*;
-// </editor-fold>
-
-// <editor-fold> # Impls
-
-// <editor-fold> ## ToBool
 
 impl ToBool for i8 {
 
@@ -128,6 +121,3 @@ impl ToBool for &'static str {
         str_to_bool(self)
     }
 }
-// </editor-fold>
-
-// </editor-fold>

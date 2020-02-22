@@ -1,11 +1,4 @@
-// <editor-fold> # Uses
-
 use parse::double::*;
-// </editor-fold>
-
-// <editor-fold> # Impls
-
-// <editor-fold> ## ToF64
 
 impl ToF64 for bool {
 
@@ -51,6 +44,3 @@ impl ToF64 for &'static str {
         str_to_f64(self)
     }
 }
-// </editor-fold>
-
-// </editor-fold>

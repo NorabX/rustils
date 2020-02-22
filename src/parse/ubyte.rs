@@ -1,11 +1,6 @@
-// <editor-fold> # Uses
-
 use error::ParseError;
 use RoundingMode;
 use RoundingMode::*;
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait ToU8 {
 
@@ -24,11 +19,6 @@ pub trait ToU8RM {
     fn to_u8_rm(self, rm: RoundingMode)
         -> u8;
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
-
-// <editor-fold> ## bool
 
 pub fn bool_to_u8_res(a: bool)
     -> ParseResultU8 {
@@ -41,9 +31,6 @@ pub fn bool_to_u8(a: bool)
 
     if a { 1 } else { 0 }
 }
-// </editor-fold>
-
-// <editor-fold> ## 8
 
 pub fn i8_to_u8_res(a: i8)
     -> ParseResultU8 {
@@ -61,9 +48,6 @@ pub fn i8_to_u8(a: i8)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## 16
 
 pub fn i16_to_u8_res(a: i16)
     -> ParseResultU8 {
@@ -102,9 +86,6 @@ pub fn u16_to_u8(a: u16)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## f32
 
 pub fn i32_to_u8_res(a: i32)
     -> ParseResultU8 {
@@ -181,9 +162,6 @@ pub fn f32_to_u8_rm(a: f32, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## f64
 
 pub fn i64_to_u8_res(a: i64)
     -> ParseResultU8 {
@@ -260,9 +238,6 @@ pub fn f64_to_u8_rm(a: f64, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## size
 
 pub fn usize_to_u8_res(a: usize)
     -> ParseResultU8 {
@@ -301,9 +276,6 @@ pub fn isize_to_u8(a: isize)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## string
 
 pub fn string_to_u8_res(a: String)
     -> ParseResultU8 {
@@ -340,11 +312,5 @@ pub fn str_to_u8(a: &str)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// </editor-fold>
-
-// <editor-fold> # Types
 
 pub type ParseResultU8 = Result<u8, ParseError>;
-// </editor-fold>

@@ -1,16 +1,9 @@
-// <editor-fold> # Uses
-
 use std::fmt;
 use std::fmt::{ Display, Formatter };
 use std::error::Error;
 use error::*;
-// </editor-fold>
 
-// <editor-fold> # Impl
-
-// <editor-fold> ## ParseError
-
-impl Error for ParseError{
+impl Error for ParseError {
     fn description(&self) -> &'static str {
         match self{
             &ParseError::InvalidNumber(_) => "Invalid Number",
@@ -18,7 +11,7 @@ impl Error for ParseError{
         }
     }
 
-    fn cause(&self) -> Option<&Error> { None }
+    fn cause(&self) -> Option<&dyn Error> { None }
 }
 
 impl Display for ParseError {
@@ -29,9 +22,6 @@ impl Display for ParseError {
         }
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## ArithmeticError
 
 impl Error for ArithmeticError {
     fn description(&self) -> &'static str {
@@ -40,7 +30,7 @@ impl Error for ArithmeticError {
         }
     }
 
-    fn cause(&self) -> Option<&Error> { None }
+    fn cause(&self) -> Option<&dyn Error> { None }
 }
 
 impl Display for ArithmeticError {
@@ -50,6 +40,3 @@ impl Display for ArithmeticError {
         }
     }
 }
-// </editor-fold>
-
-// </editor-fold>

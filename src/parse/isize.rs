@@ -1,11 +1,6 @@
-// <editor-fold> # Uses
-
 use error::ParseError;
 use RoundingMode;
 use RoundingMode::*;
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait ToIsize {
 
@@ -24,11 +19,6 @@ pub trait ToIsizeRM {
     fn to_isize_rm(self, rm: RoundingMode)
         -> isize;
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
-
-// <editor-fold> ## bool
 
 pub fn bool_to_isize_res(a: bool)
     -> ParseResultIsize {
@@ -41,9 +31,6 @@ pub fn bool_to_isize(a: bool)
 
     if a { 1 } else { 0 }
 }
-// </editor-fold>
-
-// <editor-fold> ## 32
 
 pub fn f32_to_isize_res(a: f32)
     -> ParseResultIsize {
@@ -83,9 +70,6 @@ pub fn f32_to_isize_rm(a: f32, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## 64
 
 pub fn u64_to_isize_res(a: u64)
     -> ParseResultIsize {
@@ -144,9 +128,6 @@ pub fn f64_to_isize_rm(a: f64, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## size
 
 pub fn usize_to_isize_res(a: usize)
     -> ParseResultIsize {
@@ -166,9 +147,6 @@ pub fn usize_to_isize(a: usize)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## string
 
 pub fn string_to_isize_res(a: String)
     -> ParseResultIsize {
@@ -205,11 +183,5 @@ pub fn str_to_isize(a: &str)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// </editor-fold>
-
-// <editor-fold> # Types
 
 pub type ParseResultIsize = Result<isize, ParseError>;
-// </editor-fold>

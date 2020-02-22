@@ -82,8 +82,6 @@ extern crate rand;
 extern crate regex;
 extern crate core;
 
-// <editor-fold> # Mods
-
 #[doc(hidden)] pub mod impls;
 #[doc(hidden)] pub mod boolean;
 
@@ -93,8 +91,6 @@ pub mod parse;
 pub mod random;
 pub mod sorting;
 pub mod string;
-// </editor-fold>
-
 
 pub enum RoundingMode { Trunc, Round, Ceil, Floor }
 

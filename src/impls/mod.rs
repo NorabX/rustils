@@ -1,5 +1,3 @@
-// <editor-fold> # Mods
-
 #[doc(hidden)] pub mod parse;
 
 #[doc(hidden)] pub mod array_impl;
@@ -7,4 +5,3 @@
 #[doc(hidden)] pub mod sorting_impl;
 #[doc(hidden)] pub mod str_impl;
 #[doc(hidden)] pub mod string_impl;
-// </editor-fold>

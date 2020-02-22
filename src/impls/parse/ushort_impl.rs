@@ -1,12 +1,5 @@
-// <editor-fold> # Uses
-
 use parse::ushort::*;
 use RoundingMode;
-// </editor-fold>
-
-// <editor-fold> # Impls
-
-// <editor-fold> ## ToU16
 
 impl ToU16 for bool {
 
@@ -232,6 +225,3 @@ impl ToU16 for &'static str {
         str_to_u16(self)
     }
 }
-// </editor-fold>
-
-// </editor-fold>

@@ -1,11 +1,6 @@
-// <editor-fold> # Uses
-
 use error::ParseError;
 use RoundingMode;
 use RoundingMode::*;
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait ToI8 {
 
@@ -24,11 +19,6 @@ pub trait ToI8RM {
     fn to_i8_rm(self, rm: RoundingMode)
         -> i8;
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
-
-// <editor-fold> ## bool
 
 /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
@@ -83,9 +73,6 @@ pub fn bool_to_i8(a: bool)
 
     if a { 1 } else { 0 }
 }
-// </editor-fold>
-
-// <editor-fold> ## 8
 
 /// Parse [`u8`](https://doc.rust-lang.org/std/primitive.u8.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
@@ -135,9 +122,6 @@ pub fn u8_to_i8(a: u8)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## 16
 
 /// Parse [`i16`](https://doc.rust-lang.org/std/primitive.i16.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
@@ -245,9 +229,6 @@ pub fn u16_to_i8(a: u16)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## 32
 
 /// Parse [`i32`](https://doc.rust-lang.org/std/primitive.i32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
@@ -462,9 +443,6 @@ pub fn f32_to_i8_rm(a: f32, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## 64
 
 /// Parse [`i64`](https://doc.rust-lang.org/std/primitive.i64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
@@ -679,9 +657,6 @@ pub fn f64_to_i8_rm(a: f64, rm: RoundingMode)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## size
 
 /// Parse [`isize`](https://doc.rust-lang.org/std/primitive.isize.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
@@ -789,9 +764,6 @@ pub fn usize_to_i8(a: usize)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// <editor-fold> ## string
 
 /// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
@@ -896,11 +868,5 @@ pub fn str_to_i8(a: &str)
         Err(err) => panic!("{}",err)
     }
 }
-// </editor-fold>
-
-// </editor-fold>
-
-// <editor-fold> # Types
 
 pub type ParseResultI8 = Result<i8, ParseError>;
-// </editor-fold>

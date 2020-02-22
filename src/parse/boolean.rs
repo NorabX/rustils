@@ -1,20 +1,10 @@
-// <editor-fold> # Uses
-
 use error::ParseError;
-// </editor-fold>
-
-// <editor-fold> # Traits
 
 pub trait ToBool {
 
     fn to_bool(self)
         -> bool;
 }
-// </editor-fold>
-
-// <editor-fold> # Functions
-
-// <editor-fold> ## 8
 
 /// Parse i8 to bool
 ///
@@ -49,9 +39,6 @@ pub fn u8_to_bool(a: u8)
 
     if a == 0 { false } else { true }
 }
-// </editor-fold>
-
-// <editor-fold> ## 16
 
 pub fn i16_to_bool(a: i16)
     -> bool {
@@ -64,9 +51,6 @@ pub fn u16_to_bool(a: u16)
 
     if a == 0 { false } else { true }
 }
-// </editor-fold>
-
-// <editor-fold> ## 32
 
 pub fn i32_to_bool(a: i32)
     -> bool {
@@ -85,9 +69,6 @@ pub fn f32_to_bool(a: f32)
 
     if a.is_nan() || a == 0.0 { false } else { true }
 }
-// </editor-fold>
-
-// <editor-fold> ## 64
 
 pub fn i64_to_bool(a: i64)
     -> bool {
@@ -106,9 +87,6 @@ pub fn f64_to_bool(a: f64)
 
     if a.is_nan() || a == 0.0 { false } else { true }
 }
-// </editor-fold>
-
-// <editor-fold> ## size
 
 pub fn isize_to_bool(a: isize)
     -> bool {
@@ -121,9 +99,6 @@ pub fn usize_to_bool(a: usize)
 
     if a == 0 { false } else { true }
 }
-// </editor-fold>
-
-// <editor-fold> ## string
 
 pub fn string_to_bool(a: String)
     -> bool {
@@ -164,6 +139,3 @@ pub fn str_to_bool(a: &str)
         _ => panic!("{}", ParseError::InvalidString(a.to_string()))
     }
 }
-// </editor-fold>
-
-// </editor-fold>

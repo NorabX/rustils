@@ -1,12 +1,5 @@
-// <editor-fold> # Uses
-
 use parse::byte::*;
 use RoundingMode;
-// </editor-fold>
-
-// <editor-fold> # Impls
-
-// <editor-fold> ## ToI8
 
 impl ToI8 for bool {
 
@@ -247,6 +240,3 @@ impl ToI8 for &'static str {
         str_to_i8(self)
     }
 }
-// </editor-fold>
-
-// </editor-fold>

@@ -1,5 +1,3 @@
-// <editor-fold> # Mods
-
 #[doc(hidden)] pub mod boolean_impl;
 #[doc(hidden)] pub mod byte_impl;
 #[doc(hidden)] pub mod double_impl;
@@ -14,4 +12,3 @@
 #[doc(hidden)] pub mod ulong_impl;
 #[doc(hidden)] pub mod ushort_impl;
 #[doc(hidden)] pub mod usize_impl;
-// </editor-fold>
