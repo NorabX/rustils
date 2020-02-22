@@ -152,17 +152,17 @@ impl string::StringUtils for &'static str {
         string::adv_is_whitespace(&self.to_string())
     }
 
-    fn adv_remove_all_regex(&self, regex: &str)
-        -> (bool, Vec<(usize, usize)>, String) {
-
-        string::adv_remove_all_regex(&self.to_string(), regex)
-    }
-
-    fn adv_remove_regex(&self, regex: &str)
-        -> (bool, usize, String) {
-
-        string::adv_remove_regex(&self.to_string(), regex)
-    }
+    // fn adv_remove_all_regex(&self, regex: &str)
+    //     -> (bool, Vec<(usize, usize)>, String) {
+    //
+    //     string::adv_remove_all_regex(&self.to_string(), regex)
+    // }
+    //
+    // fn adv_remove_regex(&self, regex: &str)
+    //     -> (bool, usize, String) {
+    //
+    //     string::adv_remove_regex(&self.to_string(), regex)
+    // }
 
     fn adv_starts_with(&self, search: &str)
         -> (bool, String) {
@@ -350,29 +350,29 @@ impl string::StringUtils for &'static str {
         string::peek_opt(&self.to_string())
     }
 
-    fn remove_all_regex(&self, regex: &str)
-        -> String {
-
-        string::remove_all_regex(&self.to_string(), regex)
-    }
-
-    fn remove_all_regex_mut(&mut self, _regex: &str)
-        -> bool {
-
-        unimplemented!()
-    }
-
-    fn remove_regex(&self, regex: &str)
-        -> String {
-
-        string::remove_regex(&self.to_string(), regex)
-    }
-
-    fn remove_regex_mut(&mut self, _regex: &str)
-        -> bool {
-
-        unimplemented!()
-    }
+    // fn remove_all_regex(&self, regex: &str)
+    //     -> String {
+    //
+    //     string::remove_all_regex(&self.to_string(), regex)
+    // }
+    //
+    // fn remove_all_regex_mut(&mut self, _regex: &str)
+    //     -> bool {
+    //
+    //     unimplemented!()
+    // }
+    //
+    // fn remove_regex(&self, regex: &str)
+    //     -> String {
+    //
+    //     string::remove_regex(&self.to_string(), regex)
+    // }
+    //
+    // fn remove_regex_mut(&mut self, _regex: &str)
+    //     -> bool {
+    //
+    //     unimplemented!()
+    // }
 
     fn reverse(&self)
         -> String {

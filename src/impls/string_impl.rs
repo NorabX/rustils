@@ -152,17 +152,17 @@ impl string::StringUtils for String {
         string::adv_is_whitespace(self)
     }
 
-    fn adv_remove_all_regex(&self, regex: &str)
-        -> (bool, Vec<(usize, usize)>, String) {
-
-        string::adv_remove_all_regex(self, regex)
-    }
-
-    fn adv_remove_regex(&self, regex: &str)
-        -> (bool, usize, String) {
-
-        string::adv_remove_regex(self, regex)
-    }
+    // fn adv_remove_all_regex(&self, regex: &str)
+    //     -> (bool, Vec<(usize, usize)>, String) {
+    //
+    //     string::adv_remove_all_regex(self, regex)
+    // }
+    //
+    // fn adv_remove_regex(&self, regex: &str)
+    //     -> (bool, usize, String) {
+    //
+    //     string::adv_remove_regex(self, regex)
+    // }
 
     fn adv_starts_with(&self, search: &str)
         -> (bool, String) {
@@ -350,29 +350,29 @@ impl string::StringUtils for String {
         string::peek_opt(self)
     }
 
-    fn remove_all_regex(&self, regex: &str)
-        -> String {
-
-        string::remove_all_regex(self, regex)
-    }
-
-    fn remove_all_regex_mut(&mut self, regex: &str)
-        -> bool {
-
-        string::remove_all_regex_mut(self, regex)
-    }
-
-    fn remove_regex(&self, regex: &str)
-        -> String {
-
-        string::remove_regex(self, regex)
-    }
-
-    fn remove_regex_mut(&mut self, regex: &str)
-        -> bool {
-
-        string::remove_regex_mut(self, regex)
-    }
+    // fn remove_all_regex(&self, regex: &str)
+    //     -> String {
+    //
+    //     string::remove_all_regex(self, regex)
+    // }
+    //
+    // fn remove_all_regex_mut(&mut self, regex: &str)
+    //     -> bool {
+    //
+    //     string::remove_all_regex_mut(self, regex)
+    // }
+    //
+    // fn remove_regex(&self, regex: &str)
+    //     -> String {
+    //
+    //     string::remove_regex(self, regex)
+    // }
+    //
+    // fn remove_regex_mut(&mut self, regex: &str)
+    //     -> bool {
+    //
+    //     string::remove_regex_mut(self, regex)
+    // }
 
     fn reverse(&self)
         -> String {

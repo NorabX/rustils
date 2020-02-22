@@ -62,19 +62,19 @@ let text1 = &mut String::from("你好。How are you?");
 assert_eq!(text1.remove(3), '好');
 assert_eq!(text1, "你。How are you?");
 
-let text3 = String::from("你好。How are you?");
-let text4 = &mut String::from("你好。How are you?");
-let regex = r"[aeiou]+|[好]+";
-
-//rustils functions
-assert_eq!(text3.remove_regex(regex), String::from("你。How are you?"));
-assert_eq!(text3.remove_all_regex(regex), String::from("你。Hw r y?"));
-
-assert_eq!(true, text4.remove_regex_mut(regex));
-assert_eq!(text4, "你。How are you?");
-
-assert_eq!(true, text4.remove_all_regex_mut(regex));
-assert_eq!(text4, "你。Hw r y?");
+// let text3 = String::from("你好。How are you?");
+// let text4 = &mut String::from("你好。How are you?");
+// let regex = r"[aeiou]+|[好]+";
+//
+// //rustils functions
+// assert_eq!(text3.remove_regex(regex), String::from("你。How are you?"));
+// assert_eq!(text3.remove_all_regex(regex), String::from("你。Hw r y?"));
+//
+// assert_eq!(true, text4.remove_regex_mut(regex));
+// assert_eq!(text4, "你。How are you?");
+//
+// assert_eq!(true, text4.remove_all_regex_mut(regex));
+// assert_eq!(text4, "你。Hw r y?");
 ```
 */
 

@@ -1,20 +1,20 @@
-use rand::{ Rand, random, thread_rng };
-use rand::distributions::{ IndependentSample, Range };
-use rand::distributions::range::SampleRange;
+use rand::{ random, thread_rng, Rng };
+// use rand::distributions::{ Distribution };
+use rand::distributions::uniform::{ SampleUniform };
 
-pub fn in_range<T: SampleRange + PartialOrd>(min: T, max: T) -> T {
-    let between = Range::new(min, max);
+pub fn in_range<T: SampleUniform + PartialOrd>(min: T, max: T) -> T {
     let mut rng = thread_rng();
-    between.ind_sample(&mut rng)
+    let res: T = rng.gen_range(min, max);
+    res
 }
 
-pub fn vec<T: Rand>(count: usize) -> Vec<T> {
-    let mut x = Vec::<T>::with_capacity(count);
-    for _ in 0..count { x.push(random::<T>()); }
-    x
-}
+// pub fn vec<T: Distribution<T>>(count: usize) -> Vec<T> {
+//     let mut x = Vec::<T>::with_capacity(count);
+//     for _ in 0..count { x.push(random::<T>()); }
+//     x
+// }
 
-pub fn vec_in_range<T: SampleRange + PartialOrd + Copy>
+pub fn vec_in_range<T: SampleUniform + PartialOrd + Copy>
     (count: usize, min: T, max: T) -> Vec<T> {
 
     let mut x = Vec::<T>::with_capacity(count);
