@@ -1,6 +1,4 @@
 target
+src/bin
 Cargo.lock
-todos
-overview.ods
 .~lock*
-repo

@@ -81,11 +81,11 @@ pub trait StringUtils {
     fn adv_is_whitespace(&self)
         -> (bool, Vec<bool>);
 
-    // fn adv_remove_all_regex(&self, regex: &str)
-    //     -> (bool, Vec<(usize, usize)>, String);
+    fn adv_remove_all_regex(&self, regex: &str)
+        -> (bool, Vec<(usize, usize)>, String);
 
-    // fn adv_remove_regex(&self, regex: &str)
-    //     -> (bool, usize, String);
+    fn adv_remove_regex(&self, regex: &str)
+        -> (bool, usize, String);
 
     fn adv_starts_with(&self, search: &str)
         -> (bool, String);
@@ -180,17 +180,17 @@ pub trait StringUtils {
     fn peek_opt(&self)
         -> Option<char>;
 
-    // fn remove_all_regex(&self, regex: &str)
-    //     -> String;
-    //
-    // fn remove_all_regex_mut(&mut self, regex: &str)
-    //     -> bool;
-    //
-    // fn remove_regex(&self, regex: &str)
-    //     -> String;
-    //
-    // fn remove_regex_mut(&mut self, regex: &str)
-    //     -> bool;
+    fn remove_all_regex(&self, regex: &str)
+        -> String;
+
+    fn remove_all_regex_mut(&mut self, regex: &str)
+        -> bool;
+
+    fn remove_regex(&self, regex: &str)
+        -> String;
+
+    fn remove_regex_mut(&mut self, regex: &str)
+        -> bool;
 
     fn reverse(&self)
         -> String;
@@ -334,7 +334,7 @@ pub fn adv_ends_with(s: &String, search: &str)
     let len = temp.len();
 
     if temp.ends_with(search) {
-        (true, String::from(&temp[len-search.len()..len]))
+        (true, String::from(&temp[..len-search.len()]))
     } else {
         (false, String::new())
     }
@@ -346,7 +346,7 @@ pub fn adv_starts_with(s: &String, search: &str)
     let temp = s.clone();
 
     if temp.starts_with(search) {
-        (true, String::from(&temp[..search.len()]))
+        (true, String::from(&temp[search.len()..]))
     } else {
         (false, String::new())
     }
@@ -568,102 +568,102 @@ pub fn is_whitespace(s: &String)
     adv_is_whitespace(s).0
 }
 
-// pub fn adv_remove_all_regex(s: &String, regex: &str)
-//     -> (bool, Vec<(usize, usize)>, String) {
-//
-//     let mut target = s.to_string();
-//     let mut vec = Vec::<(usize, usize)>::new();
-//
-//     match Regex::new(regex) {
-//         Ok(r) => {
-//             let mut i = 0;
-//             for mat in r.find_iter(s){
-//                 let j = mat.0 - i;
-//                 let mut k = 0;
-//
-//                 vec.push(mat);
-//
-//                 while k < mat.1 - mat.0{
-//                     let n = target.remove(j).len_utf8();
-//                     k = k + n;
-//                     i = i + n;
-//                 }
-//             }
-//
-//             return (true, vec, target);
-//         },
-//         Err(_) => {
-//             return (false, Vec::<(usize, usize)>::new(), String::new());
-//         }
-//     }
-// }
-//
-// pub fn adv_remove_regex(s: &String, regex: &str)
-//     -> (bool, usize, String) {
-//
-//     let mut target = s.to_string();
-//     let j: usize;
-//
-//     match Regex::new(regex) {
-//         Ok(r) => {
-//             let mat = r.find(s).unwrap();
-//
-//             j = mat.0;
-//             let mut k = 0;
-//
-//             while k < mat.1 - mat.0{
-//                 let n = target.remove(j).len_utf8();
-//                 k = k + n;
-//             }
-//
-//             return (true, j, target);
-//
-//         },
-//         Err(_) => { return (false, 0, String::new()); }
-//     }
-// }
-//
-// pub fn remove_all_regex(s: &String, regex: &str)
-//     -> String {
-//
-//     let temp = adv_remove_all_regex(s, regex);
-//     if temp.0 { temp.2 }
-//     else { panic!("regex err") }
-// }
-//
-// pub fn remove_all_regex_mut(s: &mut String, regex: &str)
-//     -> bool {
-//
-//     let temp = adv_remove_all_regex(s, regex);
-//
-//     if temp.0 {
-//         s.clear();
-//         s.push_str(&temp.2);
-//     }
-//
-//     temp.0
-// }
-//
-// pub fn remove_regex(s: &String, regex: &str)
-//     -> String {
-//
-//     let temp = adv_remove_regex(s, regex);
-//     if temp.0 { temp.2 }
-//     else { panic!("regex err") }
-// }
-//
-// pub fn remove_regex_mut(s: &mut String, regex: &str)
-//     -> bool {
-//
-//     let temp = adv_remove_regex(s, regex);
-//
-//     if temp.0 {
-//         s.clear();
-//         s.push_str(&temp.2);
-//     }
-//
-//     temp.0
-// }
+pub fn adv_remove_all_regex(s: &String, regex: &str)
+    -> (bool, Vec<(usize, usize)>, String) {
+
+    let mut target = s.to_string();
+    let mut vec = Vec::<(usize, usize)>::new();
+
+    match Regex::new(regex) {
+        Ok(r) => {
+            let mut i = 0;
+            for mat in r.find_iter(s){
+                let j = mat.start() - i;
+                let mut k = 0;
+
+                vec.push((mat.start(), mat.end()));
+
+                while k < mat.end() - mat.start(){
+                    let n = target.remove(j).len_utf8();
+                    k = k + n;
+                    i = i + n;
+                }
+            }
+
+            return (true, vec, target);
+        },
+        Err(_) => {
+            return (false, Vec::<(usize, usize)>::new(), String::new());
+        }
+    }
+}
+
+pub fn adv_remove_regex(s: &String, regex: &str)
+    -> (bool, usize, String) {
+
+    let mut target = s.to_string();
+    let j: usize;
+
+    match Regex::new(regex) {
+        Ok(r) => {
+            let mat = r.find(s).unwrap();
+
+            j = mat.start();
+            let mut k = 0;
+
+            while k < mat.end() - mat.start() {
+                let n = target.remove(j).len_utf8();
+                k = k + n;
+            }
+
+            return (true, j, target);
+
+        },
+        Err(_) => { return (false, 0, String::new()); }
+    }
+}
+
+pub fn remove_all_regex(s: &String, regex: &str)
+    -> String {
+
+    let temp = adv_remove_all_regex(s, regex);
+    if temp.0 { temp.2 }
+    else { panic!("regex err") }
+}
+
+pub fn remove_all_regex_mut(s: &mut String, regex: &str)
+    -> bool {
+
+    let temp = adv_remove_all_regex(s, regex);
+
+    if temp.0 {
+        s.clear();
+        s.push_str(&temp.2);
+    }
+
+    temp.0
+}
+
+pub fn remove_regex(s: &String, regex: &str)
+    -> String {
+
+    let temp = adv_remove_regex(s, regex);
+    if temp.0 { temp.2 }
+    else { panic!("regex err") }
+}
+
+pub fn remove_regex_mut(s: &mut String, regex: &str)
+    -> bool {
+
+    let temp = adv_remove_regex(s, regex);
+
+    if temp.0 {
+        s.clear();
+        s.push_str(&temp.2);
+    }
+
+    temp.0
+}
 
 pub fn reverse(s: &String)
     -> String {
