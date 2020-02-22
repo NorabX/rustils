@@ -1,4 +1,4 @@
 target
-src/bin
+src/bin/*
 Cargo.lock
 .~lock*
