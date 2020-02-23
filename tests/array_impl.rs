@@ -40,3 +40,11 @@ pub fn test_index_of_str(){
     assert_eq!(1, ary.index_of(&"two"));
     assert_eq!(MAX, ary.index_of(&"three"));
 }
+
+#[test]
+pub fn test_chunk_integer() {
+    let ary = [1, 3, 5, 7, 9];
+
+    assert_eq!([[1, 3].to_vec(), [5, 7].to_vec(), [9].to_vec()].to_vec(),
+        ary.chunk(2));
+}
