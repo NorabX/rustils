@@ -18,4 +18,8 @@ impl<T: Ord + Copy> array::ArrayUtils<T> for [T] {
     fn chunk(&self, size: usize) -> Vec<Vec<T>> {
         array::chunk(self, size)
     }
+
+    fn fill_mut(&mut self, value: &T) {
+        array::fill_mut(self, value)
+    }
 }

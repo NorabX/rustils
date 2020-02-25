@@ -12,6 +12,8 @@ pub trait ArrayUtils<T> {
 
     fn chunk(&self, size: usize)
         -> Vec<Vec<T>>;
+
+    fn fill_mut(&mut self, value: &T);
 }
 
 pub fn swaping<T: Ord + Copy>(ary: &mut [T], a: usize, b: usize)
@@ -54,4 +56,10 @@ pub fn chunk<T: Clone>(ary: &[T], size: usize)
     }
 
     res
+}
+
+pub fn fill_mut<T: Copy>(ary: &mut [T], value: &T) {
+    for i in 0..ary.len() {
+        ary[i] = *value;
+    }
 }

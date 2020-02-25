@@ -1,6 +1,6 @@
 [package]
 name = "rustils"
-version = "0.1.6"
+version = "0.1.8"
 authors = ["norabx <norabxnetwork@gmail.com>"]
 license = "MIT"
 readme = "README.md"

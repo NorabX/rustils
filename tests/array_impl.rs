@@ -48,3 +48,12 @@ pub fn test_chunk_integer() {
     assert_eq!([[1, 3].to_vec(), [5, 7].to_vec(), [9].to_vec()].to_vec(),
         ary.chunk(2));
 }
+
+#[test]
+pub fn test_fill_mut_integer() {
+    let mut ary = [1, 2, 3, 4, 5];
+
+    ary.fill_mut(&7);
+
+    assert_eq!(ary, [7, 7, 7, 7, 7]);
+}
