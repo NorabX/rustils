@@ -11,9 +11,11 @@
 &nbsp;
 [![downloads](https://img.shields.io/crates/dv/rustils.svg)](https://crates.io/crates/rustils)
 &nbsp;
-![GitHub last commit](https://img.shields.io/github/last-commit/norabx/rustils)
+[![GitHub last commit](https://img.shields.io/github/last-commit/norabx/rustils)](https://github.com/NorabX/rustils)
 &nbsp;
-![project status](https://img.shields.io/badge/status-beta-orange.svg)
+[![dependency status](https://deps.rs/repo/github/norabx/rustils/status.svg)](https://deps.rs/repo/github/norabx/rustils)
+&nbsp;
+[![project status](https://img.shields.io/badge/status-beta-orange.svg)](https://github.com/NorabX/rustils)
 &nbsp;
 [![license](https://img.shields.io/crates/l/rustils.svg)](https://github.com/NorabX/rustils/blob/master/LICENSE.md)
 &nbsp;
