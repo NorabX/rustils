@@ -57,3 +57,17 @@ pub fn test_fill_mut_integer() {
 
     assert_eq!(ary, [7, 7, 7, 7, 7]);
 }
+
+#[test]
+pub fn test_unique_integer() {
+    let ary = [1, 2, 2, 3, 4, 4];
+
+    assert_eq!(vec![1, 2, 3, 4], ary.unique());
+}
+
+#[test]
+pub fn test_unique_str() {
+    let ary = ["one", "one", "two", "two"];
+
+    assert_eq!(vec!["one", "two"], ary.unique());
+}

@@ -7,7 +7,7 @@ used by adding `rustils` to your dependencies in your project's `Cargo.toml`.
 
 ```toml
 [dependencies]
-rustils = "0.1.8"
+rustils = "0.1.13"
 ```
 
 and this to your crate root:
