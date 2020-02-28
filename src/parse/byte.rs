@@ -43,7 +43,8 @@ pub fn bool_to_i8_res(a: bool)
     if a { Ok(1) } else { Ok(0) }
 }
 
-/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// If `a` is `false` then returns 0.<br>
 /// If `a` is `true` then returns 1.
@@ -66,7 +67,8 @@ pub fn bool_to_i8(a: bool)
     if a { 1 } else { 0 }
 }
 
-/// Parse [`u8`](https://doc.rust-lang.org/std/primitive.u8.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`u8`](https://doc.rust-lang.org/std/primitive.u8.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -92,7 +94,8 @@ pub fn u8_to_i8_res(a: u8)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`u8`](https://doc.rust-lang.org/std/primitive.u8.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`u8`](https://doc.rust-lang.org/std/primitive.u8.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -121,7 +124,8 @@ pub fn u8_to_i8(a: u8)
     }
 }
 
-/// Parse [`i16`](https://doc.rust-lang.org/std/primitive.i16.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`i16`](https://doc.rust-lang.org/std/primitive.i16.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -149,7 +153,8 @@ pub fn i16_to_i8_res(a: i16)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`i16`](https://doc.rust-lang.org/std/primitive.i16.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`i16`](https://doc.rust-lang.org/std/primitive.i16.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -179,7 +184,8 @@ pub fn i16_to_i8(a: i16)
     }
 }
 
-/// Parse [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -205,7 +211,8 @@ pub fn u16_to_i8_res(a: u16)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -234,7 +241,8 @@ pub fn u16_to_i8(a: u16)
     }
 }
 
-/// Parse [`i32`](https://doc.rust-lang.org/std/primitive.i32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`i32`](https://doc.rust-lang.org/std/primitive.i32.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -262,7 +270,8 @@ pub fn i32_to_i8_res(a: i32)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`i32`](https://doc.rust-lang.org/std/primitive.i32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`i32`](https://doc.rust-lang.org/std/primitive.i32.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -292,7 +301,8 @@ pub fn i32_to_i8(a: i32)
     }
 }
 
-/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -318,7 +328,8 @@ pub fn u32_to_i8_res(a: u32)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -347,7 +358,8 @@ pub fn u32_to_i8(a: u32)
     }
 }
 
-/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -370,7 +382,8 @@ pub fn f32_to_i8_res(a: f32)
     f32_to_i8_rm_res(a, Trunc)
 }
 
-/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -393,7 +406,8 @@ pub fn f32_to_i8(a: f32)
     f32_to_i8_rm(a, Trunc)
 }
 
-/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -428,7 +442,8 @@ pub fn f32_to_i8_rm_res(a: f32, rm: RoundingMode)
     } else { Ok(x as i8) }
 }
 
-/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -454,7 +469,8 @@ pub fn f32_to_i8_rm(a: f32, rm: RoundingMode)
     }
 }
 
-/// Parse [`i64`](https://doc.rust-lang.org/std/primitive.i64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`i64`](https://doc.rust-lang.org/std/primitive.i64.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -482,7 +498,8 @@ pub fn i64_to_i8_res(a: i64)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`i64`](https://doc.rust-lang.org/std/primitive.i64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`i64`](https://doc.rust-lang.org/std/primitive.i64.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -512,7 +529,8 @@ pub fn i64_to_i8(a: i64)
     }
 }
 
-/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -538,7 +556,8 @@ pub fn u64_to_i8_res(a: u64)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -567,7 +586,8 @@ pub fn u64_to_i8(a: u64)
     }
 }
 
-/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -590,7 +610,8 @@ pub fn f64_to_i8_res(a: f64)
     f64_to_i8_rm_res(a, Trunc)
 }
 
-/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -613,7 +634,8 @@ pub fn f64_to_i8(a: f64)
     f64_to_i8_rm(a, Trunc)
 }
 
-/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -648,7 +670,8 @@ pub fn f64_to_i8_rm_res(a: f64, rm: RoundingMode)
     } else { Ok(x as i8) }
 }
 
-/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -674,7 +697,8 @@ pub fn f64_to_i8_rm(a: f64, rm: RoundingMode)
     }
 }
 
-/// Parse [`isize`](https://doc.rust-lang.org/std/primitive.isize.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`isize`](https://doc.rust-lang.org/std/primitive.isize.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -702,7 +726,8 @@ pub fn isize_to_i8_res(a: isize)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`isize`](https://doc.rust-lang.org/std/primitive.isize.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`isize`](https://doc.rust-lang.org/std/primitive.isize.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -732,7 +757,8 @@ pub fn isize_to_i8(a: isize)
     }
 }
 
-/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Arguments
 ///
@@ -759,7 +785,8 @@ pub fn usize_to_i8_res(a: usize)
     } else { Ok(a as i8) }
 }
 
-/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// # Panics
 ///
@@ -788,7 +815,8 @@ pub fn usize_to_i8(a: usize)
     }
 }
 
-/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -814,7 +842,8 @@ pub fn string_to_i8_res(a: String)
     }
 }
 
-/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -840,7 +869,8 @@ pub fn string_to_i8(a: String)
     }
 }
 
-/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
@@ -866,7 +896,8 @@ pub fn str_to_i8_res(a: &str)
     }
 }
 
-/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 ///
 ///
