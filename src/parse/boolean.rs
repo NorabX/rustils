@@ -6,14 +6,14 @@ pub trait ToBool {
         -> bool;
 }
 
-/// Parse `i8` to `bool`
+/// Parse [`i8`](https://doc.rust-lang.org/std/primitive.i8.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `i8` number
+/// * `a` - Any [`i8`](https://doc.rust-lang.org/std/primitive.i8.html) number
 ///
 /// # Examples
 ///
@@ -34,14 +34,14 @@ pub fn i8_to_bool(a: i8)
     if a == 0 { false } else { true }
 }
 
-/// Parse `u8` to `bool`
+/// Parse [`u8`](https://doc.rust-lang.org/std/primitive.u8.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `u8` number
+/// * `a` - Any [`u8`](https://doc.rust-lang.org/std/primitive.u8.html) number
 ///
 /// # Examples
 ///
@@ -62,14 +62,14 @@ pub fn u8_to_bool(a: u8)
     if a == 0 { false } else { true }
 }
 
-/// Parse `i16` to `bool`
+/// Parse [`i16`](https://doc.rust-lang.org/std/primitive.i16.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `i16` number
+/// * `a` - Any [`i16`](https://doc.rust-lang.org/std/primitive.i16.html) number
 ///
 /// # Examples
 ///
@@ -90,14 +90,14 @@ pub fn i16_to_bool(a: i16)
     if a == 0 { false } else { true }
 }
 
-/// Parse `u16` to `bool`
+/// Parse [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `u16` number
+/// * `a` - Any [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) number
 ///
 /// # Examples
 ///
@@ -118,14 +118,14 @@ pub fn u16_to_bool(a: u16)
     if a == 0 { false } else { true }
 }
 
-/// Parse `i32` to `bool`
+/// Parse [`i32`](https://doc.rust-lang.org/std/primitive.i32.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `i32` number
+/// * `a` - Any [`i32`](https://doc.rust-lang.org/std/primitive.i32.html) number
 ///
 /// # Examples
 ///
@@ -146,14 +146,14 @@ pub fn i32_to_bool(a: i32)
     if a == 0 { false } else { true }
 }
 
-/// Parse `u32` to `bool`
+/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `u32` number
+/// * `a` - Any [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) number
 ///
 /// # Examples
 ///
@@ -174,14 +174,14 @@ pub fn u32_to_bool(a: u32)
     if a == 0 { false } else { true }
 }
 
-/// Parse `f32` to `bool`
+/// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `f32` number
+/// * `a` - Any [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) number
 ///
 /// # Examples
 ///
@@ -202,14 +202,14 @@ pub fn f32_to_bool(a: f32)
     if a.is_nan() || a == 0.0 { false } else { true }
 }
 
-/// Parse `i64` to `bool`
+/// Parse [`i64`](https://doc.rust-lang.org/std/primitive.i64.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `i64` number
+/// * `a` - Any [`i64`](https://doc.rust-lang.org/std/primitive.i64.html) number
 ///
 /// # Examples
 ///
@@ -230,14 +230,14 @@ pub fn i64_to_bool(a: i64)
     if a == 0 { false } else { true }
 }
 
-/// Parse `u64` to `bool`
+/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `u64` number
+/// * `a` - Any [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) number
 ///
 /// # Examples
 ///
@@ -258,14 +258,14 @@ pub fn u64_to_bool(a: u64)
     if a == 0 { false } else { true }
 }
 
-/// Parse `f64` to `bool`
+/// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `f64` number
+/// * `a` - Any [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) number
 ///
 /// # Examples
 ///
@@ -286,14 +286,14 @@ pub fn f64_to_bool(a: f64)
     if a.is_nan() || a == 0.0 { false } else { true }
 }
 
-/// Parse `isize` to `bool`
+/// Parse [`isize`](https://doc.rust-lang.org/std/primitive.isize.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `isize` number
+/// * `a` - Any [`isize`](https://doc.rust-lang.org/std/primitive.isize.html) number
 ///
 /// # Examples
 ///
@@ -314,14 +314,14 @@ pub fn isize_to_bool(a: isize)
     if a == 0 { false } else { true }
 }
 
-/// Parse `usize` to `bool`
+/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is 0 then returns `false`,
 /// otherwise `true`.
 ///
 /// # Arguments
 ///
-/// * `a` - Any `usize` number
+/// * `a` - Any [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) number
 ///
 /// # Examples
 ///
@@ -342,7 +342,7 @@ pub fn usize_to_bool(a: usize)
     if a == 0 { false } else { true }
 }
 
-/// Parse `String` to `bool`
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is "0", "f", "false", "n", "no" then returns `false`.<br>
 /// If `a` is "1", "t", "true", "y", "yes" then returns `true`.<br>
@@ -350,12 +350,12 @@ pub fn usize_to_bool(a: usize)
 ///
 /// # Panics
 ///
-/// Panics <a href="../../error/enum.ParseError.html">`ParseError::InvalidString`</a> if `a` is no
-/// valid `String`.
+/// Panics [`ParseError::InvalidString`](../../error/enum.ParseError.html) if `a` is no
+/// valid [`String`](https://doc.rust-lang.org/std/string/struct.String.html).
 ///
 /// # Arguments
 ///
-/// * `a` - Any `String`
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
 ///
 /// # Examples
 ///
@@ -390,7 +390,7 @@ pub fn string_to_bool(a: String)
     }
 }
 
-/// Parse `&str` to `bool`
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
 ///
 /// If `a` is "0", "f", "false", "n", "no" then returns `false`.<br>
 /// If `a` is "1", "t", "true", "y", "yes" then returns `true`.<br>
@@ -398,12 +398,12 @@ pub fn string_to_bool(a: String)
 ///
 /// # Panics
 ///
-/// Panics <a href="../../error/enum.ParseError.html">`ParseError::InvalidString`</a> if `a` is no
-/// valid `&str`.
+/// Panics [`ParseError::InvalidString`](../../error/enum.ParseError.html) if `a` is no
+/// valid [`&str`](https://doc.rust-lang.org/std/primitive.str.html).
 ///
 /// # Arguments
 ///
-/// * `a` - Any `&str`
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
 ///
 /// # Examples
 ///
