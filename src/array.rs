@@ -17,6 +17,9 @@ pub trait ArrayUtils<T> {
 
     fn unique(&self)
         -> Vec<T>;
+
+    fn unique_adv(&self)
+        -> (Vec<T>, Vec<T>);
 }
 
 pub fn swaping<T: Ord + Copy>(ary: &mut [T], a: usize, b: usize)
@@ -70,17 +73,26 @@ pub fn fill_mut<T: Copy>(ary: &mut [T], value: &T) {
 pub fn unique<T: Copy + PartialEq>(ary: &[T])
     -> Vec<T> {
 
+    unique_adv(&ary).0
+}
+
+pub fn unique_adv<T: Copy + PartialEq>(ary: &[T])
+    -> (Vec<T>, Vec<T>) {
+
     let mut res = Vec::<T>::new();
+    let mut removed = Vec::<T>::new();
 
     'outer: for i in 0..ary.len() {
-        if i == 0 { res.push(ary[i]); }
 
         for j in 0..res.len() {
-            if ary[i] == res[j] { continue 'outer; }
+            if ary[i] == res[j] {
+                removed.push(ary[i]);
+                continue 'outer;
+            }
         }
 
         res.push(ary[i]);
     }
 
-    res
+    (res, removed)
 }

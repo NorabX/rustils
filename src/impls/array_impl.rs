@@ -31,4 +31,10 @@ impl<T: Ord + Copy> array::ArrayUtils<T> for [T] {
 
         array::unique(self)
     }
+
+    fn unique_adv(&self)
+        -> (Vec<T>, Vec<T>) {
+
+        array::unique_adv(self)
+    }
 }

@@ -71,3 +71,21 @@ pub fn test_unique_str() {
 
     assert_eq!(vec!["one", "two"], ary.unique());
 }
+
+#[test]
+pub fn test_unique_adv_integer() {
+    let ary = [1, 2, 2, 3, 4, 4];
+
+    assert_eq!(
+        (vec![1, 2, 3, 4], vec![2, 4]),
+        ary.unique_adv());
+}
+
+#[test]
+pub fn test_unique_adv_str() {
+    let ary = ["one", "one", "two", "two"];
+
+    assert_eq!(
+        (vec!["one", "two"], vec!["one", "two"]),
+        ary.unique_adv());
+}
