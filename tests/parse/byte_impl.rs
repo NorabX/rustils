@@ -41,11 +41,11 @@ fn parse_i16_to_i8_0() {
 
 #[test]
 #[should_panic(expected = "Invalid Number: -129")]
-fn parse_i16_to_i8_1() { (-129_i32).to_i8(); }
+fn parse_i16_to_i8_1() { (-129_i16).to_i8(); }
 
 #[test]
 #[should_panic(expected = "Invalid Number: 128")]
-fn parse_i16_to_i8_2() { (128_i32).to_i8(); }
+fn parse_i16_to_i8_2() { (128_i16).to_i8(); }
 
 #[test]
 fn parse_u16_to_i8_0() {
