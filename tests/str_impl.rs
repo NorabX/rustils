@@ -792,7 +792,8 @@ pub fn test_remove_all_regex_str_1(){
 }
 
 #[test]
-#[should_panic(expected = "not yet implemented")]
+#[ignore]
+#[should_panic(expected = "not implemented")]
 pub fn test_remove_all_regex_mut_str_0(){
     let text = &mut "Hello, World! 你好吗？";
     let regex = r"[好]+|[aeiuo]+";
@@ -803,7 +804,8 @@ pub fn test_remove_all_regex_mut_str_0(){
 }
 
 #[test]
-#[should_panic(expected = "not yet implemented")]
+#[ignore]
+#[should_panic(expected = "not implemented")]
 pub fn test_remove_all_regex_mut_str_1(){
     let text = &mut "Hello, World! 你好吗？";
     let regex = "Hello||World";
@@ -823,6 +825,7 @@ pub fn test_remove_regex_str_0(){
 }
 
 #[test]
+#[ignore]
 #[should_panic]
 pub fn test_remove_regex_str_1(){
     let text = "Hello, World! 你好吗？";
@@ -832,7 +835,8 @@ pub fn test_remove_regex_str_1(){
 }
 
 #[test]
-#[should_panic(expected = "not yet implemented")]
+#[ignore]
+#[should_panic(expected = "not implemented")]
 pub fn test_remove_regex_mut_str_0(){
     let text = &mut "Hello, World! 你好吗？";
     let regex = r"[好]+|[aeiuo]+";
@@ -843,7 +847,8 @@ pub fn test_remove_regex_mut_str_0(){
 }
 
 #[test]
-#[should_panic(expected = "not yet implemented")]
+#[ignore]
+#[should_panic(expected = "not implemented")]
 pub fn test_remove_regex_mut_str_1(){
     let text = &mut "Hello, World! 你好吗？";
     let regex = "Hello||World";
@@ -861,7 +866,8 @@ pub fn test_reverse_str(){
 }
 
 #[test]
-#[should_panic(expected = "not yet implemented")]
+#[ignore]
+#[should_panic(expected = "not implemented")]
 pub fn test_reverse_mut_str(){
     let text = &mut "Hello, World! 你好吗？";
     text.reverse_mut();
