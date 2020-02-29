@@ -7,7 +7,7 @@ used by adding `rustils` to your dependencies in your project's `Cargo.toml`.
 
 ```toml
 [dependencies]
-rustils = "0.1.15"
+rustils = "0.1.16"
 ```
 
 and this to your crate root:
@@ -85,11 +85,16 @@ extern crate core;
 #[doc(hidden)] pub mod impls;
 #[doc(hidden)] pub mod boolean;
 
+/// Array manipulation
 pub mod array;
 pub mod error;
+
+/// Parsing primitives to others
 pub mod parse;
 pub mod random;
 pub mod sorting;
+
+/// String manipulation
 pub mod string;
 
 pub enum RoundingMode { Trunc, Round, Ceil, Floor }
