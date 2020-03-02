@@ -3,12 +3,36 @@ use RoundingMode;
 
 impl ToU8 for bool {
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`u8`](https://doc.rust-lang.org/std/primitive.u8.html)
+    /// (see more: [`bool_to_u8_res`](../../parse/ubyte/fn.bool_to_u8_res.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::ubyte::ToU8;
+    ///
+    /// assert_eq!(true.to_u8_res(), Ok(1_u8));
+    /// assert_eq!(false.to_u8_res(), Ok(0_u8));
+    /// ```
     fn to_u8_res(self)
         -> ParseResultU8 {
 
         bool_to_u8_res(self)
     }
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`u8`](https://doc.rust-lang.org/std/primitive.u8.html)
+    /// (see more: [`bool_to_u8`](../../parse/ubyte/fn.bool_to_u8.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::ubyte::ToU8;
+    ///
+    /// assert_eq!(true.to_u8(), 1_u8);
+    /// assert_eq!(false.to_u8(), 0_u8);
+    /// ```
     fn to_u8(self)
         -> u8 {
 

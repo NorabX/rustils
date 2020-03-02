@@ -3,12 +3,36 @@ use RoundingMode;
 
 impl ToU64 for bool {
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)
+    /// (see more: [`bool_to_u64_res`](../../parse/ulong/fn.bool_to_u64_res.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::ulong::ToU64;
+    ///
+    /// assert_eq!(true.to_u64_res(), Ok(1_u64));
+    /// assert_eq!(false.to_u64_res(), Ok(0_u64));
+    /// ```
     fn to_u64_res(self)
         -> ParseResultU64 {
 
         bool_to_u64_res(self)
     }
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)
+    /// (see more: [`bool_to_u64`](../../parse/ulong/fn.bool_to_u64.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::ulong::ToU64;
+    ///
+    /// assert_eq!(true.to_u64(), 1_u64);
+    /// assert_eq!(false.to_u64(), 0_u64);
+    /// ```
     fn to_u64(self)
         -> u64 {
 

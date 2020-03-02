@@ -3,12 +3,36 @@ use RoundingMode;
 
 impl ToU16 for bool {
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`u16`](https://doc.rust-lang.org/std/primitive.u16.html)
+    /// (see more: [`bool_to_u16_res`](../../parse/ushort/fn.bool_to_u16_res.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::ushort::ToU16;
+    ///
+    /// assert_eq!(true.to_u16_res(), Ok(1_u16));
+    /// assert_eq!(false.to_u16_res(), Ok(0_u16));
+    /// ```
     fn to_u16_res(self)
         -> ParseResultU16 {
 
         bool_to_u16_res(self)
     }
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`u16`](https://doc.rust-lang.org/std/primitive.u16.html)
+    /// (see more: [`bool_to_u16`](../../parse/ushort/fn.bool_to_u16.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::ushort::ToU16;
+    ///
+    /// assert_eq!(true.to_u16(), 1_u16);
+    /// assert_eq!(false.to_u16(), 0_u16);
+    /// ```
     fn to_u16(self)
         -> u16 {
 

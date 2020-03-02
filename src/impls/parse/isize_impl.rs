@@ -3,12 +3,36 @@ use RoundingMode;
 
 impl ToIsize for bool {
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`isize`](https://doc.rust-lang.org/std/primitive.isize.html)
+    /// (see more: [`bool_to_isize_res`](../../parse/isize/fn.bool_to_isize_res.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::isize::ToIsize;
+    ///
+    /// assert_eq!(true.to_isize_res(), Ok(1_isize));
+    /// assert_eq!(false.to_isize_res(), Ok(0_isize));
+    /// ```
     fn to_isize_res(self)
         -> ParseResultIsize {
 
         bool_to_isize_res(self)
     }
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`isize`](https://doc.rust-lang.org/std/primitive.isize.html)
+    /// (see more: [`bool_to_isize`](../../parse/isize/fn.bool_to_isize.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::isize::ToIsize;
+    ///
+    /// assert_eq!(true.to_isize(), 1_isize);
+    /// assert_eq!(false.to_isize(), 0_isize);
+    /// ```
     fn to_isize(self)
         -> isize {
 

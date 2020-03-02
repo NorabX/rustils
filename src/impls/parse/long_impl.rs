@@ -3,12 +3,36 @@ use RoundingMode;
 
 impl ToI64 for bool {
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`i64`](https://doc.rust-lang.org/std/primitive.i64.html)
+    /// (see more: [`bool_to_i64_res`](../../parse/long/fn.bool_to_i64_res.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::long::ToI64;
+    ///
+    /// assert_eq!(true.to_i64_res(), Ok(1_i64));
+    /// assert_eq!(false.to_i64_res(), Ok(0_i64));
+    /// ```
     fn to_i64_res(self)
     -> ParseResultI64 {
 
         bool_to_i64_res(self)
     }
 
+    /// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+    /// [`i64`](https://doc.rust-lang.org/std/primitive.i64.html)
+    /// (see more: [`bool_to_i64`](../../parse/long/fn.bool_to_i64.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::long::ToI64;
+    ///
+    /// assert_eq!(true.to_i64(), 1_i64);
+    /// assert_eq!(false.to_i64(), 0_i64);
+    /// ```
     fn to_i64(self)
         -> i64 {
 
