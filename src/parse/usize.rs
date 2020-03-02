@@ -20,12 +20,48 @@ pub trait ToUsizeRM {
         -> usize;
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`usize`](https://doc.rust-lang.org/std/primitive.usize.html)
+///
+/// If `a` is `false` then returns `Ok(0)`.<br>
+/// If `a` is `true` then returns `Ok(1)`.
+///
+/// # Arguments
+///
+/// * `a` - [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::usize::bool_to_usize_res;
+///
+/// assert_eq!(bool_to_usize_res(true), Ok(1_usize));
+/// assert_eq!(bool_to_usize_res(false), Ok(0_usize));
+/// ```
 pub fn bool_to_usize_res(a: bool)
     -> ParseResultUsize {
 
     if a { Ok(1) } else { Ok(0) }
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`usize`](https://doc.rust-lang.org/std/primitive.usize.html)
+///
+/// If `a` is `false` then returns 0.<br>
+/// If `a` is `true` then returns 1.
+///
+/// # Arguments
+///
+/// * `a` - [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::usize::bool_to_usize;
+///
+/// assert_eq!(bool_to_usize(true), 1_usize);
+/// assert_eq!(bool_to_usize(false), 0_usize);
+/// ```
 pub fn bool_to_usize(a: bool)
     -> usize {
 

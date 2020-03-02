@@ -20,12 +20,48 @@ pub trait ToU64RM {
         -> u64;
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)
+///
+/// If `a` is `false` then returns `Ok(0)`.<br>
+/// If `a` is `true` then returns `Ok(1)`.
+///
+/// # Arguments
+///
+/// * `a` - [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ulong::bool_to_u64_res;
+///
+/// assert_eq!(bool_to_u64_res(true), Ok(1_u64));
+/// assert_eq!(bool_to_u64_res(false), Ok(0_u64));
+/// ```
 pub fn bool_to_u64_res(a: bool)
     -> ParseResultU64 {
 
     if a { Ok(1) } else { Ok(0) }
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)
+///
+/// If `a` is `false` then returns 0.<br>
+/// If `a` is `true` then returns 1.
+///
+/// # Arguments
+///
+/// * `a` - [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ulong::bool_to_u64;
+///
+/// assert_eq!(bool_to_u64(true), 1_u64);
+/// assert_eq!(bool_to_u64(false), 0_u64);
+/// ```
 pub fn bool_to_u64(a: bool)
     -> u64 {
 

@@ -20,12 +20,48 @@ pub trait ToU32RM {
         -> u32;
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`u32`](https://doc.rust-lang.org/std/primitive.u32.html)
+///
+/// If `a` is `false` then returns `Ok(0)`.<br>
+/// If `a` is `true` then returns `Ok(1)`.
+///
+/// # Arguments
+///
+/// * `a` - [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::uint::bool_to_u32_res;
+///
+/// assert_eq!(bool_to_u32_res(true), Ok(1_u32));
+/// assert_eq!(bool_to_u32_res(false), Ok(0_u32));
+/// ```
 pub fn bool_to_u32_res(a: bool)
     -> ParseResultU32 {
 
     if a { Ok(1) } else { Ok(0) }
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`u32`](https://doc.rust-lang.org/std/primitive.u32.html)
+///
+/// If `a` is `false` then returns 0.<br>
+/// If `a` is `true` then returns 1.
+///
+/// # Arguments
+///
+/// * `a` - [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::uint::bool_to_u32;
+///
+/// assert_eq!(bool_to_u32(true), 1_u32);
+/// assert_eq!(bool_to_u32(false), 0_u32);
+/// ```
 pub fn bool_to_u32(a: bool)
     -> u32 {
 

@@ -20,7 +20,8 @@ pub trait ToI8RM {
         -> i8;
 }
 
-/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
 /// If `a` is `false` then returns `Ok(0)`.<br>
 /// If `a` is `true` then returns `Ok(1)`.

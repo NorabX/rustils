@@ -20,12 +20,48 @@ pub trait ToI16RM {
         -> i16;
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// If `a` is `false` then returns `Ok(0)`.<br>
+/// If `a` is `true` then returns `Ok(1)`.
+///
+/// # Arguments
+///
+/// * `a` - [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::bool_to_i16_res;
+///
+/// assert_eq!(bool_to_i16_res(true), Ok(1_i16));
+/// assert_eq!(bool_to_i16_res(false), Ok(0_i16));
+/// ```
 pub fn bool_to_i16_res(a: bool)
     -> ParseResultI16 {
 
     if a { Ok(1) } else { Ok(0) }
 }
 
+/// Parse [`bool`](https://doc.rust-lang.org/std/primitive.bool.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// If `a` is `false` then returns 0.<br>
+/// If `a` is `true` then returns 1.
+///
+/// # Arguments
+///
+/// * `a` - [`bool`](https://doc.rust-lang.org/std/primitive.bool.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::bool_to_i16;
+///
+/// assert_eq!(bool_to_i16(true), 1_i16);
+/// assert_eq!(bool_to_i16(false), 0_i16);
+/// ```
 pub fn bool_to_i16(a: bool)
     -> i16 {
 
