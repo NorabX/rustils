@@ -362,9 +362,6 @@ pub fn u32_to_i8(a: u32)
 /// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to
 /// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
-///
-///
-///
 /// # Arguments
 ///
 /// * `a` - Any [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) number
@@ -372,10 +369,16 @@ pub fn u32_to_i8(a: u32)
 /// # Examples
 ///
 /// ```
-/// rustils::parse::byte::f32_to_i8_res;
+/// use rustils::parse::byte::f32_to_i8_res;
+/// use rustils::error::ParseError::InvalidNumber;
 ///
+/// assert_eq!(f32_to_i8_res(-128.0_f32), Ok(-128_i8));
+/// assert_eq!(f32_to_i8_res(127.0_f32), Ok(127_i8));
+/// assert_eq!(f32_to_i8_res(127.5_f32), Ok(127_i8));
 ///
-///
+/// assert_eq!(f32_to_i8_res(128.0_f32), Err(InvalidNumber(String::from("128"))));
+/// assert_eq!(f32_to_i8_res(-129.0_f32), Err(InvalidNumber(String::from("-129"))));
+/// assert_eq!(f32_to_i8_res(-129.5_f32), Err(InvalidNumber(String::from("-129.5"))));
 /// ```
 pub fn f32_to_i8_res(a: f32)
     -> ParseResultI8{
@@ -386,8 +389,13 @@ pub fn f32_to_i8_res(a: f32)
 /// Parse [`f32`](https://doc.rust-lang.org/std/primitive.f32.html) to
 /// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
+/// # Panics
 ///
-///
+/// ```rust,should_panic
+/// rustils::parse::byte::f32_to_i8(128.0_f32);
+/// rustils::parse::byte::f32_to_i8(-129.0_f32);
+/// rustils::parse::byte::f32_to_i8(-129.5_f32);
+/// ```
 ///
 /// # Arguments
 ///
@@ -396,10 +404,11 @@ pub fn f32_to_i8_res(a: f32)
 /// # Examples
 ///
 /// ```
-/// rustils::parse::byte::f32_to_i8;
+/// use rustils::parse::byte::f32_to_i8;
 ///
-///
-///
+/// assert_eq!(f32_to_i8(-128.0_f32), -128_i8);
+/// assert_eq!(f32_to_i8(127.0_f32), 127_i8);
+/// assert_eq!(f32_to_i8(127.5_f32), 127_i8);
 /// ```
 pub fn f32_to_i8(a: f32)
     -> i8 {
@@ -590,9 +599,6 @@ pub fn u64_to_i8(a: u64)
 /// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to
 /// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
-///
-///
-///
 /// # Arguments
 ///
 /// * `a` - Any [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) number
@@ -600,10 +606,16 @@ pub fn u64_to_i8(a: u64)
 /// # Examples
 ///
 /// ```
-/// rustils::parse::byte::f64_to_i8_res;
+/// use rustils::parse::byte::f64_to_i8_res;
+/// use rustils::error::ParseError::InvalidNumber;
 ///
+/// assert_eq!(f64_to_i8_res(-128.0_f64), Ok(-128_i8));
+/// assert_eq!(f64_to_i8_res(127.0_f64), Ok(127_i8));
+/// assert_eq!(f64_to_i8_res(127.5_f64), Ok(127_i8));
 ///
-///
+/// assert_eq!(f64_to_i8_res(128.0_f64), Err(InvalidNumber(String::from("128"))));
+/// assert_eq!(f64_to_i8_res(-129.0_f64), Err(InvalidNumber(String::from("-129"))));
+/// assert_eq!(f64_to_i8_res(-129.5_f64), Err(InvalidNumber(String::from("-129.5"))));
 /// ```
 pub fn f64_to_i8_res(a: f64)
     -> ParseResultI8 {
@@ -614,8 +626,13 @@ pub fn f64_to_i8_res(a: f64)
 /// Parse [`f64`](https://doc.rust-lang.org/std/primitive.f64.html) to
 /// [`i8`](https://doc.rust-lang.org/std/primitive.i8.html)
 ///
+/// # Panics
 ///
-///
+/// ```rust,should_panic
+/// rustils::parse::byte::f64_to_i8(128.0_f64);
+/// rustils::parse::byte::f64_to_i8(-129.0_f64);
+/// rustils::parse::byte::f64_to_i8(-129.5_f64);
+/// ```
 ///
 /// # Arguments
 ///
@@ -624,10 +641,11 @@ pub fn f64_to_i8_res(a: f64)
 /// # Examples
 ///
 /// ```
-/// rustils::parse::byte::f64_to_i8;
+/// use rustils::parse::byte::f64_to_i8;
 ///
-///
-///
+/// assert_eq!(f64_to_i8(-128.0_f64), -128_i8);
+/// assert_eq!(f64_to_i8(127.0_f64), 127_i8);
+/// assert_eq!(f64_to_i8(127.5_f64), 127_i8);
 /// ```
 pub fn f64_to_i8(a: f64)
     -> i8 {
