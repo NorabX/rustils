@@ -68,6 +68,23 @@ pub fn bool_to_i16(a: bool)
     if a { 1 } else { 0 }
 }
 
+/// Parse [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::u16_to_i16_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(u16_to_i16_res(0_u16), Ok(0_i16));
+/// assert_eq!(u16_to_i16_res(32767_u16), Ok(32767_i16));
+/// assert_eq!(u16_to_i16_res(32768_u16), Err(InvalidNumber(String::from("32768"))));
+/// ```
 pub fn u16_to_i16_res(a: u16)
     -> ParseResultI16 {
 
@@ -78,6 +95,27 @@ pub fn u16_to_i16_res(a: u16)
     } else { Ok(a as i16) }
 }
 
+/// Parse [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::short::u16_to_i16(32768_u16);
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`u16`](https://doc.rust-lang.org/std/primitive.u16.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::u16_to_i16;
+///
+/// assert_eq!(u16_to_i16(0_u16), 0_i16);
+/// assert_eq!(u16_to_i16(32767_u16), 32767_i16);
+/// ```
 pub fn u16_to_i16(a: u16)
     -> i16 {
 
@@ -107,6 +145,23 @@ pub fn i32_to_i16(a: i32)
     }
 }
 
+/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::u32_to_i16_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(u32_to_i16_res(0_u32), Ok(0_i16));
+/// assert_eq!(u32_to_i16_res(32767_u32), Ok(32767_i16));
+/// assert_eq!(u32_to_i16_res(32768_u32), Err(InvalidNumber(String::from("32768"))));
+/// ```
 pub fn u32_to_i16_res(a: u32)
     -> ParseResultI16 {
 
@@ -117,6 +172,27 @@ pub fn u32_to_i16_res(a: u32)
     } else { Ok(a as i16) }
 }
 
+/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::short::u32_to_i16(32768_u32);
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::u32_to_i16;
+///
+/// assert_eq!(u32_to_i16(0_u32), 0_i16);
+/// assert_eq!(u32_to_i16(32767_u32), 32767_i16);
+/// ```
 pub fn u32_to_i16(a: u32)
     -> i16 {
 
@@ -185,6 +261,23 @@ pub fn i64_to_i16(a: i64)
     }
 }
 
+/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::u64_to_i16_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(u64_to_i16_res(0_u64), Ok(0_i16));
+/// assert_eq!(u64_to_i16_res(32767_u64), Ok(32767_i16));
+/// assert_eq!(u64_to_i16_res(32768_u64), Err(InvalidNumber(String::from("32768"))));
+/// ```
 pub fn u64_to_i16_res(a: u64)
     -> ParseResultI16 {
 
@@ -195,6 +288,27 @@ pub fn u64_to_i16_res(a: u64)
     } else { Ok(a as i16) }
 }
 
+/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::short::u64_to_i16(32768_u64);
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::u64_to_i16;
+///
+/// assert_eq!(u64_to_i16(0_u64), 0_i16);
+/// assert_eq!(u64_to_i16(32767_u64), 32767_i16);
+/// ```
 pub fn u64_to_i16(a: u64)
     -> i16 {
 
@@ -263,6 +377,23 @@ pub fn isize_to_i16(a: isize)
     }
 }
 
+/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::usize_to_i16_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(usize_to_i16_res(0_usize), Ok(0_i16));
+/// assert_eq!(usize_to_i16_res(32767_usize), Ok(32767_i16));
+/// assert_eq!(usize_to_i16_res(32768_usize), Err(InvalidNumber(String::from("32768"))));
+/// ```
 pub fn usize_to_i16_res(a: usize)
     -> ParseResultI16 {
 
@@ -273,6 +404,27 @@ pub fn usize_to_i16_res(a: usize)
     } else { Ok(a as i16) }
 }
 
+/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::short::usize_to_i16(32768_usize);
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::usize_to_i16;
+///
+/// assert_eq!(usize_to_i16(0_usize), 0_i16);
+/// assert_eq!(usize_to_i16(32767_usize), 32767_i16);
+/// ```
 pub fn usize_to_i16(a: usize)
     -> i16 {
 
@@ -282,6 +434,32 @@ pub fn usize_to_i16(a: usize)
     }
 }
 
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::string_to_i16_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(string_to_i16_res("-32768".to_string()), Ok(-32768_i16));
+/// assert_eq!(string_to_i16_res("32767".to_string()), Ok(32767_i16));
+///
+/// assert_eq!(
+///     string_to_i16_res("-32769".to_string()),
+///     Err(InvalidNumber(String::from("-32769")))
+/// );
+///
+/// assert_eq!(
+///     string_to_i16_res("32768".to_string()),
+///     Err(InvalidNumber(String::from("32768")))
+/// );
+/// ```
 pub fn string_to_i16_res(a: String)
     -> ParseResultI16 {
 
@@ -291,6 +469,28 @@ pub fn string_to_i16_res(a: String)
     }
 }
 
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::short::string_to_i16("-32769".to_string());
+/// rustils::parse::short::string_to_i16("32768".to_string());
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::string_to_i16;
+///
+/// assert_eq!(string_to_i16("-32768".to_string()), -32768_i16);
+/// assert_eq!(string_to_i16("32767".to_string()), 32767_i16);
+/// ```
 pub fn string_to_i16(a: String)
     -> i16 {
 
@@ -300,6 +500,24 @@ pub fn string_to_i16(a: String)
     }
 }
 
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::str_to_i16_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(str_to_i16_res("-32768"), Ok(-32768_i16));
+/// assert_eq!(str_to_i16_res("32767"), Ok(32767_i16));
+/// assert_eq!(str_to_i16_res("-32769"), Err(InvalidNumber(String::from("-32769"))));
+/// assert_eq!(str_to_i16_res("32768"), Err(InvalidNumber(String::from("32768"))));
+/// ```
 pub fn str_to_i16_res(a: &str)
     -> ParseResultI16 {
 
@@ -309,6 +527,28 @@ pub fn str_to_i16_res(a: &str)
     }
 }
 
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`i16`](https://doc.rust-lang.org/std/primitive.i16.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::short::str_to_i16("-32769");
+/// rustils::parse::short::str_to_i16("32768");
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::short::str_to_i16;
+///
+/// assert_eq!(str_to_i16("-32768"), -32768_i16);
+/// assert_eq!(str_to_i16("32767"), 32767_i16);
+/// ```
 pub fn str_to_i16(a: &str)
     -> i16 {
 

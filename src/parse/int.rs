@@ -68,6 +68,23 @@ pub fn bool_to_i32(a: bool)
     if a { 1 } else { 0 }
 }
 
+/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::u32_to_i32_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(u32_to_i32_res(0_u32), Ok(0_i32));
+/// assert_eq!(u32_to_i32_res(2147483647_u32), Ok(2147483647_i32));
+/// assert_eq!(u32_to_i32_res(2147483648_u32), Err(InvalidNumber(String::from("2147483648"))));
+/// ```
 pub fn u32_to_i32_res(a: u32)
     -> ParseResultI32 {
 
@@ -78,6 +95,27 @@ pub fn u32_to_i32_res(a: u32)
     } else { Ok(a as i32) }
 }
 
+/// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::int::u32_to_i32(2147483648_u32);
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::u32_to_i32;
+///
+/// assert_eq!(u32_to_i32(0_u32), 0_i32);
+/// assert_eq!(u32_to_i32(2147483647_u32), 2147483647_i32);
+/// ```
 pub fn u32_to_i32(a: u32)
     -> i32 {
 
@@ -146,6 +184,23 @@ pub fn i64_to_i32(a: i64)
     }
 }
 
+/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::u64_to_i32_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(u64_to_i32_res(0_u64), Ok(0_i32));
+/// assert_eq!(u64_to_i32_res(2147483647_u64), Ok(2147483647_i32));
+/// assert_eq!(u64_to_i32_res(2147483648_u64), Err(InvalidNumber(String::from("2147483648"))));
+/// ```
 pub fn u64_to_i32_res(a: u64)
     -> ParseResultI32 {
 
@@ -156,6 +211,27 @@ pub fn u64_to_i32_res(a: u64)
     } else { Ok(a as i32) }
 }
 
+/// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::int::u64_to_i32(2147483648_u64);
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::u64_to_i32;
+///
+/// assert_eq!(u64_to_i32(0_u64), 0_i32);
+/// assert_eq!(u64_to_i32(2147483647_u64), 2147483647_i32);
+/// ```
 pub fn u64_to_i32(a: u64)
     -> i32 {
 
@@ -224,6 +300,23 @@ pub fn isize_to_i32(a: isize)
     }
 }
 
+/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::usize_to_i32_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(usize_to_i32_res(0_usize), Ok(0_i32));
+/// assert_eq!(usize_to_i32_res(2147483647_usize), Ok(2147483647_i32));
+/// assert_eq!(usize_to_i32_res(2147483648_usize), Err(InvalidNumber(String::from("2147483648"))));
+/// ```
 pub fn usize_to_i32_res(a: usize)
     -> ParseResultI32 {
 
@@ -234,6 +327,27 @@ pub fn usize_to_i32_res(a: usize)
     } else { Ok(a as i32) }
 }
 
+/// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::int::usize_to_i32(2147483648_usize);
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) number
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::usize_to_i32;
+///
+/// assert_eq!(usize_to_i32(0_usize), 0_i32);
+/// assert_eq!(usize_to_i32(2147483647_usize), 2147483647_i32);
+/// ```
 pub fn usize_to_i32(a: usize)
     -> i32 {
 
@@ -243,6 +357,31 @@ pub fn usize_to_i32(a: usize)
     }
 }
 
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::string_to_i32_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(string_to_i32_res("-2147483648".to_string()), Ok(-2147483648_i32));
+/// assert_eq!(string_to_i32_res("2147483647".to_string()), Ok(2147483647_i32));
+/// assert_eq!(
+///     string_to_i32_res("-2147483649".to_string()),
+///     Err(InvalidNumber(String::from("-2147483649")))
+/// );
+///
+/// assert_eq!(
+///     string_to_i32_res("2147483648".to_string()),
+///     Err(InvalidNumber(String::from("2147483648")))
+/// );
+/// ```
 pub fn string_to_i32_res(a: String)
     -> ParseResultI32 {
 
@@ -252,6 +391,28 @@ pub fn string_to_i32_res(a: String)
     }
 }
 
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::int::string_to_i32("-2147483649".to_string());
+/// rustils::parse::int::string_to_i32("2147483648".to_string());
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::string_to_i32;
+///
+/// assert_eq!(string_to_i32("-2147483648".to_string()), -2147483648_i32);
+/// assert_eq!(string_to_i32("2147483647".to_string()), 2147483647_i32);
+/// ```
 pub fn string_to_i32(a: String)
     -> i32 {
 
@@ -261,6 +422,24 @@ pub fn string_to_i32(a: String)
     }
 }
 
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::str_to_i32_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(str_to_i32_res("-2147483648"), Ok(-2147483648_i32));
+/// assert_eq!(str_to_i32_res("2147483647"), Ok(2147483647_i32));
+/// assert_eq!(str_to_i32_res("-2147483649"), Err(InvalidNumber(String::from("-2147483649"))));
+/// assert_eq!(str_to_i32_res("2147483648"), Err(InvalidNumber(String::from("2147483648"))));
+/// ```
 pub fn str_to_i32_res(a: &str)
     -> ParseResultI32 {
 
@@ -270,6 +449,28 @@ pub fn str_to_i32_res(a: &str)
     }
 }
 
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::int::str_to_i32("-2147483649");
+/// rustils::parse::int::str_to_i32("2147483648");
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::int::str_to_i32;
+///
+/// assert_eq!(str_to_i32("-2147483648"), -2147483648_i32);
+/// assert_eq!(str_to_i32("2147483647"), 2147483647_i32);
+/// ```
 pub fn str_to_i32(a: &str)
     -> i32 {
 

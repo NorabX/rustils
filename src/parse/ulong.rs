@@ -229,6 +229,27 @@ pub fn isize_to_u64(a: isize)
     }
 }
 
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ulong::string_to_u64_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(string_to_u64_res("0".to_string()), Ok(0_u64));
+/// assert_eq!(string_to_u64_res("18446744073709551615".to_string()), Ok(18446744073709551615_u64));
+/// assert_eq!(string_to_u64_res("-1".to_string()), Err(InvalidNumber(String::from("-1"))));
+/// assert_eq!(
+///     string_to_u64_res("18446744073709551616".to_string()),
+///     Err(InvalidNumber(String::from("18446744073709551616")))
+/// );
+/// ```
 pub fn string_to_u64_res(a: String)
     -> ParseResultU64 {
 
@@ -238,6 +259,28 @@ pub fn string_to_u64_res(a: String)
     }
 }
 
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::ulong::string_to_u64("-1".to_string());
+/// rustils::parse::ulong::string_to_u64("18446744073709551616".to_string());
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ulong::string_to_u64;
+///
+/// assert_eq!(string_to_u64("0".to_string()), 0_u64);
+/// assert_eq!(string_to_u64("18446744073709551615".to_string()), 18446744073709551615_u64);
+/// ```
 pub fn string_to_u64(a: String)
     -> u64 {
 
@@ -247,6 +290,27 @@ pub fn string_to_u64(a: String)
     }
 }
 
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ulong::str_to_u64_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(str_to_u64_res("0"), Ok(0_u64));
+/// assert_eq!(str_to_u64_res("18446744073709551615"), Ok(18446744073709551615_u64));
+/// assert_eq!(str_to_u64_res("-1"), Err(InvalidNumber(String::from("-1"))));
+/// assert_eq!(
+///     str_to_u64_res("18446744073709551616"),
+///     Err(InvalidNumber(String::from("18446744073709551616")))
+/// );
+/// ```
 pub fn str_to_u64_res(a: &str)
     -> ParseResultU64 {
 
@@ -256,6 +320,28 @@ pub fn str_to_u64_res(a: &str)
     }
 }
 
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`u64`](https://doc.rust-lang.org/std/primitive.u64.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::ulong::str_to_u64("-1");
+/// rustils::parse::ulong::str_to_u64("18446744073709551616");
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ulong::str_to_u64;
+///
+/// assert_eq!(str_to_u64("0"), 0_u64);
+/// assert_eq!(str_to_u64("18446744073709551615"), 18446744073709551615_u64);
+/// ```
 pub fn str_to_u64(a: &str)
     -> u64 {
 

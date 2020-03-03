@@ -41,12 +41,37 @@ impl ToI32 for bool {
 }
 
 impl ToI32 for u32 {
+
+    /// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to
+    /// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+    /// (see more: [`u32_to_i32_res`](../../parse/int/fn.u32_to_i32_res.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::int::ToI32;
+    ///
+    /// assert_eq!(0_u32.to_i32_res(), Ok(0_i32));
+    /// assert_eq!(2147483647_u32.to_i32_res(), Ok(2147483647_i32));
+    /// ```
     fn to_i32_res(self)
         -> ParseResultI32 {
 
         u32_to_i32_res(self)
     }
 
+    /// Parse [`u32`](https://doc.rust-lang.org/std/primitive.u32.html) to
+    /// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+    /// (see more: [`u32_to_i32`](../../parse/int/fn.u32_to_i32.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::int::ToI32;
+    ///
+    /// assert_eq!(0_u32.to_i32(), 0_i32);
+    /// assert_eq!(2147483647_u32.to_i32(), 2147483647_i32);
+    /// ```
     fn to_i32(self)
         -> i32 {
 
@@ -101,12 +126,36 @@ impl ToI32 for i64 {
 
 impl ToI32 for u64 {
 
+    /// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to
+    /// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+    /// (see more: [`u64_to_i32_res`](../../parse/int/fn.u64_to_i32_res.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::int::ToI32;
+    ///
+    /// assert_eq!(0_u64.to_i32_res(), Ok(0_i32));
+    /// assert_eq!(2147483647_u64.to_i32_res(), Ok(2147483647_i32));
+    /// ```
     fn to_i32_res(self)
         -> ParseResultI32 {
 
         u64_to_i32_res(self)
     }
 
+    /// Parse [`u64`](https://doc.rust-lang.org/std/primitive.u64.html) to
+    /// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+    /// (see more: [`u64_to_i32`](../../parse/int/fn.u64_to_i32.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::int::ToI32;
+    ///
+    /// assert_eq!(0_u64.to_i32(), 0_i32);
+    /// assert_eq!(2147483647_u64.to_i32(), 2147483647_i32);
+    /// ```
     fn to_i32(self)
         -> i32 {
 
@@ -161,12 +210,36 @@ impl ToI32 for isize {
 
 impl ToI32 for usize {
 
+    /// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to
+    /// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+    /// (see more: [`usize_to_i32_res`](../../parse/int/fn.usize_to_i32_res.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::int::ToI32;
+    ///
+    /// assert_eq!(0_usize.to_i32_res(), Ok(0_i32));
+    /// assert_eq!(2147483647_usize.to_i32_res(), Ok(2147483647_i32));
+    /// ```
     fn to_i32_res(self)
         -> ParseResultI32 {
 
         usize_to_i32_res(self)
     }
 
+    /// Parse [`usize`](https://doc.rust-lang.org/std/primitive.usize.html) to
+    /// [`i32`](https://doc.rust-lang.org/std/primitive.i32.html)
+    /// (see more: [`usize_to_i32`](../../parse/int/fn.usize_to_i32.html))
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rustils::parse::int::ToI32;
+    ///
+    /// assert_eq!(0_usize.to_i32(), 0_i32);
+    /// assert_eq!(2147483647_usize.to_i32(), 2147483647_i32);
+    /// ```
     fn to_i32(self)
         -> i32 {
 

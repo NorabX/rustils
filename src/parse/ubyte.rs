@@ -667,6 +667,24 @@ pub fn isize_to_u8(a: isize)
     }
 }
 
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`u8`](https://doc.rust-lang.org/std/primitive.u8.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ubyte::string_to_u8_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(string_to_u8_res("0".to_string()), Ok(0_u8));
+/// assert_eq!(string_to_u8_res("255".to_string()), Ok(255_u8));
+/// assert_eq!(string_to_u8_res("-1".to_string()), Err(InvalidNumber(String::from("-1"))));
+/// assert_eq!(string_to_u8_res("256".to_string()), Err(InvalidNumber(String::from("256"))));
+/// ```
 pub fn string_to_u8_res(a: String)
     -> ParseResultU8 {
 
@@ -676,6 +694,28 @@ pub fn string_to_u8_res(a: String)
     }
 }
 
+/// Parse [`String`](https://doc.rust-lang.org/std/string/struct.String.html) to
+/// [`u8`](https://doc.rust-lang.org/std/primitive.u8.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::ubyte::string_to_u8("-1".to_string());
+/// rustils::parse::ubyte::string_to_u8("256".to_string());
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`String`](https://doc.rust-lang.org/std/string/struct.String.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ubyte::string_to_u8;
+///
+/// assert_eq!(string_to_u8("0".to_string()), 0_u8);
+/// assert_eq!(string_to_u8("255".to_string()), 255_u8);
+/// ```
 pub fn string_to_u8(a: String)
     -> u8 {
 
@@ -685,6 +725,24 @@ pub fn string_to_u8(a: String)
     }
 }
 
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`u8`](https://doc.rust-lang.org/std/primitive.u8.html)
+///
+/// # Arguments
+///
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ubyte::str_to_u8_res;
+/// use rustils::error::ParseError::InvalidNumber;
+///
+/// assert_eq!(str_to_u8_res("0"), Ok(0_u8));
+/// assert_eq!(str_to_u8_res("255"), Ok(255_u8));
+/// assert_eq!(str_to_u8_res("-1"), Err(InvalidNumber(String::from("-1"))));
+/// assert_eq!(str_to_u8_res("256"), Err(InvalidNumber(String::from("256"))));
+/// ```
 pub fn str_to_u8_res(a: &str)
     -> ParseResultU8 {
 
@@ -694,6 +752,28 @@ pub fn str_to_u8_res(a: &str)
     }
 }
 
+/// Parse [`&str`](https://doc.rust-lang.org/std/primitive.str.html) to
+/// [`u8`](https://doc.rust-lang.org/std/primitive.u8.html)
+///
+/// # Panics
+///
+/// ```rust,should_panic
+/// rustils::parse::ubyte::str_to_u8("-1");
+/// rustils::parse::ubyte::str_to_u8("256");
+/// ```
+///
+/// # Arguments
+///
+/// * `a` - Any [`&str`](https://doc.rust-lang.org/std/primitive.str.html)
+///
+/// # Examples
+///
+/// ```
+/// use rustils::parse::ubyte::str_to_u8;
+///
+/// assert_eq!(str_to_u8("0"), 0_u8);
+/// assert_eq!(str_to_u8("255"), 255_u8);
+/// ```
 pub fn str_to_u8(a: &str)
     -> u8 {
 
